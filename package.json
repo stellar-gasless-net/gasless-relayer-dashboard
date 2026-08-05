@@ -1,0 +1,8 @@
+{
+  "name": "gasless-relayer-dashboard",
+  "version": "1.0.0",
+  "description": "Developer Portal & Paymaster Management Console for Stellar Gasless Network",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

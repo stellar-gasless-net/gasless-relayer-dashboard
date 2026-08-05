@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stellar Gasless Network Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">⚡ Stellar Gasless Dashboard</div>
+      <div>
+        <span class="badge">Testnet Connected</span>
+      </div>
+    </header>
+
+    <div class="stats-grid">
+      <div class="card">
+        <div>Total Relayed Txs</div>
+        <div class="stat-val">14,289</div>
+      </div>
+      <div class="card">
+        <div>Sponsored Gas (XLM)</div>
+        <div class="stat-val">1,428.90</div>
+      </div>
+      <div class="card">
+        <div>Active Paymasters</div>
+        <div class="stat-val">8</div>
+      </div>
+      <div class="card">
+        <div>Relayer Latency</div>
+        <div class="stat-val" style="color: #6366f1;">420ms</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Recent Relayed Meta-Transactions</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Tx Hash</th>
+              <th>User Signer</th>
+              <th>Target Contract</th>
+              <th>Paymaster</th>
+              <th>Status</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>0x7f...a12c</code></td>
+              <td><code>GBXX...USER1</code></td>
+              <td><code>trusted-forwarder</code></td>
+              <td>USDC Paymaster</td>
+              <td><span class="badge">Success</span></td>
+              <td>2 mins ago</td>
+            </tr>
+            <tr>
+              <td><code>0x9e...b41d</code></td>
+              <td><code>GDYY...USER2</code></td>
+              <td><code>nft-marketplace</code></td>
+              <td>Voucher Paymaster</td>
+              <td><span class="badge">Success</span></td>
+              <td>5 mins ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

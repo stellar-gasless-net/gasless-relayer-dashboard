@@ -10,33 +10,68 @@
 <body>
   <div class="container">
     <header>
-      <div class="logo">⚡ Stellar Gasless Dashboard</div>
-      <div>
-        <span class="badge">Testnet Connected</span>
+      <div class="logo">⚡ Stellar Gasless Network</div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <button id="openDepositBtn" class="btn btn-primary">+ Deposit Gas (XLM)</button>
+        <span class="badge">Testnet Online</span>
       </div>
     </header>
 
     <div class="stats-grid">
       <div class="card">
-        <div>Total Relayed Txs</div>
+        <div class="card-label">Total Relayed Transactions</div>
         <div class="stat-val">14,289</div>
       </div>
       <div class="card">
-        <div>Sponsored Gas (XLM)</div>
-        <div class="stat-val">1,428.90</div>
+        <div class="card-label">Sponsored Gas Budget</div>
+        <div class="stat-val">1,428.90 XLM</div>
       </div>
       <div class="card">
-        <div>Active Paymasters</div>
-        <div class="stat-val">8</div>
+        <div class="card-label">Active Paymasters</div>
+        <div class="stat-val">8 Active</div>
       </div>
       <div class="card">
-        <div>Relayer Latency</div>
+        <div class="card-label">Relayer Latency</div>
         <div class="stat-val" style="color: #6366f1;">420ms</div>
       </div>
     </div>
 
+    <div class="card" style="margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>🔑 dApp API Keys</h3>
+        <button class="btn btn-secondary">Generate New Key</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Key Name</th>
+            <th>API Key Prefix</th>
+            <th>Rate Limit</th>
+            <th>Monthly Quota</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Production Frontend</td>
+            <td><code>st_gas_live_...9f2a</code></td>
+            <td>30 req/min</td>
+            <td>100,000 / 100,000</td>
+            <td>Aug 01, 2026</td>
+          </tr>
+          <tr>
+            <td>Staging Environment</td>
+            <td><code>st_gas_test_...8b11</code></td>
+            <td>60 req/min</td>
+            <td>Unlimited</td>
+            <td>Aug 04, 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="card">
-      <h3>Recent Relayed Meta-Transactions</h3>
+      <h3>📜 Live Relayed Meta-Transactions</h3>
       <div class="table-container">
         <table>
           <thead>
@@ -44,14 +79,14 @@
               <th>Tx Hash</th>
               <th>User Signer</th>
               <th>Target Contract</th>
-              <th>Paymaster</th>
+              <th>Paymaster Type</th>
               <th>Status</th>
               <th>Time</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>0x7f...a12c</code></td>
+              <td><code>0x7f8a...a12c</code></td>
               <td><code>GBXX...USER1</code></td>
               <td><code>trusted-forwarder</code></td>
               <td>USDC Paymaster</td>
@@ -59,9 +94,9 @@
               <td>2 mins ago</td>
             </tr>
             <tr>
-              <td><code>0x9e...b41d</code></td>
+              <td><code>0x9e12...b41d</code></td>
               <td><code>GDYY...USER2</code></td>
-              <td><code>nft-marketplace</code></td>
+              <td><code>account-abstraction-wallet</code></td>
               <td>Voucher Paymaster</td>
               <td><span class="badge">Success</span></td>
               <td>5 mins ago</td>
@@ -71,5 +106,25 @@
       </div>
     </div>
   </div>
+
+  <!-- Deposit Modal -->
+  <div id="depositModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content card">
+      <h3>Deposit XLM to Paymaster Pool</h3>
+      <p style="color: #9ca3af;">Deposit XLM gas reserves to sponsor user transactions on Stellar Soroban.</p>
+      <form id="depositForm">
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem;">Amount (XLM):</label>
+          <input type="number" id="depositAmount" class="input-field" value="500" min="10" required>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+          <button type="button" id="closeDepositBtn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Deposit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

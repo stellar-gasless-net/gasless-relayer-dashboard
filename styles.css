@@ -1,7 +1,7 @@
 :root {
   --bg-dark: #0b0f19;
-  --panel-bg: rgba(22, 28, 45, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --panel-bg: rgba(22, 28, 45, 0.75);
+  --border-color: rgba(255, 255, 255, 0.12);
   --primary-glow: #6366f1;
   --secondary-glow: #a855f7;
   --text-main: #f3f4f6;
@@ -58,11 +58,70 @@ header {
   padding: 1.5rem;
 }
 
+.card-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
 .stat-val {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin-top: 0.5rem;
   color: var(--accent-green);
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 480px;
 }
 
 .table-container {

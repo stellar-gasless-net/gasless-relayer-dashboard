@@ -1,343 +1,694 @@
-document.addEventListener('DOMContentLoaded', function () {
-  let totalSponsoredGas = 1428.90;
-  let totalRelayedCount = 14289;
-  let usdcPaymasterReserve = 500.00;
-  let promoPaymasterReserve = 250.00;
-  let activeDepositTarget = 'usdc';
+document.addEventListener("DOMContentLoaded", () => {
 
-  // Live Stellar Testnet Horizon RPC Endpoint
-  const HORIZON_TESTNET_URL = 'https://horizon-testnet.stellar.org';
 
-  // Fallback real live mined testnet hashes for instant verification
-  const realLiveTestnetHashes = [
-    '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9',
-    '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f',
-    'c01824a737fa20325d742234057e937d2f4a56a6552a8a101b0f59265f4705ec'
-  ];
+/* =========================
+   Theme Toggle
+========================= */
 
-  function getRealLiveTestnetHash() {
-    return realLiveTestnetHashes[Math.floor(Math.random() * realLiveTestnetHashes.length)];
+
+const themeToggle = document.getElementById("themeToggle");
+
+
+const savedTheme = localStorage.getItem("theme");
+
+
+if(savedTheme === "light"){
+
+  document.body.classList.add("light-theme");
+
+  if(themeToggle){
+    themeToggle.innerHTML = "🌙 Dark Mode";
   }
 
-  // 1. Navigation Tabs Logic
-  const navItems = document.querySelectorAll('.nav-item');
-  const tabContents = document.querySelectorAll('.tab-content');
+}
 
-  navItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-      navItems.forEach(function (n) { n.classList.remove('active'); });
-      tabContents.forEach(function (c) { c.style.display = 'none'; });
 
-      item.classList.add('active');
-      const targetTabId = item.getAttribute('data-tab');
-      const targetTab = document.getElementById(targetTabId || 'overviewTab');
-      if (targetTab) {
-        targetTab.style.display = 'block';
-      }
-    });
-  });
 
-  // 2. Deposit XLM Modal Logic
-  const depositModal = document.getElementById('depositModal');
-  const openDepositBtn = document.getElementById('openDepositBtn');
-  const closeDepositBtn = document.getElementById('closeDepositBtn');
-  const depositForm = document.getElementById('depositForm');
+if(themeToggle){
 
-  document.querySelectorAll('.openDepositModalBtn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const target = btn.getAttribute('data-target') || 'usdc';
-      activeDepositTarget = target;
-      if (depositModal) depositModal.style.display = 'flex';
-    });
-  });
+themeToggle.addEventListener("click",()=>{
 
-  if (openDepositBtn && depositModal) {
-    openDepositBtn.addEventListener('click', function () {
-      activeDepositTarget = 'usdc';
-      depositModal.style.display = 'flex';
-    });
-  }
 
-  if (closeDepositBtn && depositModal) {
-    closeDepositBtn.addEventListener('click', function () {
-      depositModal.style.display = 'none';
-    });
-  }
+  document.body.classList.toggle("light-theme");
 
-  if (depositForm) {
-    depositForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const amountInput = document.getElementById('depositAmount');
-      const addedAmount = parseFloat(amountInput ? amountInput.value : '500');
 
-      totalSponsoredGas += addedAmount;
-      const statGas = document.getElementById('statSponsoredGas');
-      if (statGas) {
-        statGas.innerText = totalSponsoredGas.toFixed(2) + ' XLM';
-      }
+  const isLight =
+  document.body.classList.contains("light-theme");
 
-      if (activeDepositTarget === 'promo') {
-        promoPaymasterReserve += addedAmount;
-        const promoEl = document.getElementById('paymasterPromoBalance');
-        if (promoEl) promoEl.innerText = promoPaymasterReserve.toFixed(2) + ' XLM';
-      } else {
-        usdcPaymasterReserve += addedAmount;
-        const usdcEl = document.getElementById('paymasterUsdcBalance');
-        if (usdcEl) usdcEl.innerText = usdcPaymasterReserve.toFixed(2) + ' XLM';
-      }
 
-      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve!');
-      if (depositModal) depositModal.style.display = 'none';
-    });
-  }
+  localStorage.setItem(
+    "theme",
+    isLight ? "light" : "dark"
+  );
 
-  // 3. Create API Key Modal Logic
-  const apiKeyModal = document.getElementById('apiKeyModal');
-  const openApiKeyBtnOverview = document.getElementById('openApiKeyBtnOverview');
-  const openApiKeyBtnMain = document.getElementById('openApiKeyBtnMain');
-  const closeApiKeyBtn = document.getElementById('closeApiKeyBtn');
-  const apiKeyForm = document.getElementById('apiKeyForm');
 
-  function openApiKeyModal() {
-    if (apiKeyModal) apiKeyModal.style.display = 'flex';
-  }
+  themeToggle.innerHTML =
+  isLight
+  ? "🌙 Dark Mode"
+  : "☀️ Light Mode";
 
-  if (openApiKeyBtnOverview) openApiKeyBtnOverview.addEventListener('click', openApiKeyModal);
-  if (openApiKeyBtnMain) openApiKeyBtnMain.addEventListener('click', openApiKeyModal);
-  if (closeApiKeyBtn && apiKeyModal) {
-    closeApiKeyBtn.addEventListener('click', function () {
-      apiKeyModal.style.display = 'none';
-    });
-  }
 
-  if (apiKeyForm) {
-    apiKeyForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const nameInput = document.getElementById('apiKeyName');
-      const limitInput = document.getElementById('apiKeyRateLimit');
-      const name = nameInput ? nameInput.value : 'Stellar dApp Gateway';
-      const limit = limitInput ? limitInput.value : '30 req/min';
+});
 
-      const randomSuffix = Math.random().toString(36).substring(2, 6);
-      const keyPrefix = 'st_gas_live_...' + randomSuffix;
-      const fullKey = 'st_gas_live_' + Math.random().toString(36).substring(2, 12) + randomSuffix;
 
-      const newRowHtml = '<tr>' +
-        '<td>' + name + '</td>' +
-        '<td><code>' + keyPrefix + '</code></td>' +
-        '<td>' + limit + '</td>' +
-        '<td>100,000 / 100,000</td>' +
-        '<td><span class="badge">Active</span></td>' +
-        '<td><button class="btn btn-secondary copy-key-btn" data-key="' + fullKey + '" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>' +
-      '</tr>';
+}
 
-      const tBodyOverview = document.getElementById('apiKeysOverviewTableBody');
-      const tBodyMain = document.getElementById('apiKeysMainTableBody');
-      if (tBodyOverview) tBodyOverview.insertAdjacentHTML('afterbegin', newRowHtml);
-      if (tBodyMain) tBodyMain.insertAdjacentHTML('afterbegin', newRowHtml);
 
-      const snippetKeyEl = document.getElementById('codeSnippetKey');
-      if (snippetKeyEl) snippetKeyEl.innerText = fullKey;
 
-      bindCopyButtons();
-      showToast('API Key "' + name + '" created & populated in SDK Code Generator!');
-      if (apiKeyModal) apiKeyModal.style.display = 'none';
-      if (nameInput) nameInput.value = '';
-    });
-  }
 
-  // 4. Soroban FeeBump Relay Simulator & Live Horizon RPC Broadcast
-  const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');
-  const runFullDemoBtn = document.getElementById('runFullDemoBtn');
+/* =========================
+   Navigation Tabs
+========================= */
 
-  if (quickRunDemoBtn) {
-    quickRunDemoBtn.addEventListener('click', function () {
-      const demoTabItem = document.querySelector('[data-tab="demoTab"]');
-      if (demoTabItem) demoTabItem.click();
-      const inputEl = document.getElementById('demoUserAddressInput');
-      if (inputEl) inputEl.focus();
-    });
-  }
 
-  if (runFullDemoBtn) {
-    runFullDemoBtn.addEventListener('click', async function () {
-      const progressBox = document.getElementById('demoProgressBox');
-      const statusText = document.getElementById('demoStatusText');
-      const progressBar = document.getElementById('demoProgressBar');
-      const receiptBox = document.getElementById('demoResultReceiptBox');
+const navItems =
+document.querySelectorAll(".nav-item");
 
-      const userAddressInput = document.getElementById('demoUserAddressInput');
-      const targetContractSelect = document.getElementById('demoTargetContractSelect');
-      const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');
-      const gasCapSelect = document.getElementById('demoGasFeeCapSelect');
 
-      const userAddr = userAddressInput ? (userAddressInput.value || 'GCSIMULATED_USER_9921') : 'GCSIMULATED_USER_9921';
-      const targetContract = targetContractSelect ? targetContractSelect.value : 'trusted-forwarder';
-      const paymasterType = paymasterSelect ? paymasterSelect.value : 'USDC Paymaster';
-      const gasFeeCap = gasCapSelect ? gasCapSelect.value : '0.0001 XLM (1,000 Stroops)';
+const tabs =
+document.querySelectorAll(".tab-content");
 
-      const shortUser = userAddr.length > 10 ? (userAddr.substring(0, 5) + '...' + userAddr.substring(userAddr.length - 4)) : userAddr;
 
-      if (progressBox && statusText && progressBar) {
-        if (receiptBox) receiptBox.style.display = 'none';
-        progressBox.style.display = 'block';
-        statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry for User ' + shortUser + '...';
-        progressBar.style.width = '33%';
 
-        setTimeout(async function () {
-          statusText.innerText = 'Step 2/3: Contacting Live Stellar Testnet Horizon RPC (' + HORIZON_TESTNET_URL + ')...';
-          progressBar.style.width = '66%';
+navItems.forEach(item=>{
 
-          let liveTxHash = getRealLiveTestnetHash();
-          try {
-            const rpcResponse = await fetch(HORIZON_TESTNET_URL + '/transactions?order=desc&limit=1');
-            const rpcData = await rpcResponse.json();
-            if (rpcData && rpcData._embedded && rpcData._embedded.records && rpcData._embedded.records.length > 0) {
-              liveTxHash = rpcData._embedded.records[0].hash;
-            }
-          } catch (err) {
-            console.log('Horizon Testnet RPC fetch completed:', err);
-          }
 
-          setTimeout(function () {
-            statusText.innerText = 'Step 3/3: FeeBumpTx Confirmed by Stellar Testnet Validators!';
-            progressBar.style.width = '100%';
+item.addEventListener("click",()=>{
 
-            setTimeout(function () {
-              totalRelayedCount += 1;
-              const statRelayed = document.getElementById('statRelayedTxs');
-              if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
 
-              const shortHash = liveTxHash.substring(0, 4) + '...' + liveTxHash.substring(60);
+navItems.forEach(nav=>{
+nav.classList.remove("active");
+});
 
-              if (receiptBox) {
-                const receiptHashEl = document.getElementById('receiptHash');
-                const receiptCapEl = document.getElementById('receiptFeeCap');
-                if (receiptHashEl) receiptHashEl.innerText = liveTxHash;
-                if (receiptCapEl) receiptCapEl.innerText = gasFeeCap;
-                receiptBox.style.display = 'block';
-              }
 
-              const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +
-                '<td><code class="tx-hash-link" data-hash="' + liveTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
-                '<td><code>' + shortUser + '</code></td>' +
-                '<td><code>' + targetContract + '</code></td>' +
-                '<td>' + paymasterType + '</td>' +
-                '<td>' + gasFeeCap.split(' ')[0] + '</td>' +
-                '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ SOROBAN CONFIRMED</span></td>' +
-                '<td>Just now</td>' +
-              '</tr>';
+tabs.forEach(tab=>{
+tab.style.display="none";
+});
 
-              const txOverviewBody = document.getElementById('txOverviewTableBody');
-              const allTxBody = document.getElementById('allTxTableBody');
-              if (txOverviewBody) txOverviewBody.insertAdjacentHTML('afterbegin', newTxRow);
-              if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
 
-              bindTxDetailLinks();
-              showToast('⚡ Soroban Meta-Tx Confirmed on Stellar Testnet!');
-              progressBox.style.display = 'none';
-            }, 800);
-          }, 800);
-        }, 800);
-      }
-    });
-  }
 
-  // 5. Transaction Detail Inspector Modal Logic
-  const txDetailModal = document.getElementById('txDetailModal');
-  const closeTxDetailBtn = document.getElementById('closeTxDetailBtn');
+item.classList.add("active");
 
-  function bindTxDetailLinks() {
-    document.querySelectorAll('.tx-hash-link').forEach(function (link) {
-      link.onclick = function (e) {
-        e.preventDefault();
-        const hash = link.getAttribute('data-hash') || '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9';
-        const titleEl = document.getElementById('detailTxTitle');
-        const contentEl = document.getElementById('detailTxContent');
-        const explorerLink = document.getElementById('detailStellarExpertLink');
 
-        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash.substring(0, 8) + '...';
-        if (contentEl) {
-          contentEl.innerText = JSON.stringify({
-            stellarTestnetTxHash: hash,
-            network: 'Stellar Testnet (horizon-testnet.stellar.org)',
-            type: 'FeeBumpTransaction',
-            feeSponsorKeypair: 'GCRELAYER_POOL_KEY_1',
-            sorobanAuthEntry: {
-              credentials: 'Secp256r1 Passkey WebAuthn Signature Verified',
-              userSigner: 'GBUSER_REVIEWER_WALLET_9921',
-              domainSeparator: 'Stellar Testnet ; September 2015',
-              nonceSequence: 104,
-              expirationDeadline: Math.floor(Date.now() / 1000) + 300,
-            },
-            targetContract: 'CCFORWARDER_TRUSTED_SOROBAN',
-            gasSponsoredStroops: 1000,
-            executionStatus: 'SUCCESS (Mined in Testnet Ledger Block)',
-          }, null, 2);
-        }
-        if (explorerLink) {
-          explorerLink.setAttribute('href', 'https://stellar.expert/explorer/testnet/tx/' + hash);
-        }
-        if (txDetailModal) txDetailModal.style.display = 'flex';
-      };
-    });
-  }
+const target =
+item.dataset.tab;
 
-  if (closeTxDetailBtn && txDetailModal) {
-    closeTxDetailBtn.addEventListener('click', function () {
-      txDetailModal.style.display = 'none';
-    });
-  }
 
-  // 6. Copy Key Handler
-  function bindCopyButtons() {
-    document.querySelectorAll('.copy-key-btn').forEach(function (btn) {
-      btn.onclick = function () {
-        const key = btn.getAttribute('data-key') || 'st_gas_live_key';
-        const snippetKeyEl = document.getElementById('codeSnippetKey');
-        if (snippetKeyEl) snippetKeyEl.innerText = key;
+const section =
+document.getElementById(target);
 
-        navigator.clipboard.writeText(key).then(function () {
-          showToast('Copied API Key to clipboard & updated SDK Code Generator!');
-        }).catch(function () {
-          showToast('Key copied: ' + key);
-        });
-      };
-    });
-  }
 
-  // 7. Export CSV Handler
-  const exportCsvBtn = document.getElementById('exportCsvBtn');
-  if (exportCsvBtn) {
-    exportCsvBtn.addEventListener('click', function () {
-      const csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n' +
-        '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9,GBXXUSER1,trusted-forwarder,USDC Paymaster,0.0001 XLM,Success,2 mins ago\n' +
-        '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f,GDYYUSER2,account-abstraction-wallet,Voucher Paymaster,0.0001 XLM,Success,5 mins ago\n';
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement('a');
-      link.setAttribute('href', encodedUri);
-      link.setAttribute('download', 'stellar_gasless_relayed_txs.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast('Downloaded transaction audit log CSV!');
-    });
-  }
 
-  bindCopyButtons();
-  bindTxDetailLinks();
+if(section){
 
-  function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerText = message;
-    document.body.appendChild(toast);
-    setTimeout(function () {
-      toast.classList.add('show');
-    }, 100);
-    setTimeout(function () {
-      toast.classList.remove('show');
-      setTimeout(function () { toast.remove(); }, 300);
-    }, 3000);
-  }
+section.style.display="block";
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+/* =========================
+   Deposit Modal
+========================= */
+
+
+const depositModal =
+document.getElementById("depositModal");
+
+
+const openDeposit =
+document.getElementById("openDepositBtn");
+
+
+const closeDeposit =
+document.getElementById("closeDepositBtn");
+
+
+
+if(openDeposit){
+
+openDeposit.onclick=()=>{
+
+depositModal.style.display="flex";
+
+};
+
+}
+
+
+
+if(closeDeposit){
+
+closeDeposit.onclick=()=>{
+
+depositModal.style.display="none";
+
+};
+
+}
+
+
+
+
+const depositForm =
+document.getElementById("depositForm");
+
+
+
+let usdcBalance = 500;
+
+let promoBalance = 250;
+
+
+
+document.querySelectorAll(".openDepositModalBtn")
+.forEach(btn=>{
+
+
+btn.onclick=()=>{
+
+depositModal.style.display="flex";
+
+};
+
+});
+
+
+
+if(depositForm){
+
+
+depositForm.addEventListener("submit",(e)=>{
+
+
+e.preventDefault();
+
+
+const amount =
+Number(
+document.getElementById("depositAmount").value
+);
+
+
+
+usdcBalance += amount;
+
+
+const balance =
+document.getElementById(
+"paymasterUsdcBalance"
+);
+
+
+if(balance){
+
+balance.innerHTML =
+usdcBalance+" XLM";
+
+}
+
+
+
+showToast(
+"Deposit completed successfully"
+);
+
+
+
+depositModal.style.display="none";
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+/* =========================
+ API Key Modal
+========================= */
+
+
+const apiModal =
+document.getElementById("apiKeyModal");
+
+
+const openApi =
+document.querySelectorAll(
+"#openApiKeyBtnMain,#openApiKeyBtnOverview"
+);
+
+
+openApi.forEach(btn=>{
+
+
+btn.onclick=()=>{
+
+apiModal.style.display="flex";
+
+};
+
+
+});
+
+
+
+const closeApi =
+document.getElementById(
+"closeApiKeyBtn"
+);
+
+
+
+if(closeApi){
+
+closeApi.onclick=()=>{
+
+apiModal.style.display="none";
+
+};
+
+}
+
+
+
+
+const apiForm =
+document.getElementById("apiKeyForm");
+
+
+
+if(apiForm){
+
+
+apiForm.addEventListener("submit",(e)=>{
+
+
+e.preventDefault();
+
+
+const name =
+document.getElementById(
+"apiKeyName"
+).value;
+
+
+
+const key =
+"st_gas_"+Math.random()
+.toString(36)
+.substring(2,12);
+
+
+
+const row = `
+
+<tr>
+
+<td>${name}</td>
+
+<td>
+<code>${key}</code>
+</td>
+
+<td>
+30 req/min
+</td>
+
+<td>
+100,000
+</td>
+
+<td>
+<span class="badge">
+Active
+</span>
+</td>
+
+<td>
+<button 
+class="btn btn-secondary copy-key-btn"
+data-key="${key}">
+Copy Key
+</button>
+</td>
+
+</tr>
+
+`;
+
+
+
+const table =
+document.getElementById(
+"apiKeysMainTableBody"
+);
+
+
+
+if(table){
+
+table.innerHTML += row;
+
+}
+
+
+
+bindCopyButtons();
+
+
+apiModal.style.display="none";
+
+
+showToast(
+"API Key created"
+);
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ Copy API Key
+========================= */
+
+
+function bindCopyButtons(){
+
+
+document
+.querySelectorAll(".copy-key-btn")
+.forEach(btn=>{
+
+
+btn.onclick=()=>{
+
+
+navigator.clipboard.writeText(
+btn.dataset.key
+);
+
+
+showToast(
+"API Key copied"
+);
+
+
+};
+
+
+});
+
+
+}
+
+
+bindCopyButtons();
+
+
+
+
+
+
+
+/* =========================
+ Transaction Search
+========================= */
+
+
+const search =
+document.getElementById(
+"searchTxInput"
+);
+
+
+
+if(search){
+
+
+search.addEventListener("input",()=>{
+
+
+const value =
+search.value.toLowerCase();
+
+
+document
+.querySelectorAll(
+"#allTxTableBody tr"
+)
+.forEach(row=>{
+
+
+row.style.display =
+row.innerText
+.toLowerCase()
+.includes(value)
+?
+""
+:
+"none";
+
+
+});
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ Demo Simulator
+========================= */
+
+
+const runDemo =
+document.getElementById(
+"runFullDemoBtn"
+);
+
+
+
+if(runDemo){
+
+
+runDemo.onclick=()=>{
+
+
+const box =
+document.getElementById(
+"demoProgressBox"
+);
+
+
+
+const result =
+document.getElementById(
+"demoResultReceiptBox"
+);
+
+
+
+box.style.display="block";
+
+
+
+let progress=0;
+
+
+
+const interval =
+setInterval(()=>{
+
+
+progress+=25;
+
+
+document
+.getElementById(
+"demoProgressBar"
+)
+.style.width =
+progress+"%";
+
+
+
+if(progress>=100){
+
+
+clearInterval(interval);
+
+
+box.style.display="none";
+
+
+result.style.display="block";
+
+
+showToast(
+"Transaction confirmed"
+);
+
+
+
+}
+
+
+
+},500);
+
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ CSV Export
+========================= */
+
+
+const exportBtn =
+document.getElementById(
+"exportCsvBtn"
+);
+
+
+
+if(exportBtn){
+
+
+exportBtn.onclick=()=>{
+
+
+const csv =
+"Hash,Status\n3389...ecb9,Success";
+
+
+const blob =
+new Blob(
+[csv],
+{
+type:"text/csv"
+}
+);
+
+
+
+const url =
+URL.createObjectURL(blob);
+
+
+
+const a =
+document.createElement("a");
+
+
+a.href=url;
+
+a.download=
+"transactions.csv";
+
+
+a.click();
+
+
+showToast(
+"CSV exported"
+);
+
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ Toast
+========================= */
+
+
+function showToast(message){
+
+
+const toast =
+document.createElement("div");
+
+
+toast.className="toast";
+
+
+toast.innerText=message;
+
+
+document.body.appendChild(toast);
+
+
+
+setTimeout(()=>{
+
+toast.classList.add("show");
+
+},100);
+
+
+
+setTimeout(()=>{
+
+
+toast.remove();
+
+
+},3000);
+
+
+
+}
+
+
+
 });

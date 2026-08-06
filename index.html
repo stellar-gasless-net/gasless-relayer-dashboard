@@ -14,6 +14,7 @@
     <div class="sidebar-brand">⚡ Stellar Gasless</div>
     <ul class="nav-list">
       <li class="nav-item active" data-tab="overviewTab">📊 Overview</li>
+      <li class="nav-item" data-tab="demoTab">🧪 Interactive Demo</li>
       <li class="nav-item" data-tab="paymastersTab">💳 Paymasters</li>
       <li class="nav-item" data-tab="apikeysTab">🔑 API Keys</li>
       <li class="nav-item" data-tab="transactionsTab">📜 Relayed Txs</li>
@@ -38,24 +39,38 @@
       <div class="stats-grid">
         <div class="card">
           <div class="card-label">Total Relayed Transactions</div>
-          <div class="stat-val">14,289</div>
+          <div id="statRelayedTxs" class="stat-val">14,289</div>
         </div>
         <div class="card">
           <div class="card-label">Sponsored Gas Pool</div>
-          <div class="stat-val">1,428.90 XLM</div>
+          <div id="statSponsoredGas" class="stat-val">1,428.90 XLM</div>
         </div>
         <div class="card">
           <div class="card-label">Active Paymaster Vaults</div>
-          <div class="stat-val">8 Active</div>
+          <div id="statActivePaymasters" class="stat-val">8 Active</div>
         </div>
         <div class="card">
           <div class="card-label">Relayer Response Latency</div>
-          <div class="stat-val" style="color: #6366f1;">420ms</div>
+          <div id="statLatency" class="stat-val" style="color: #6366f1;">420ms</div>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Demo Trigger Banner -->
+      <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">🧪 Interactive Gasless Execution Playground</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Test a live 0-XLM gasless meta-transaction relay simulation right now!</p>
+          </div>
+          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">⚡ Run Gasless Tx (0 XLM)</button>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 2rem;">
-        <h3>🔑 Active dApp Credentials</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="margin: 0;">🔑 Active dApp Credentials</h3>
+          <button id="openApiKeyBtnOverview" class="btn btn-secondary">+ Create New API Key</button>
+        </div>
         <table>
           <thead>
             <tr>
@@ -64,15 +79,17 @@
               <th>Rate Limit</th>
               <th>Monthly Quota</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="apiKeysOverviewTableBody">
             <tr>
               <td>Production Next.js Frontend</td>
               <td><code>st_gas_live_...9f2a</code></td>
               <td>30 req/min</td>
               <td>100,000 / 100,000</td>
               <td><span class="badge">Active</span></td>
+              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>
             </tr>
             <tr>
               <td>Staging Environment</td>
@@ -80,13 +97,17 @@
               <td>60 req/min</td>
               <td>Unlimited</td>
               <td><span class="badge">Active</span></td>
+              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_test_7c3314a18b11" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="card">
-        <h3>📜 Live Relayed Meta-Transactions</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="margin: 0;">📜 Live Relayed Meta-Transactions</h3>
+          <button id="exportCsvBtn" class="btn btn-secondary">📥 Export CSV History</button>
+        </div>
         <div class="table-container">
           <table>
             <thead>
@@ -95,24 +116,27 @@
                 <th>User Signer</th>
                 <th>Target Contract</th>
                 <th>Paymaster Type</th>
+                <th>Gas Sponsored</th>
                 <th>Status</th>
                 <th>Time</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="txOverviewTableBody">
               <tr>
-                <td><code>0x7f8a...a12c</code></td>
+                <td><code class="tx-hash-link" data-hash="0x7f8a12c9a4b8" style="cursor: pointer; color: #818cf8;">0x7f8a...a12c</code></td>
                 <td><code>GBXX...USER1</code></td>
                 <td><code>trusted-forwarder</code></td>
                 <td>USDC Paymaster</td>
+                <td>0.0001 XLM</td>
                 <td><span class="badge">Success</span></td>
                 <td>2 mins ago</td>
               </tr>
               <tr>
-                <td><code>0x9e12...b41d</code></td>
+                <td><code class="tx-hash-link" data-hash="0x9e12b41dc982" style="cursor: pointer; color: #818cf8;">0x9e12...b41d</code></td>
                 <td><code>GDYY...USER2</code></td>
                 <td><code>account-abstraction-wallet</code></td>
                 <td>Voucher Paymaster</td>
+                <td>0.0001 XLM</td>
                 <td><span class="badge">Success</span></td>
                 <td>5 mins ago</td>
               </tr>
@@ -122,7 +146,38 @@
       </div>
     </div>
 
-    <!-- TAB 2: PAYMASTERS -->
+    <!-- TAB 2: INTERACTIVE DEMO -->
+    <div id="demoTab" class="tab-content" style="display: none;">
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>🧪 Interactive Gasless Execution Simulator</h3>
+        <p style="color: var(--text-muted);">Simulate an end-to-end user transaction where the user signs an off-chain auth entry and the Relayer sponsors the native fee-bump transaction.</p>
+        
+        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin: 1.5rem 0;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">User Account (0 XLM Balance):</label>
+              <input type="text" class="input-field" value="GCSIMULATED_USER_WALLET_ADDRESS_9921" readonly>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">Target Soroban Contract:</label>
+              <input type="text" class="input-field" value="CCFORWARDER_TRUSTED_SOROBAN_CONTRACT" readonly>
+            </div>
+          </div>
+          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.1rem;">🚀 Execute Gasless Meta-Transaction Now</button>
+        </div>
+
+        <div id="demoProgressBox" style="display: none; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--primary-accent); padding: 1.25rem; border-radius: 8px;">
+          <div id="demoStatusText" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; color: #818cf8;">
+            Step 1/3: Signing Off-Chain Soroban Auth Entry...
+          </div>
+          <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+            <div id="demoProgressBar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); transition: width 0.5s ease;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: PAYMASTERS -->
     <div id="paymastersTab" class="tab-content" style="display: none;">
       <div class="card">
         <h3>💳 Registered Paymaster Contracts</h3>
@@ -134,45 +189,117 @@
               <th>Contract Address</th>
               <th>Gas Reserve</th>
               <th>Fee Token</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>USDC Token Paymaster</td>
               <td><code>CCXX...PAYMASTER1</code></td>
-              <td>500.00 XLM</td>
+              <td id="paymasterUsdcBalance">500.00 XLM</td>
               <td>SAC USDC</td>
+              <td><button class="btn btn-secondary openDepositModalBtn" style="padding: 0.3rem 0.75rem;">Top Up</button></td>
             </tr>
             <tr>
               <td>Promo Coupon Paymaster</td>
               <td><code>CCYY...PAYMASTER2</code></td>
               <td>250.00 XLM</td>
               <td>Sponsored Voucher</td>
+              <td><button class="btn btn-secondary openDepositModalBtn" style="padding: 0.3rem 0.75rem;">Top Up</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- TAB 3: API KEYS -->
+    <!-- TAB 4: API KEYS -->
     <div id="apikeysTab" class="tab-content" style="display: none;">
       <div class="card">
-        <h3>🔑 Developer API Key Management</h3>
-        <p style="color: var(--text-muted);">Create and restrict API keys used by `@stellar-gasless/sdk` in your applications.</p>
-        <button class="btn btn-primary" style="margin-top: 1rem;">+ Create New API Key</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="margin: 0;">🔑 Developer API Key Management</h3>
+          <button id="openApiKeyBtnMain" class="btn btn-primary">+ Create New API Key</button>
+        </div>
+        <p style="color: var(--text-muted);">Create and restrict API keys used by <code>@stellar-gasless/sdk</code> in your applications.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Key Name</th>
+              <th>API Key Prefix</th>
+              <th>Rate Limit</th>
+              <th>Monthly Quota</th>
+              <th>Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="apiKeysMainTableBody">
+            <tr>
+              <td>Production Next.js Frontend</td>
+              <td><code>st_gas_live_...9f2a</code></td>
+              <td>30 req/min</td>
+              <td>100,000 / 100,000</td>
+              <td>Aug 01, 2026</td>
+              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a">Copy Key</button></td>
+            </tr>
+            <tr>
+              <td>Staging Environment</td>
+              <td><code>st_gas_test_...8b11</code></td>
+              <td>60 req/min</td>
+              <td>Unlimited</td>
+              <td>Aug 04, 2026</td>
+              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_test_7c3314a18b11">Copy Key</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- TAB 4: TRANSACTIONS -->
+    <!-- TAB 5: TRANSACTIONS -->
     <div id="transactionsTab" class="tab-content" style="display: none;">
       <div class="card">
-        <h3>📜 All Relayed Meta-Transactions History</h3>
-        <p style="color: var(--text-muted);">Audit log of all sponsored transaction submissions broadcasted via Stellar Horizon.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="margin: 0;">📜 All Relayed Meta-Transactions History</h3>
+          <input type="text" id="searchTxInput" class="input-field" placeholder="🔍 Search by hash or user address..." style="max-width: 300px;">
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tx Hash</th>
+                <th>User Signer</th>
+                <th>Target Contract</th>
+                <th>Paymaster Type</th>
+                <th>Gas Sponsored</th>
+                <th>Status</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="allTxTableBody">
+              <tr>
+                <td><code class="tx-hash-link" data-hash="0x7f8a12c9a4b8" style="cursor: pointer; color: #818cf8;">0x7f8a...a12c</code></td>
+                <td><code>GBXX...USER1</code></td>
+                <td><code>trusted-forwarder</code></td>
+                <td>USDC Paymaster</td>
+                <td>0.0001 XLM</td>
+                <td><span class="badge">Success</span></td>
+                <td>2 mins ago</td>
+              </tr>
+              <tr>
+                <td><code class="tx-hash-link" data-hash="0x9e12b41dc982" style="cursor: pointer; color: #818cf8;">0x9e12...b41d</code></td>
+                <td><code>GDYY...USER2</code></td>
+                <td><code>account-abstraction-wallet</code></td>
+                <td>Voucher Paymaster</td>
+                <td>0.0001 XLM</td>
+                <td><span class="badge">Success</span></td>
+                <td>5 mins ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
 
-  <!-- Deposit Modal -->
+  <!-- 1. Deposit XLM Modal -->
   <div id="depositModal" class="modal-overlay" style="display: none;">
     <div class="modal-content card">
       <h3>Deposit XLM to Paymaster Pool</h3>
@@ -187,6 +314,46 @@
           <button type="submit" class="btn btn-primary">Confirm Deposit</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- 2. Create API Key Modal -->
+  <div id="apiKeyModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content card">
+      <h3>🔑 Create New dApp API Key</h3>
+      <p style="color: var(--text-muted);">Generate an authentication API key for <code>@stellar-gasless/sdk</code>.</p>
+      <form id="apiKeyForm">
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem;">dApp / Key Name:</label>
+          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Production Web App" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem;">Rate Limit Boundary:</label>
+          <select id="apiKeyRateLimit" class="input-field">
+            <option value="30 req/min">Standard (30 req/min)</option>
+            <option value="60 req/min">Pro (60 req/min)</option>
+            <option value="120 req/min">Enterprise (120 req/min)</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+          <button type="button" id="closeApiKeyBtn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Generate API Key</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Transaction Detail Inspector Modal Drawer -->
+  <div id="txDetailModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content card" style="max-width: 600px;">
+      <h3 id="detailTxTitle">Transaction Detail Inspector</h3>
+      <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #a855f7; margin-bottom: 1rem;">
+        <div id="detailTxContent">Loading details...</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <a id="detailStellarExpertLink" href="#" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; text-decoration: none;">🔗 Open in StellarExpert Explorer</a>
+        <button id="closeTxDetailBtn" class="btn btn-primary">Close</button>
+      </div>
     </div>
   </div>
 

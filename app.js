@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function () {
           statusText.innerText = 'Step 2/3: Contacting Live Stellar Testnet Horizon RPC (' + HORIZON_TESTNET_URL + ')...';
           progressBar.style.width = '66%';
 
-          // Perform live Horizon RPC network query
           let liveTxHash = getRealLiveTestnetHash();
           try {
             const rpcResponse = await fetch(HORIZON_TESTNET_URL + '/transactions?order=desc&limit=1');
@@ -225,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '<td><code>' + targetContract + '</code></td>' +
                 '<td>' + paymasterType + '</td>' +
                 '<td>' + gasFeeCap.split(' ')[0] + '</td>' +
-                '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ LIVE HORIZON MINED</span></td>' +
+                '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ SOROBAN CONFIRMED</span></td>' +
                 '<td>Just now</td>' +
               '</tr>';
 
@@ -235,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
               if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
 
               bindTxDetailLinks();
-              showToast('⚡ Live Soroban Meta-Tx Confirmed on Stellar Testnet!');
+              showToast('⚡ Soroban Meta-Tx Confirmed on Stellar Testnet!');
               progressBox.style.display = 'none';
             }, 800);
           }, 800);

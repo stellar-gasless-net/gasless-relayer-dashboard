@@ -106,8 +106,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (tBodyOverview) tBodyOverview.insertAdjacentHTML('afterbegin', newRowHtml);
       if (tBodyMain) tBodyMain.insertAdjacentHTML('afterbegin', newRowHtml);
 
+      // Update SDK Code Generator Snippet
+      const snippetKeyEl = document.getElementById('codeSnippetKey');
+      if (snippetKeyEl) snippetKeyEl.innerText = fullKey;
+
       bindCopyButtons();
-      showToast('API Key "' + name + '" created successfully!');
+      showToast('API Key "' + name + '" created & populated in SDK Code Generator!');
       if (apiKeyModal) apiKeyModal.style.display = 'none';
       if (nameInput) nameInput.value = '';
     });
@@ -126,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const progressBar = document.getElementById('demoProgressBar');
     const receiptBox = document.getElementById('demoResultReceiptBox');
 
-    // Read user custom inputs
     const userAddressInput = document.getElementById('demoUserAddressInput');
     const targetContractSelect = document.getElementById('demoTargetContractSelect');
     const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');
@@ -152,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
           progressBar.style.width = '100%';
 
           setTimeout(function () {
-            // Update stats
             totalRelayedCount += 1;
             const statRelayed = document.getElementById('statRelayedTxs');
             if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
@@ -160,14 +162,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const randomTxHash = '0x' + Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 6);
             const shortHash = randomTxHash.substring(0, 6) + '...' + randomTxHash.substring(randomTxHash.length - 4);
 
-            // Display Receipt Box
             if (receiptBox) {
               const receiptHashEl = document.getElementById('receiptHash');
               if (receiptHashEl) receiptHashEl.innerText = randomTxHash;
               receiptBox.style.display = 'block';
             }
 
-            // New glowing row
             const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +
               '<td><code class="tx-hash-link" data-hash="' + randomTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
               '<td><code>' + shortUser + '</code></td>' +
@@ -208,18 +208,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const contentEl = document.getElementById('detailTxContent');
         const explorerLink = document.getElementById('detailStellarExpertLink');
 
-        if (titleEl) titleEl.innerText = 'Transaction Inspector: ' + hash;
+        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash;
         if (contentEl) {
           contentEl.innerText = JSON.stringify({
             txHash: hash,
             network: 'Stellar Testnet',
             type: 'FeeBumpTransaction',
-            feeSponsor: 'GCRELAYER_TREASURY_KEYPAIR',
-            innerTxUserSigner: 'GCSIMULATED_USER_WALLET',
+            feeSponsorKeypair: 'GCRELAYER_POOL_KEY_1',
+            sorobanAuthEntry: {
+              credentials: 'Secp256r1 Passkey WebAuthn Signature Verified',
+              userSigner: 'GCSIMULATED_USER_WALLET',
+              domainSeparator: 'Stellar Testnet ; September 2015',
+              nonceSequence: 104,
+              expirationDeadline: Math.floor(Date.now() / 1000) + 300,
+            },
             targetContract: 'CCFORWARDER_TRUSTED_SOROBAN',
             gasSponsoredStroops: 1000,
-            executionStatus: 'SUCCESS',
-            ledgerTimestamp: new Date().toISOString(),
+            executionStatus: 'SUCCESS (Confirmed in Ledger)',
           }, null, 2);
         }
         if (explorerLink) {
@@ -241,8 +246,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.copy-key-btn').forEach(function (btn) {
       btn.onclick = function () {
         const key = btn.getAttribute('data-key') || 'st_gas_live_key';
+        const snippetKeyEl = document.getElementById('codeSnippetKey');
+        if (snippetKeyEl) snippetKeyEl.innerText = key;
+
         navigator.clipboard.writeText(key).then(function () {
-          showToast('Copied API Key to clipboard!');
+          showToast('Copied API Key to clipboard & updated SDK Code Generator!');
         }).catch(function () {
           showToast('Key copied: ' + key);
         });
@@ -268,11 +276,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Bind initial dynamic links
   bindCopyButtons();
   bindTxDetailLinks();
 
-  // Toast Notification Helper
   function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';

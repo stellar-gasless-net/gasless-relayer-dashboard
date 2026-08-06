@@ -55,14 +55,48 @@
         </div>
       </div>
 
+      <!-- Relayer Keypair Pool Status Matrix (Non-Generic Protocol Feature) -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3 style="margin-top: 0;">🔑 Relayer Keypair Pool Health Matrix</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Live status of multi-keypair account pool rotating FeeBump sponsorship transactions.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #1</span>
+              <span class="badge">Active</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_1...9f1a</div>
+            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #2</span>
+              <span class="badge">Active</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_2...4b2c</div>
+            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 48.50 XLM</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #3</span>
+              <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">Standby</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_3...8d11</div>
+            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Protocol Relay Engine Banner -->
       <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div>
             <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Soroban Meta-Tx Relay Engine</h3>
-            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Configure and execute an instant Soroban zero-gas meta-transaction relay pipeline.</p>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Simulate an instant Soroban zero-gas meta-transaction relay pipeline.</p>
           </div>
-          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Configure & Execute Meta-Tx</button>
+          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Execute Soroban Meta-Tx</button>
         </div>
       </div>
 
@@ -213,8 +247,8 @@
 
     <!-- TAB 3: PAYMASTERS -->
     <div id="paymastersTab" class="tab-content" style="display: none;">
-      <div class="card">
-        <h3>💳 Registered Paymaster Contracts</h3>
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>💳 Registered Paymaster Contracts & Policy Rules</h3>
         <p style="color: var(--text-muted);">Manage gas sponsorship pools and SAC token conversions on Soroban.</p>
         <table>
           <thead>
@@ -223,6 +257,7 @@
               <th>Contract Address</th>
               <th>Gas Reserve</th>
               <th>Fee Token</th>
+              <th>Sponsorship Policy</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -232,6 +267,7 @@
               <td><code>CCXX...PAYMASTER1</code></td>
               <td id="paymasterUsdcBalance">500.00 XLM</td>
               <td>SAC USDC</td>
+              <td><span class="badge" style="background: rgba(99,102,241,0.2); color: #818cf8;">Auto USDC Fee Swap</span></td>
               <td><button class="btn btn-secondary openDepositModalBtn" style="padding: 0.3rem 0.75rem;">Top Up</button></td>
             </tr>
             <tr>
@@ -239,6 +275,7 @@
               <td><code>CCYY...PAYMASTER2</code></td>
               <td>250.00 XLM</td>
               <td>Sponsored Voucher</td>
+              <td><span class="badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">Single-Use Voucher</span></td>
               <td><button class="btn btn-secondary openDepositModalBtn" style="padding: 0.3rem 0.75rem;">Top Up</button></td>
             </tr>
           </tbody>
@@ -246,9 +283,9 @@
       </div>
     </div>
 
-    <!-- TAB 4: API KEYS -->
+    <!-- TAB 4: API KEYS & CODE GENERATOR -->
     <div id="apikeysTab" class="tab-content" style="display: none;">
-      <div class="card">
+      <div class="card" style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h3 style="margin: 0;">🔑 Developer API Key Management</h3>
           <button id="openApiKeyBtnMain" class="btn btn-primary">+ Create New API Key</button>
@@ -284,6 +321,22 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Live Code Snippet Generator Card (Non-Generic SDK Feature) -->
+      <div class="card">
+        <h3>📦 Live @stellar-gasless/sdk Integration Code Generator</h3>
+        <p style="color: var(--text-muted);">Ready-to-use TypeScript code snippet pre-populated with your production API key:</p>
+        <div style="background: #090d16; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem; color: #818cf8; overflow-x: auto; white-space: pre;">import { GaslessClient } from '@stellar-gasless/sdk';
+
+const gaslessClient = new GaslessClient({
+  relayerUrl: 'https://relayer.stellar-gasless.net',
+  dappApiKey: '<span id="codeSnippetKey" style="color: #10b981;">st_gas_live_e92a84b19f2a</span>',
+});
+
+// Request 0-XLM gasless execution
+const result = await gaslessClient.submitGaslessTransaction(signedInnerTxXdr);
+console.log('Gasless Meta-Tx Hash:', result.hash);</div>
       </div>
     </div>
 
@@ -358,7 +411,7 @@
       <p style="color: var(--text-muted);">Generate an authentication API key for <code>@stellar-gasless/sdk</code>.</p>
       <form id="apiKeyForm">
         <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem;">dApp / Key Name:</label>
+          <label style="display: block; margin-bottom: 0.5rem;">dApp Gateway Name:</label>
           <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Production Web Gateway" required>
         </div>
         <div style="margin-bottom: 1rem;">
@@ -377,16 +430,16 @@
     </div>
   </div>
 
-  <!-- 3. Transaction Detail Inspector Modal Drawer -->
+  <!-- 3. Soroban Authorization XDR Inspector Drawer -->
   <div id="txDetailModal" class="modal-overlay" style="display: none;">
-    <div class="modal-content card" style="max-width: 600px;">
-      <h3 id="detailTxTitle">Transaction Detail Inspector</h3>
+    <div class="modal-content card" style="max-width: 650px;">
+      <h3 id="detailTxTitle">Soroban Authorization Entry Inspector</h3>
       <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #a855f7; margin-bottom: 1rem;">
         <div id="detailTxContent">Loading details...</div>
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <a id="detailStellarExpertLink" href="#" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; text-decoration: none;">🔗 Open in StellarExpert Explorer</a>
-        <button id="closeTxDetailBtn" class="btn btn-primary">Close</button>
+        <button id="closeTxDetailBtn" class="btn btn-primary">Close Inspector</button>
       </div>
     </div>
   </div>

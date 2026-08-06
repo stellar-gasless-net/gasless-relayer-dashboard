@@ -124,21 +124,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const progressBox = document.getElementById('demoProgressBox');
     const statusText = document.getElementById('demoStatusText');
     const progressBar = document.getElementById('demoProgressBar');
+    const receiptBox = document.getElementById('demoResultReceiptBox');
+
+    // Read user custom inputs
+    const userAddressInput = document.getElementById('demoUserAddressInput');
+    const targetContractSelect = document.getElementById('demoTargetContractSelect');
+    const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');
+
+    const userAddr = userAddressInput ? (userAddressInput.value || 'GCSIMULATED_USER_9921') : 'GCSIMULATED_USER_9921';
+    const targetContract = targetContractSelect ? targetContractSelect.value : 'trusted-forwarder';
+    const paymasterType = paymasterSelect ? paymasterSelect.value : 'USDC Paymaster';
+
+    const shortUser = userAddr.length > 10 ? (userAddr.substring(0, 5) + '...' + userAddr.substring(userAddr.length - 4)) : userAddr;
 
     if (progressBox && statusText && progressBar) {
+      if (receiptBox) receiptBox.style.display = 'none';
       progressBox.style.display = 'block';
-      statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry...';
+      statusText.innerText = 'Step 1/3: User ' + shortUser + ' Signing Off-Chain Soroban Auth Entry...';
       progressBar.style.width = '33%';
 
       setTimeout(function () {
-        statusText.innerText = 'Step 2/3: Relayer Wrapping payload into FeeBumpTransaction...';
+        statusText.innerText = 'Step 2/3: Relayer Wrapping payload into FeeBumpTransaction (' + paymasterType + ')...';
         progressBar.style.width = '66%';
 
         setTimeout(function () {
-          statusText.innerText = 'Step 3/3: Broadcasted FeeBumpTx to Horizon RPC Node!';
+          statusText.innerText = 'Step 3/3: Broadcasted FeeBumpTx to Soroban Target: ' + targetContract + '!';
           progressBar.style.width = '100%';
 
           setTimeout(function () {
+            // Update stats
             totalRelayedCount += 1;
             const statRelayed = document.getElementById('statRelayedTxs');
             if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
@@ -146,13 +160,21 @@ document.addEventListener('DOMContentLoaded', function () {
             const randomTxHash = '0x' + Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 6);
             const shortHash = randomTxHash.substring(0, 6) + '...' + randomTxHash.substring(randomTxHash.length - 4);
 
-            const newTxRow = '<tr>' +
+            // Display Receipt Box
+            if (receiptBox) {
+              const receiptHashEl = document.getElementById('receiptHash');
+              if (receiptHashEl) receiptHashEl.innerText = randomTxHash;
+              receiptBox.style.display = 'block';
+            }
+
+            // New glowing row
+            const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +
               '<td><code class="tx-hash-link" data-hash="' + randomTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
-              '<td><code>GCSIMULATED_USER</code></td>' +
-              '<td><code>trusted-forwarder</code></td>' +
-              '<td>USDC Paymaster</td>' +
+              '<td><code>' + shortUser + '</code></td>' +
+              '<td><code>' + targetContract + '</code></td>' +
+              '<td>' + paymasterType + '</td>' +
               '<td>0.0001 XLM</td>' +
-              '<td><span class="badge">Success</span></td>' +
+              '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ JUST EXECUTED</span></td>' +
               '<td>Just now</td>' +
             '</tr>';
 
@@ -162,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
 
             bindTxDetailLinks();
-            showToast('⚡ Soroban Meta-Tx ' + shortHash + ' Broadcasted Successfully!');
+            showToast('⚡ Soroban Meta-Tx ' + shortHash + ' Confirmed!');
             progressBox.style.display = 'none';
           }, 800);
         }, 800);

@@ -5,16 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let promoPaymasterReserve = 250.00;
   let activeDepositTarget = 'usdc';
 
-  // List of real live mined Stellar Testnet transaction hashes on StellarExpert
-  const realLiveTestnetHashes = [
-    '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9',
-    '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f',
-    'c01824a737fa20325d742234057e937d2f4a56a6552a8a101b0f59265f4705ec'
-  ];
-
-  function getRealLiveTestnetHash() {
-    return realLiveTestnetHashes[Math.floor(Math.random() * realLiveTestnetHashes.length)];
-  }
+  const liveTestnetExplorerUrl = 'https://stellar.expert/explorer/testnet/tx/recent';
 
   // 1. Navigation Tabs Logic
   const navItems = document.querySelectorAll('.nav-item');
@@ -194,20 +185,19 @@ document.addEventListener('DOMContentLoaded', function () {
               const statRelayed = document.getElementById('statRelayedTxs');
               if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
 
-              // Use real live mined testnet hash for instant StellarExpert loading
-              const liveTestnetHash = getRealLiveTestnetHash();
-              const shortHash = liveTestnetHash.substring(0, 4) + '...' + liveTestnetHash.substring(60);
+              const simHash = '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9';
+              const shortHash = simHash.substring(0, 4) + '...' + simHash.substring(60);
 
               if (receiptBox) {
                 const receiptHashEl = document.getElementById('receiptHash');
                 const receiptCapEl = document.getElementById('receiptFeeCap');
-                if (receiptHashEl) receiptHashEl.innerText = liveTestnetHash;
+                if (receiptHashEl) receiptHashEl.innerText = simHash;
                 if (receiptCapEl) receiptCapEl.innerText = gasFeeCap;
                 receiptBox.style.display = 'block';
               }
 
               const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +
-                '<td><code class="tx-hash-link" data-hash="' + liveTestnetHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
+                '<td><code class="tx-hash-link" data-hash="' + simHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
                 '<td><code>' + shortUser + '</code></td>' +
                 '<td><code>' + targetContract + '</code></td>' +
                 '<td>' + paymasterType + '</td>' +
@@ -264,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }, null, 2);
         }
         if (explorerLink) {
-          explorerLink.setAttribute('href', 'https://stellar.expert/explorer/testnet/tx/' + hash);
+          explorerLink.setAttribute('href', liveTestnetExplorerUrl);
         }
         if (txDetailModal) txDetailModal.style.display = 'flex';
       };

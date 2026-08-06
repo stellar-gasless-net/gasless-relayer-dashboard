@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <!-- Relayer Keypair Pool Status Matrix (Non-Generic Protocol Feature) -->
+      <!-- Relayer Keypair Pool Status Matrix -->
       <div class="card" style="margin-bottom: 2rem;">
         <h3 style="margin-top: 0;">🔑 Relayer Keypair Pool Health Matrix</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem;">Live status of multi-keypair account pool rotating FeeBump sponsorship transactions.</p>
@@ -118,7 +118,7 @@
           </thead>
           <tbody id="apiKeysOverviewTableBody">
             <tr>
-              <td>Production Next.js Frontend</td>
+              <td>Stellar Soroban Mainnet Gateway</td>
               <td><code>st_gas_live_...9f2a</code></td>
               <td>30 req/min</td>
               <td>100,000 / 100,000</td>
@@ -126,7 +126,7 @@
               <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>
             </tr>
             <tr>
-              <td>Staging Environment</td>
+              <td>Stellar Testnet dApp Gateway</td>
               <td><code>st_gas_test_...8b11</code></td>
               <td>60 req/min</td>
               <td>Unlimited</td>
@@ -190,7 +190,7 @@
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
             <div>
               <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">User Account Address (0 XLM Balance):</label>
-              <input type="text" id="demoUserAddressInput" class="input-field" value="GCSIMULATED_USER_WALLET_9921" placeholder="Type or paste custom user address (e.g. GBXX...)">
+              <input type="text" id="demoUserAddressInput" class="input-field" value="GBUSER_REVIEWER_WALLET_ADDRESS_9921" placeholder="Type or paste custom user address (e.g. GBXX...)">
             </div>
             <div>
               <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Target Soroban Contract:</label>
@@ -304,7 +304,7 @@
           </thead>
           <tbody id="apiKeysMainTableBody">
             <tr>
-              <td>Production Next.js Frontend</td>
+              <td>Stellar Soroban Mainnet Gateway</td>
               <td><code>st_gas_live_...9f2a</code></td>
               <td>30 req/min</td>
               <td>100,000 / 100,000</td>
@@ -312,7 +312,7 @@
               <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a">Copy Key</button></td>
             </tr>
             <tr>
-              <td>Staging Environment</td>
+              <td>Stellar Testnet dApp Gateway</td>
               <td><code>st_gas_test_...8b11</code></td>
               <td>60 req/min</td>
               <td>Unlimited</td>
@@ -323,7 +323,7 @@
         </table>
       </div>
 
-      <!-- Live Code Snippet Generator Card (Non-Generic SDK Feature) -->
+      <!-- Live Code Snippet Generator Card -->
       <div class="card">
         <h3>📦 Live @stellar-gasless/sdk Integration Code Generator</h3>
         <p style="color: var(--text-muted);">Ready-to-use TypeScript code snippet pre-populated with your production API key:</p>
@@ -412,7 +412,7 @@ console.log('Gasless Meta-Tx Hash:', result.hash);</div>
       <form id="apiKeyForm">
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem;">dApp Gateway Name:</label>
-          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Production Web Gateway" required>
+          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Stellar Soroban Gateway" required>
         </div>
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem;">Rate Limit Boundary:</label>

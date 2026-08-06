@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       const nameInput = document.getElementById('apiKeyName');
       const limitInput = document.getElementById('apiKeyRateLimit');
-      const name = nameInput ? nameInput.value : 'New App';
+      const name = nameInput ? nameInput.value : 'Stellar dApp Gateway';
       const limit = limitInput ? limitInput.value : '30 req/min';
 
       const randomSuffix = Math.random().toString(36).substring(2, 6);
@@ -113,12 +113,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 4. Interactive Gasless Execution Simulator Logic
+  // 4. Soroban FeeBump Relay Simulator Logic
   const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');
   const runFullDemoBtn = document.getElementById('runFullDemoBtn');
 
   function triggerGaslessExecutionDemo() {
-    // Switch to demo tab if on overview
     const demoTabItem = document.querySelector('[data-tab="demoTab"]');
     if (demoTabItem) demoTabItem.click();
 
@@ -128,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (progressBox && statusText && progressBar) {
       progressBox.style.display = 'block';
-      statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry (0 XLM Spent)...';
+      statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry...';
       progressBar.style.width = '33%';
 
       setTimeout(function () {
@@ -140,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
           progressBar.style.width = '100%';
 
           setTimeout(function () {
-            // Update stats
             totalRelayedCount += 1;
             const statRelayed = document.getElementById('statRelayedTxs');
             if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
@@ -164,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
 
             bindTxDetailLinks();
-            showToast('⚡ Gasless Transaction ' + shortHash + ' Broadcasted Successfully!');
+            showToast('⚡ Soroban Meta-Tx ' + shortHash + ' Broadcasted Successfully!');
             progressBox.style.display = 'none';
           }, 800);
         }, 800);

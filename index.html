@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stellar Gasless Developer Portal & Dashboard</title>
+  <title>Stellar Gasless Protocol Console</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -14,7 +14,7 @@
     <div class="sidebar-brand">⚡ Stellar Gasless</div>
     <ul class="nav-list">
       <li class="nav-item active" data-tab="overviewTab">📊 Overview</li>
-      <li class="nav-item" data-tab="demoTab">🧪 Interactive Demo</li>
+      <li class="nav-item" data-tab="demoTab">⚡ Relay Engine</li>
       <li class="nav-item" data-tab="paymastersTab">💳 Paymasters</li>
       <li class="nav-item" data-tab="apikeysTab">🔑 API Keys</li>
       <li class="nav-item" data-tab="transactionsTab">📜 Relayed Txs</li>
@@ -25,7 +25,7 @@
   <main class="main-content">
     <header>
       <div>
-        <h2 style="margin: 0;">Developer Dashboard</h2>
+        <h2 style="margin: 0;">Stellar Gasless Protocol Console</h2>
         <span style="color: var(--text-muted); font-size: 0.9rem;">Manage Paymaster gas reserves & monitor Soroban meta-transactions</span>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center;">
@@ -55,14 +55,14 @@
         </div>
       </div>
 
-      <!-- Quick Interactive Demo Trigger Banner -->
+      <!-- Protocol Relay Engine Banner -->
       <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">🧪 Interactive Gasless Execution Playground</h3>
-            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Test a live 0-XLM gasless meta-transaction relay simulation right now!</p>
+            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Soroban Meta-Tx Relay Engine</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Simulate an instant Soroban zero-gas meta-transaction relay pipeline.</p>
           </div>
-          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">⚡ Run Gasless Tx (0 XLM)</button>
+          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Execute Soroban Meta-Tx</button>
         </div>
       </div>
 
@@ -146,10 +146,10 @@
       </div>
     </div>
 
-    <!-- TAB 2: INTERACTIVE DEMO -->
+    <!-- TAB 2: RELAY ENGINE -->
     <div id="demoTab" class="tab-content" style="display: none;">
       <div class="card" style="margin-bottom: 2rem;">
-        <h3>🧪 Interactive Gasless Execution Simulator</h3>
+        <h3>⚡ Soroban FeeBump Relay Simulator</h3>
         <p style="color: var(--text-muted);">Simulate an end-to-end user transaction where the user signs an off-chain auth entry and the Relayer sponsors the native fee-bump transaction.</p>
         
         <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin: 1.5rem 0;">
@@ -163,7 +163,7 @@
               <input type="text" class="input-field" value="CCFORWARDER_TRUSTED_SOROBAN_CONTRACT" readonly>
             </div>
           </div>
-          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.1rem;">🚀 Execute Gasless Meta-Transaction Now</button>
+          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.1rem;">Execute Soroban Meta-Transaction</button>
         </div>
 
         <div id="demoProgressBox" style="display: none; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--primary-accent); padding: 1.25rem; border-radius: 8px;">
@@ -325,7 +325,7 @@
       <form id="apiKeyForm">
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem;">dApp / Key Name:</label>
-          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Production Web App" required>
+          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Production Web Gateway" required>
         </div>
         <div style="margin-bottom: 1rem;">
           <label style="display: block; margin-bottom: 0.5rem;">Rate Limit Boundary:</label>

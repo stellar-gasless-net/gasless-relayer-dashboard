@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
   let promoPaymasterReserve = 250.00;
   let activeDepositTarget = 'usdc';
 
+  // Helper to generate realistic 64-character Stellar SHA-256 hex hashes
+  function generateStellarSha256Hash() {
+    let result = '';
+    const hexChars = '0123456789ABCDEF';
+    for (let i = 0; i < 64; i++) {
+      result += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+    }
+    return result;
+  }
+
   // 1. Navigation Tabs Logic
   const navItems = document.querySelectorAll('.nav-item');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -136,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');
   const runFullDemoBtn = document.getElementById('runFullDemoBtn');
 
-  // Navigation button on Overview ONLY switches tab to Relay Engine
   if (quickRunDemoBtn) {
     quickRunDemoBtn.addEventListener('click', function () {
       const demoTabItem = document.querySelector('[data-tab="demoTab"]');
@@ -146,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Execution pipeline ONLY runs when explicitly clicking "Review & Execute"
   if (runFullDemoBtn) {
     runFullDemoBtn.addEventListener('click', function () {
       const progressBox = document.getElementById('demoProgressBox');
@@ -157,10 +165,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const userAddressInput = document.getElementById('demoUserAddressInput');
       const targetContractSelect = document.getElementById('demoTargetContractSelect');
       const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');
+      const gasCapSelect = document.getElementById('demoGasFeeCapSelect');
 
       const userAddr = userAddressInput ? (userAddressInput.value || 'GCSIMULATED_USER_9921') : 'GCSIMULATED_USER_9921';
       const targetContract = targetContractSelect ? targetContractSelect.value : 'trusted-forwarder';
       const paymasterType = paymasterSelect ? paymasterSelect.value : 'USDC Paymaster';
+      const gasFeeCap = gasCapSelect ? gasCapSelect.value : '0.0001 XLM (1,000 Stroops)';
 
       const shortUser = userAddr.length > 10 ? (userAddr.substring(0, 5) + '...' + userAddr.substring(userAddr.length - 4)) : userAddr;
 
@@ -171,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.style.width = '33%';
 
         setTimeout(function () {
-          statusText.innerText = 'Step 2/3: Relayer Wrapping payload into FeeBumpTransaction (' + paymasterType + ')...';
+          statusText.innerText = 'Step 2/3: Relayer FeeBump Wrapper (Fee Cap: ' + gasFeeCap.split(' ')[0] + ')...';
           progressBar.style.width = '66%';
 
           setTimeout(function () {
-            statusText.innerText = 'Step 3/3: Broadcasted FeeBumpTx to Soroban Target: ' + targetContract + '!';
+            statusText.innerText = 'Step 3/3: Broadcasted FeeBumpTx to Target Contract: ' + targetContract + '!';
             progressBar.style.width = '100%';
 
             setTimeout(function () {
@@ -183,12 +193,15 @@ document.addEventListener('DOMContentLoaded', function () {
               const statRelayed = document.getElementById('statRelayedTxs');
               if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
 
-              const randomTxHash = '0x' + Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 6);
-              const shortHash = randomTxHash.substring(0, 6) + '...' + randomTxHash.substring(randomTxHash.length - 4);
+              // Generate 64-character SHA-256 hash
+              const randomTxHash = generateStellarSha256Hash();
+              const shortHash = randomTxHash.substring(0, 4) + '...' + randomTxHash.substring(60);
 
               if (receiptBox) {
                 const receiptHashEl = document.getElementById('receiptHash');
+                const receiptCapEl = document.getElementById('receiptFeeCap');
                 if (receiptHashEl) receiptHashEl.innerText = randomTxHash;
+                if (receiptCapEl) receiptCapEl.innerText = gasFeeCap;
                 receiptBox.style.display = 'block';
               }
 
@@ -197,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '<td><code>' + shortUser + '</code></td>' +
                 '<td><code>' + targetContract + '</code></td>' +
                 '<td>' + paymasterType + '</td>' +
-                '<td>0.0001 XLM</td>' +
+                '<td>' + gasFeeCap.split(' ')[0] + '</td>' +
                 '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ JUST EXECUTED</span></td>' +
                 '<td>Just now</td>' +
               '</tr>';
@@ -225,21 +238,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.tx-hash-link').forEach(function (link) {
       link.onclick = function (e) {
         e.preventDefault();
-        const hash = link.getAttribute('data-hash') || '0x7f8a12c9a4b8';
+        const hash = link.getAttribute('data-hash') || generateStellarSha256Hash();
         const titleEl = document.getElementById('detailTxTitle');
         const contentEl = document.getElementById('detailTxContent');
         const explorerLink = document.getElementById('detailStellarExpertLink');
 
-        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash;
+        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash.substring(0, 8) + '...';
         if (contentEl) {
           contentEl.innerText = JSON.stringify({
-            txHash: hash,
+            stellarTxHashSHA256: hash,
             network: 'Stellar Testnet',
             type: 'FeeBumpTransaction',
             feeSponsorKeypair: 'GCRELAYER_POOL_KEY_1',
             sorobanAuthEntry: {
               credentials: 'Secp256r1 Passkey WebAuthn Signature Verified',
-              userSigner: 'GCSIMULATED_USER_WALLET',
+              userSigner: 'GBUSER_REVIEWER_WALLET_9921',
               domainSeparator: 'Stellar Testnet ; September 2015',
               nonceSequence: 104,
               expirationDeadline: Math.floor(Date.now() / 1000) + 300,
@@ -285,8 +298,8 @@ document.addEventListener('DOMContentLoaded', function () {
   if (exportCsvBtn) {
     exportCsvBtn.addEventListener('click', function () {
       const csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n' +
-        '0x7f8a12c9a4b8,GBXXUSER1,trusted-forwarder,USDC Paymaster,0.0001 XLM,Success,2 mins ago\n' +
-        '0x9e12b41dc982,GDYYUSER2,account-abstraction-wallet,Voucher Paymaster,0.0001 XLM,Success,5 mins ago\n';
+        '7F8A12C9A4B892E10F341C892D4E19C38F102B94A712E4850192A471C9382F10,GBXXUSER1,trusted-forwarder,USDC Paymaster,0.0001 XLM,Success,2 mins ago\n' +
+        '9E12B41DC9824F10928A41C9382F10948A2910F7C184A4F82910D7B24E19C38F,GDYYUSER2,account-abstraction-wallet,Voucher Paymaster,0.0001 XLM,Success,5 mins ago\n';
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement('a');
       link.setAttribute('href', encodedUri);

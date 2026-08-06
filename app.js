@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   let totalSponsoredGas = 1428.90;
   let totalRelayedCount = 14289;
+  let usdcPaymasterReserve = 500.00;
+  let promoPaymasterReserve = 250.00;
+  let activeDepositTarget = 'usdc'; // 'usdc' or 'promo'
 
   // 1. Navigation Tabs Logic
   const navItems = document.querySelectorAll('.nav-item');
@@ -28,12 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.openDepositModalBtn').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      const target = btn.getAttribute('data-target') || 'usdc';
+      activeDepositTarget = target;
       if (depositModal) depositModal.style.display = 'flex';
     });
   });
 
   if (openDepositBtn && depositModal) {
     openDepositBtn.addEventListener('click', function () {
+      activeDepositTarget = 'usdc';
       depositModal.style.display = 'flex';
     });
   }
@@ -56,7 +62,17 @@ document.addEventListener('DOMContentLoaded', function () {
         statGas.innerText = totalSponsoredGas.toFixed(2) + ' XLM';
       }
 
-      showToast('Successfully deposited ' + addedAmount + ' XLM into Paymaster Reserve!');
+      if (activeDepositTarget === 'promo') {
+        promoPaymasterReserve += addedAmount;
+        const promoEl = document.getElementById('paymasterPromoBalance');
+        if (promoEl) promoEl.innerText = promoPaymasterReserve.toFixed(2) + ' XLM';
+      } else {
+        usdcPaymasterReserve += addedAmount;
+        const usdcEl = document.getElementById('paymasterUsdcBalance');
+        if (usdcEl) usdcEl.innerText = usdcPaymasterReserve.toFixed(2) + ' XLM';
+      }
+
+      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve!');
       if (depositModal) depositModal.style.display = 'none';
     });
   }
@@ -106,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (tBodyOverview) tBodyOverview.insertAdjacentHTML('afterbegin', newRowHtml);
       if (tBodyMain) tBodyMain.insertAdjacentHTML('afterbegin', newRowHtml);
 
-      // Update SDK Code Generator Snippet
       const snippetKeyEl = document.getElementById('codeSnippetKey');
       if (snippetKeyEl) snippetKeyEl.innerText = fullKey;
 

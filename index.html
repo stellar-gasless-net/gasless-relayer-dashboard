@@ -89,14 +89,14 @@
         </div>
       </div>
 
-      <!-- Protocol Relay Engine Banner -->
+      <!-- Protocol Relay Engine Safe Navigation Banner -->
       <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div>
             <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Soroban Meta-Tx Relay Engine</h3>
-            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Simulate an instant Soroban zero-gas meta-transaction relay pipeline.</p>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Configure and review custom parameters in the Relay Engine simulator before executing.</p>
           </div>
-          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Execute Soroban Meta-Tx</button>
+          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Configure Parameters in Relay Engine ➔</button>
         </div>
       </div>
 
@@ -184,9 +184,17 @@
     <div id="demoTab" class="tab-content" style="display: none;">
       <div class="card" style="margin-bottom: 2rem;">
         <h3>⚡ Soroban FeeBump Relay Simulator</h3>
-        <p style="color: var(--text-muted);">Enter your custom parameters below to test a live 0-XLM gasless execution. The user signs the authorization off-chain, and the relayer sponsors the native fee-bump transaction.</p>
+        <p style="color: var(--text-muted);">Enter and review your custom parameters below before executing a live 0-XLM meta-transaction. The user signs off-chain, and the relayer sponsors the native fee-bump transaction.</p>
         
-        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin: 1.5rem 0;">
+        <!-- Security Safeguard Information Banner -->
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; gap: 0.75rem; align-items: center;">
+          <span style="font-size: 1.2rem;">🛡️</span>
+          <div style="font-size: 0.85rem; color: #d1fae5;">
+            <strong>Protocol Security Safeguard:</strong> All meta-transactions enforce Soroban domain separators, sequence nonces, and Paymaster spend limits to prevent unauthorized fund transfers or transaction replay attacks.
+          </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
             <div>
               <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">User Account Address (0 XLM Balance):</label>
@@ -217,7 +225,7 @@
             </div>
           </div>
 
-          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.1rem;">🚀 Execute Soroban Meta-Transaction Now</button>
+          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.1rem;">🚀 Review & Execute Soroban Meta-Transaction Now</button>
         </div>
 
         <div id="demoProgressBox" style="display: none; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--primary-accent); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">

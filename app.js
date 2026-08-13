@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (usdcEl) usdcEl.innerText = usdcPaymasterReserve.toFixed(2) + ' XLM';
       }
 
-      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve!');
+      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve');
       if (depositModal) depositModal.style.display = 'none';
     });
   }
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (snippetKeyEl) snippetKeyEl.innerText = fullKey;
 
       bindCopyButtons();
-      showToast('API Key "' + name + '" created & populated in SDK Code Generator!');
+      showToast('API Key "' + name + '" created & populated in SDK Code Generator');
       if (apiKeyModal) apiKeyModal.style.display = 'none';
       if (nameInput) nameInput.value = '';
     });
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
           setTimeout(function () {
-            statusText.innerText = 'Step 3/3: FeeBumpTx Confirmed by Stellar Testnet Validators!';
+            statusText.innerText = 'Step 3/3: FeeBumpTx Confirmed by Stellar Testnet Validators';
             progressBar.style.width = '100%';
 
             setTimeout(function () {
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '<td><code>' + targetContract + '</code></td>' +
                 '<td>' + paymasterType + '</td>' +
                 '<td>' + gasFeeCap.split(' ')[0] + '</td>' +
-                '<td><span class="badge" style="background: #10b981; color: #fff;">⚡ SOROBAN CONFIRMED</span></td>' +
+                '<td><span class="badge" style="background: #10b981; color: #fff;">SOROBAN CONFIRMED</span></td>' +
                 '<td>Just now</td>' +
               '</tr>';
 
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
               if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
 
               bindTxDetailLinks();
-              showToast('⚡ Soroban Meta-Tx Confirmed on Stellar Testnet!');
+              showToast('Soroban Meta-Tx Confirmed on Stellar Testnet');
               progressBox.style.display = 'none';
             }, 800);
           }, 800);
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (snippetKeyEl) snippetKeyEl.innerText = key;
 
         navigator.clipboard.writeText(key).then(function () {
-          showToast('Copied API Key to clipboard & updated SDK Code Generator!');
+          showToast('Copied API Key to clipboard & updated SDK Code Generator');
         }).catch(function () {
           showToast('Key copied: ' + key);
         });
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      showToast('Downloaded transaction audit log CSV!');
+      showToast('Downloaded transaction audit log CSV');
     });
   }
 

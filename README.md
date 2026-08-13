@@ -1,4 +1,4 @@
-# 🖥️ Stellar Gasless Protocol Console (`gasless-relayer-dashboard`)
+# Stellar Gasless Protocol Console (`gasless-relayer-dashboard`)
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/)
@@ -12,7 +12,7 @@ This repository houses the **Developer Admin Console & Protocol Portal UI** for 
 
 ---
 
-## 🏛️ Console Portal UI Architecture
+## Console Portal UI Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
@@ -41,7 +41,7 @@ This repository houses the **Developer Admin Console & Protocol Portal UI** for 
 
 ---
 
-## 🛠️ Detailed Component Capabilities
+## Detailed Component Capabilities
 
 ### 1. Overview Telemetry Metrics (`index.html`)
 * **Real-time Scoring**: Displays total relayed transactions, sponsored gas budget in XLM, active paymaster contracts, and relayer latency.
@@ -60,7 +60,7 @@ This repository houses the **Developer Admin Console & Protocol Portal UI** for 
 
 ---
 
-## 🛠️ Running the Console Locally
+## Running the Console Locally
 
 Open [`index.html`](./index.html) directly in any web browser, or launch a local dev server:
 
@@ -70,20 +70,20 @@ npx serve .
 
 ---
 
-## 🤝 Contributing & `CONTRIBUTING.md` Guidelines
+## Contributing & `CONTRIBUTING.md` Guidelines
 
 Please review our dedicated **[`CONTRIBUTING.md`](./CONTRIBUTING.md)** guide before opening pull requests:
-* 📖 **[Protocol Console Contributor Guide](./CONTRIBUTING.md)**
-* 🛡️ **[Security Disclosure Policy](./SECURITY.md)**
+* **[Protocol Console Contributor Guide](./CONTRIBUTING.md)**
+* **[Security Disclosure Policy](./SECURITY.md)**
 
-### 📌 Pull Request Checklist:
+### Pull Request Checklist:
 - [ ] Claim an issue tagged `good first issue`, `intermediate`, or `advanced`.
 - [ ] Test UI interactivity across Chrome, Edge, and Firefox.
 - [ ] Follow Conventional Commits format (`feat: ...`, `fix: ...`, `docs: ...`).
 
 ---
 
-## 🔮 Future Improvements & Console Roadmap
+## Future Improvements & Console Roadmap
 
 - [ ] **Real-Time WebSockets Telemetry Feed**: Live streaming transaction feed via WebSockets.
 - [ ] **Multi-Paymaster Analytics Charts**: Visual gas consumption graphs and cost projections.

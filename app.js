@@ -146,6 +146,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Helper to limit table DOM rows to 50
+  function trimTableRows(tbodyElement) {
+    if (!tbodyElement) return;
+    while (tbodyElement.rows.length > 50) {
+      tbodyElement.deleteRow(tbodyElement.rows.length - 1);
+    }
+  }
+
   // 4. Soroban FeeBump Relay Simulator & Live Horizon RPC Broadcast
   const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');
   const runFullDemoBtn = document.getElementById('runFullDemoBtn');
@@ -230,8 +238,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
               const txOverviewBody = document.getElementById('txOverviewTableBody');
               const allTxBody = document.getElementById('allTxTableBody');
-              if (txOverviewBody) txOverviewBody.insertAdjacentHTML('afterbegin', newTxRow);
-              if (allTxBody) allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
+              if (txOverviewBody) {
+                txOverviewBody.insertAdjacentHTML('afterbegin', newTxRow);
+                trimTableRows(txOverviewBody);
+              }
+              if (allTxBody) {
+                allTxBody.insertAdjacentHTML('afterbegin', newTxRow);
+                trimTableRows(allTxBody);
+              }
 
               bindTxDetailLinks();
               showToast('Soroban Meta-Tx Confirmed on Stellar Testnet');

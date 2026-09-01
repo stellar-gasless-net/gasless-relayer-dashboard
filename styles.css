@@ -11,6 +11,16 @@
   --accent-blue: #3b82f6;
 }
 
+.demo-mode-banner {
+  background: linear-gradient(135deg, #b45309, #92400e);
+  color: #fff;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;

@@ -6,9 +6,11 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](./CONTRIBUTING.md)
 
-**Official Protocol Console & Admin Portal UI for Stellar Gasless Network, allowing dApp developers to manage Paymaster gas reserves, issue API keys, track relayer health, and inspect real-time Soroban meta-transactions.**
+**A frontend preview of the admin console planned for Stellar Gasless Network — Paymaster gas reserves, API key management, relayer health, and Soroban meta-transaction inspection.**
 
-This repository houses the **Developer Admin Console & Protocol Portal UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem.
+⚠️ **Current status: UI mockup only. There is no backend behind this yet.** The `stellar-gasless-relayer` service this console is designed to talk to is not deployed anywhere public. Every number, balance, API key, and "transaction" you see in this app is either a hardcoded placeholder or generated locally in your browser tab — nothing is persisted, and nothing reaches a real server. The one exception: the demo walkthrough makes a single **read-only** call to the public Stellar testnet Horizon API to fetch a recent, unrelated transaction hash as an illustration of what a receipt would look like.
+
+This repository houses the **Console UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem. It's the least-finished piece of the project — treat it as a design reference, not a working product.
 
 ---
 
@@ -43,20 +45,20 @@ This repository houses the **Developer Admin Console & Protocol Portal UI** for 
 
 ## Detailed Component Capabilities
 
-### 1. Overview Telemetry Metrics (`index.html`)
-* **Real-time Scoring**: Displays total relayed transactions, sponsored gas budget in XLM, active paymaster contracts, and relayer latency.
+### 1. Overview Metrics (`index.html`)
+* Shows what a relayed-transaction / gas-budget / paymaster overview would look like. All values start at zero and only change from your own clicks in this tab — they are not pulled from anywhere real.
 
-### 2. Soroban Meta-Tx Relay Engine (`app.js`)
-* **Live Horizon RPC Broadcast**: Simulates a 3-step gasless pipeline connected directly to live Stellar Testnet Horizon RPC (`https://horizon-testnet.stellar.org`).
+### 2. Relay Walkthrough (`app.js`)
+* Walks through the 3-step gasless flow as a UI mock. Makes one real, read-only fetch to Stellar Testnet Horizon RPC (`https://horizon-testnet.stellar.org`) to display a genuine recent tx hash as an example — that fetched transaction was not produced by this app.
 
 ### 3. Paymaster Gas Pool Vaults (`paymastersTab`)
-* **Dynamic XLM Top-Ups**: Top-up modals updating USDC and Promotional Paymaster reserves dynamically.
+* Local-only top-up modal that updates on-screen sample balances. No XLM moves anywhere.
 
-### 4. dApp API Key Gateway (`apikeysTab`)
-* **Credential Manager**: Generate API keys with rate-limiting boundaries (`30 req/min`, `60 req/min`).
+### 4. dApp API Key UI (`apikeysTab`)
+* Generates a demo key string client-side for UI preview purposes. Not a real, working credential — there's no backend to authenticate it against.
 
-### 5. Live SDK Code Generator
-* **Dynamic Code Snippets**: Renders ready-to-use TypeScript code pre-populated with active production API keys.
+### 5. SDK Code Snippet Example
+* Renders example TypeScript integration code with placeholder values you fill in once a relayer is actually deployed.
 
 ---
 

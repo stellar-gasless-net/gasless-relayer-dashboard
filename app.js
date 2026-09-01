@@ -1,23 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let totalSponsoredGas = 1428.90;
-  let totalRelayedCount = 14289;
-  let usdcPaymasterReserve = 500.00;
-  let promoPaymasterReserve = 250.00;
+  // NOTE: This dashboard has no backend deployed yet. All state below (gas pool,
+  // paymaster balances, API keys, relayed tx history) lives only in this page's
+  // memory and resets on reload. Nothing here is persisted or real.
+  let totalSponsoredGas = 0;
+  let totalRelayedCount = 0;
+  let usdcPaymasterReserve = 0;
+  let promoPaymasterReserve = 0;
   let activeDepositTarget = 'usdc';
 
-  // Live Stellar Testnet Horizon RPC Endpoint
+  // Read-only public endpoint used only to fetch one example transaction hash
+  // for the demo receipt below. This dashboard never submits anything to it.
   const HORIZON_TESTNET_URL = 'https://horizon-testnet.stellar.org';
-
-  // Fallback real live mined testnet hashes for instant verification
-  const realLiveTestnetHashes = [
-    '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9',
-    '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f',
-    'c01824a737fa20325d742234057e937d2f4a56a6552a8a101b0f59265f4705ec'
-  ];
-
-  function getRealLiveTestnetHash() {
-    return realLiveTestnetHashes[Math.floor(Math.random() * realLiveTestnetHashes.length)];
-  }
 
   // 1. Navigation Tabs Logic
   const navItems = document.querySelectorAll('.nav-item');
@@ -37,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 2. Deposit XLM Modal Logic
+  // 2. Deposit XLM Modal Logic (local UI state only — no real deposit happens)
   const depositModal = document.getElementById('depositModal');
   const openDepositBtn = document.getElementById('openDepositBtn');
   const closeDepositBtn = document.getElementById('closeDepositBtn');
@@ -73,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
       totalSponsoredGas += addedAmount;
       const statGas = document.getElementById('statSponsoredGas');
       if (statGas) {
-        statGas.innerText = totalSponsoredGas.toFixed(2) + ' XLM';
+        statGas.innerHTML = totalSponsoredGas.toFixed(2) + ' XLM <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(sample)</span>';
       }
 
       if (activeDepositTarget === 'promo') {
@@ -86,12 +79,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (usdcEl) usdcEl.innerText = usdcPaymasterReserve.toFixed(2) + ' XLM';
       }
 
-      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve');
+      showToast('UI preview only: no real XLM moved. ' + addedAmount.toFixed(2) + ' XLM added to the on-screen sample balance.');
       if (depositModal) depositModal.style.display = 'none';
     });
   }
 
-  // 3. Create API Key Modal Logic
+  // 3. Create API Key Modal Logic (generates a UI-only placeholder, not a real credential)
   const apiKeyModal = document.getElementById('apiKeyModal');
   const openApiKeyBtnOverview = document.getElementById('openApiKeyBtnOverview');
   const openApiKeyBtnMain = document.getElementById('openApiKeyBtnMain');
@@ -119,20 +112,23 @@ document.addEventListener('DOMContentLoaded', function () {
       const limit = limitInput ? limitInput.value : '30 req/min';
 
       const randomSuffix = Math.random().toString(36).substring(2, 6);
-      const keyPrefix = 'st_gas_live_...' + randomSuffix;
-      const fullKey = 'st_gas_live_' + Math.random().toString(36).substring(2, 12) + randomSuffix;
+      const keyPrefix = 'demo_key_...' + randomSuffix;
+      const fullKey = 'demo_key_' + Math.random().toString(36).substring(2, 12) + randomSuffix;
 
       const newRowHtml = '<tr>' +
         '<td>' + name + '</td>' +
         '<td><code>' + keyPrefix + '</code></td>' +
         '<td>' + limit + '</td>' +
-        '<td>100,000 / 100,000</td>' +
-        '<td><span class="badge">Active</span></td>' +
+        '<td>0 / 0</td>' +
+        '<td><span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">Demo Only</span></td>' +
         '<td><button class="btn btn-secondary copy-key-btn" data-key="' + fullKey + '" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>' +
       '</tr>';
 
       const tBodyOverview = document.getElementById('apiKeysOverviewTableBody');
       const tBodyMain = document.getElementById('apiKeysMainTableBody');
+      // Replace the "no keys yet" placeholder row the first time a demo key is created.
+      if (tBodyOverview && tBodyOverview.querySelector('td[colspan]')) tBodyOverview.innerHTML = '';
+      if (tBodyMain && tBodyMain.querySelector('td[colspan]')) tBodyMain.innerHTML = '';
       if (tBodyOverview) tBodyOverview.insertAdjacentHTML('afterbegin', newRowHtml);
       if (tBodyMain) tBodyMain.insertAdjacentHTML('afterbegin', newRowHtml);
 
@@ -140,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (snippetKeyEl) snippetKeyEl.innerText = fullKey;
 
       bindCopyButtons();
-      showToast('API Key "' + name + '" created & populated in SDK Code Generator');
+      showToast('Demo key "' + name + '" created in this browser tab only — not a real, working credential.');
       if (apiKeyModal) apiKeyModal.style.display = 'none';
       if (nameInput) nameInput.value = '';
     });
@@ -154,7 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // 4. Soroban FeeBump Relay Simulator & Live Horizon RPC Broadcast
+  // 4. Relay Walkthrough (Demo) — does not sign, sponsor, or broadcast anything.
+  // The only real network call is a read-only fetch of the latest public testnet
+  // transaction, used purely to show what a receipt would look like.
   const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');
   const runFullDemoBtn = document.getElementById('runFullDemoBtn');
 
@@ -179,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');
       const gasCapSelect = document.getElementById('demoGasFeeCapSelect');
 
-      const userAddr = userAddressInput ? (userAddressInput.value || 'GCSIMULATED_USER_9921') : 'GCSIMULATED_USER_9921';
+      const userAddr = userAddressInput ? (userAddressInput.value || 'GDEMO_NO_REAL_WALLET_USED') : 'GDEMO_NO_REAL_WALLET_USED';
       const targetContract = targetContractSelect ? targetContractSelect.value : 'trusted-forwarder';
       const paymasterType = paymasterSelect ? paymasterSelect.value : 'USDC Paymaster';
       const gasFeeCap = gasCapSelect ? gasCapSelect.value : '0.0001 XLM (1,000 Stroops)';
@@ -189,55 +187,70 @@ document.addEventListener('DOMContentLoaded', function () {
       if (progressBox && statusText && progressBar) {
         if (receiptBox) receiptBox.style.display = 'none';
         progressBox.style.display = 'block';
-        statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry for User ' + shortUser + '...';
+        statusText.innerText = 'Step 1/3: Walking through the auth-signing UI for ' + shortUser + ' (nothing is actually signed)...';
         progressBar.style.width = '33%';
 
         setTimeout(async function () {
-          statusText.innerText = 'Step 2/3: Contacting Live Stellar Testnet Horizon RPC (' + HORIZON_TESTNET_URL + ')...';
+          statusText.innerText = 'Step 2/3: Fetching one real example transaction from Horizon testnet (read-only, ' + HORIZON_TESTNET_URL + ')...';
           progressBar.style.width = '66%';
 
-          let liveTxHash = getRealLiveTestnetHash();
+          let exampleTxHash = null;
+          let fetchFailed = false;
           try {
             const rpcResponse = await fetch(HORIZON_TESTNET_URL + '/transactions?order=desc&limit=1');
             const rpcData = await rpcResponse.json();
             if (rpcData && rpcData._embedded && rpcData._embedded.records && rpcData._embedded.records.length > 0) {
-              liveTxHash = rpcData._embedded.records[0].hash;
+              exampleTxHash = rpcData._embedded.records[0].hash;
+            } else {
+              fetchFailed = true;
             }
           } catch (err) {
-            console.log('Horizon Testnet RPC fetch completed:', err);
+            fetchFailed = true;
+            console.log('Horizon testnet fetch failed:', err);
+          }
+
+          if (fetchFailed || !exampleTxHash) {
+            statusText.innerText = 'Could not reach Horizon testnet just now — no example hash to show. This demo does not fabricate a fallback result.';
+            progressBar.style.width = '100%';
+            setTimeout(function () { progressBox.style.display = 'none'; }, 1500);
+            showToast('Example fetch failed — try again. (This is expected sometimes; it is a real network call, not scripted.)');
+            return;
           }
 
           setTimeout(function () {
-            statusText.innerText = 'Step 3/3: FeeBumpTx Confirmed by Stellar Testnet Validators';
+            statusText.innerText = 'Step 3/3: Walkthrough complete (no transaction was submitted)';
             progressBar.style.width = '100%';
 
             setTimeout(function () {
               totalRelayedCount += 1;
               const statRelayed = document.getElementById('statRelayedTxs');
-              if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();
+              if (statRelayed) statRelayed.innerHTML = totalRelayedCount.toLocaleString() + ' <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(demo runs)</span>';
 
-              const shortHash = liveTxHash.substring(0, 4) + '...' + liveTxHash.substring(60);
+              const shortHash = exampleTxHash.substring(0, 4) + '...' + exampleTxHash.substring(Math.max(0, exampleTxHash.length - 4));
 
               if (receiptBox) {
                 const receiptHashEl = document.getElementById('receiptHash');
                 const receiptCapEl = document.getElementById('receiptFeeCap');
-                if (receiptHashEl) receiptHashEl.innerText = liveTxHash;
+                if (receiptHashEl) receiptHashEl.innerText = exampleTxHash;
                 if (receiptCapEl) receiptCapEl.innerText = gasFeeCap;
                 receiptBox.style.display = 'block';
               }
 
-              const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +
-                '<td><code class="tx-hash-link" data-hash="' + liveTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
+              const newTxRow = '<tr style="background: rgba(99, 102, 241, 0.12); transition: background 2s ease;">' +
+                '<td><code class="tx-hash-link" data-hash="' + exampleTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +
                 '<td><code>' + shortUser + '</code></td>' +
                 '<td><code>' + targetContract + '</code></td>' +
                 '<td>' + paymasterType + '</td>' +
                 '<td>' + gasFeeCap.split(' ')[0] + '</td>' +
-                '<td><span class="badge" style="background: #10b981; color: #fff;">SOROBAN CONFIRMED</span></td>' +
+                '<td><span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">DEMO — NOT SUBMITTED</span></td>' +
                 '<td>Just now</td>' +
               '</tr>';
 
               const txOverviewBody = document.getElementById('txOverviewTableBody');
               const allTxBody = document.getElementById('allTxTableBody');
+              // Replace the "no transactions yet" placeholder row on the first demo run.
+              if (txOverviewBody && txOverviewBody.querySelector('td[colspan]')) txOverviewBody.innerHTML = '';
+              if (allTxBody && allTxBody.querySelector('td[colspan]')) allTxBody.innerHTML = '';
               if (txOverviewBody) {
                 txOverviewBody.insertAdjacentHTML('afterbegin', newTxRow);
                 trimTableRows(txOverviewBody);
@@ -248,11 +261,11 @@ document.addEventListener('DOMContentLoaded', function () {
               }
 
               bindTxDetailLinks();
-              showToast('Soroban Meta-Tx Confirmed on Stellar Testnet');
+              showToast('Demo walkthrough finished — no transaction was actually signed or broadcast.');
               progressBox.style.display = 'none';
-            }, 800);
-          }, 800);
-        }, 800);
+            }, 500);
+          }, 500);
+        }, 500);
       }
     });
   }
@@ -265,28 +278,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.tx-hash-link').forEach(function (link) {
       link.onclick = function (e) {
         e.preventDefault();
-        const hash = link.getAttribute('data-hash') || '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9';
+        const hash = link.getAttribute('data-hash');
+        if (!hash) return;
         const titleEl = document.getElementById('detailTxTitle');
         const contentEl = document.getElementById('detailTxContent');
         const explorerLink = document.getElementById('detailStellarExpertLink');
 
-        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash.substring(0, 8) + '...';
+        if (titleEl) titleEl.innerText = 'Example Testnet Tx: ' + hash.substring(0, 8) + '...';
         if (contentEl) {
           contentEl.innerText = JSON.stringify({
+            note: 'This hash is a real, unrelated public Stellar testnet transaction fetched read-only from Horizon. It was NOT produced by this dashboard, and the fields below are illustrative placeholders only — no Soroban auth entry, keypair, or paymaster charge described here actually happened.',
             stellarTestnetTxHash: hash,
             network: 'Stellar Testnet (horizon-testnet.stellar.org)',
-            type: 'FeeBumpTransaction',
-            feeSponsorKeypair: 'GCRELAYER_POOL_KEY_1',
-            sorobanAuthEntry: {
-              credentials: 'Secp256r1 Passkey WebAuthn Signature Verified',
-              userSigner: 'GBUSER_REVIEWER_WALLET_9921',
-              domainSeparator: 'Stellar Testnet ; September 2015',
-              nonceSequence: 104,
-              expirationDeadline: Math.floor(Date.now() / 1000) + 300,
-            },
-            targetContract: 'CCFORWARDER_TRUSTED_SOROBAN',
-            gasSponsoredStroops: 1000,
-            executionStatus: 'SUCCESS (Mined in Testnet Ledger Block)',
+            exampleTargetContract: 'trusted-forwarder (not yet deployed)',
           }, null, 2);
         }
         if (explorerLink) {
@@ -307,34 +311,47 @@ document.addEventListener('DOMContentLoaded', function () {
   function bindCopyButtons() {
     document.querySelectorAll('.copy-key-btn').forEach(function (btn) {
       btn.onclick = function () {
-        const key = btn.getAttribute('data-key') || 'st_gas_live_key';
+        const key = btn.getAttribute('data-key') || 'demo_key';
         const snippetKeyEl = document.getElementById('codeSnippetKey');
         if (snippetKeyEl) snippetKeyEl.innerText = key;
 
         navigator.clipboard.writeText(key).then(function () {
-          showToast('Copied API Key to clipboard & updated SDK Code Generator');
+          showToast('Copied demo key to clipboard (not a working credential).');
         }).catch(function () {
-          showToast('Key copied: ' + key);
+          showToast('Demo key: ' + key);
         });
       };
     });
   }
 
-  // 7. Export CSV Handler
+  // 7. Export CSV Handler — exports whatever demo rows exist in this tab right now.
   const exportCsvBtn = document.getElementById('exportCsvBtn');
   if (exportCsvBtn) {
     exportCsvBtn.addEventListener('click', function () {
-      const csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n' +
-        '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9,GBXXUSER1,trusted-forwarder,USDC Paymaster,0.0001 XLM,Success,2 mins ago\n' +
-        '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f,GDYYUSER2,account-abstraction-wallet,Voucher Paymaster,0.0001 XLM,Success,5 mins ago\n';
+      const rows = document.querySelectorAll('#allTxTableBody tr');
+      let csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n';
+      let hasData = false;
+      rows.forEach(function (row) {
+        if (row.querySelector('td[colspan]')) return;
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 7) return;
+        hasData = true;
+        const hashEl = cells[0].querySelector('code');
+        const hash = hashEl ? hashEl.getAttribute('data-hash') || hashEl.innerText : '';
+        csvContent += [hash, cells[1].innerText, cells[2].innerText, cells[3].innerText, cells[4].innerText, cells[5].innerText, cells[6].innerText].join(',') + '\n';
+      });
+      if (!hasData) {
+        showToast('Nothing to export yet — run the demo walkthrough first.');
+        return;
+      }
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement('a');
       link.setAttribute('href', encodedUri);
-      link.setAttribute('download', 'stellar_gasless_relayed_txs.csv');
+      link.setAttribute('download', 'stellar_gasless_demo_runs.csv');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      showToast('Downloaded transaction audit log CSV');
+      showToast('Downloaded demo run history (not real relayed transactions).');
     });
   }
 

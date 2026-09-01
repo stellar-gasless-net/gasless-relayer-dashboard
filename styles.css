@@ -26,11 +26,18 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-main);
-  background-image: 
+  background-image:
     radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
     radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+}
+
+.app-shell {
+  display: flex;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Sidebar Navigation */

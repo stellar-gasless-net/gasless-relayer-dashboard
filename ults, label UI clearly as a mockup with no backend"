@@ -1,2053 +1,0 @@
-[1mdiff --git a/CONTRIBUTING.md b/CONTRIBUTING.md[m
-[1mindex 0120c3e..69d5879 100644[m
-[1m--- a/CONTRIBUTING.md[m
-[1m+++ b/CONTRIBUTING.md[m
-[36m@@ -1,48 +1,48 @@[m
-[31m-# Contributing to Gasless Relayer Developer Dashboard (`gasless-relayer-dashboard`)[m
-[31m-[m
-[31m-Thank you for helping build **`gasless-relayer-dashboard`**! 🖥️[m
-[31m-[m
-[31m-This repository houses the **Developer Portal & Admin Console SPA UI** for managing Paymaster gas reserves, issuing dApp API Keys, and monitoring meta-transaction relays.[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## 📋 Table of Contents[m
-[31m-[m
-[31m-1. [Local Setup](#-local-setup)[m
-[31m-2. [UI Design System & Styling Tokens](#-ui-design-system--styling-tokens)[m
-[31m-3. [Contributor Guidelines](#-contributor-guidelines)[m
-[31m-4. [Accessibility & Testing](#-accessibility--testing)[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## 🛠️ Local Setup[m
-[31m-[m
-[31m-1. **Clone the Repo**:[m
-[31m-   ```bash[m
-[31m-   git clone https://github.com/YOUR-USERNAME/gasless-relayer-dashboard.git[m
-[31m-   cd gasless-relayer-dashboard[m
-[31m-   ```[m
-[31m-[m
-[31m-2. **Serve the Application**:[m
-[31m-   ```bash[m
-[31m-   npx serve .[m
-[31m-   ```[m
-[31m-   Or open [`index.html`](./index.html) directly in your browser.[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## 🎨 UI Design System & Styling Tokens[m
-[31m-[m
-[31m-We enforce a sleek **Glassmorphism Dark Mode** UI design system:[m
-[31m-- Primary Color: `#6366f1` (Indigo Glow)[m
-[31m-- Secondary Color: `#a855f7` (Purple Glow)[m
-[31m-- Panel Background: `rgba(20, 28, 46, 0.75)` with `backdrop-filter: blur(12px)`[m
-[31m-- Borders: `rgba(255, 255, 255, 0.1)`[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## ♿ Accessibility & Testing[m
-[31m-[m
-[31m-- Ensure interactive elements are keyboard reachable (`Tab` & `Enter` navigation).[m
-[31m-- Include `aria-label` attributes for icon-only buttons.[m
-[31m-- Maintain responsive layouts across desktop and mobile viewports.[m
-[32m+[m[32m# Contributing to Gasless Relayer Developer Dashboard (`gasless-relayer-dashboard`)[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mThank you for helping build **`gasless-relayer-dashboard`**! 🖥️[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mThis repository houses the **Developer Portal & Admin Console SPA UI** for managing Paymaster gas reserves, issuing dApp API Keys, and monitoring meta-transaction relays.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## 📋 Table of Contents[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m1. [Local Setup](#-local-setup)[m[41m[m
-[32m+[m[32m2. [UI Design System & Styling Tokens](#-ui-design-system--styling-tokens)[m[41m[m
-[32m+[m[32m3. [Contributor Guidelines](#-contributor-guidelines)[m[41m[m
-[32m+[m[32m4. [Accessibility & Testing](#-accessibility--testing)[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## 🛠️ Local Setup[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m1. **Clone the Repo**:[m[41m[m
-[32m+[m[32m   ```bash[m[41m[m
-[32m+[m[32m   git clone https://github.com/YOUR-USERNAME/gasless-relayer-dashboard.git[m[41m[m
-[32m+[m[32m   cd gasless-relayer-dashboard[m[41m[m
-[32m+[m[32m   ```[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m2. **Serve the Application**:[m[41m[m
-[32m+[m[32m   ```bash[m[41m[m
-[32m+[m[32m   npx serve .[m[41m[m
-[32m+[m[32m   ```[m[41m[m
-[32m+[m[32m   Or open [`index.html`](./index.html) directly in your browser.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## 🎨 UI Design System & Styling Tokens[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mWe enforce a sleek **Glassmorphism Dark Mode** UI design system:[m[41m[m
-[32m+[m[32m- Primary Color: `#6366f1` (Indigo Glow)[m[41m[m
-[32m+[m[32m- Secondary Color: `#a855f7` (Purple Glow)[m[41m[m
-[32m+[m[32m- Panel Background: `rgba(20, 28, 46, 0.75)` with `backdrop-filter: blur(12px)`[m[41m[m
-[32m+[m[32m- Borders: `rgba(255, 255, 255, 0.1)`[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## ♿ Accessibility & Testing[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m- Ensure interactive elements are keyboard reachable (`Tab` & `Enter` navigation).[m[41m[m
-[32m+[m[32m- Include `aria-label` attributes for icon-only buttons.[m[41m[m
-[32m+[m[32m- Maintain responsive layouts across desktop and mobile viewports.[m[41m[m
-[1mdiff --git a/LICENSE b/LICENSE[m
-[1mindex 76dce17..3ce5486 100644[m
-[1m--- a/LICENSE[m
-[1m+++ b/LICENSE[m
-[36m@@ -1,21 +1,21 @@[m
-[31m-MIT License[m
-[31m-[m
-[31m-Copyright (c) 2026 Stellar Gasless Network (stellar-gasless-net)[m
-[31m-[m
-[31m-Permission is hereby granted, free of charge, to any person obtaining a copy[m
-[31m-of this software and associated documentation files (the "Software"), to deal[m
-[31m-in the Software without restriction, including without limitation the rights[m
-[31m-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell[m
-[31m-copies of the Software, and to permit persons to whom the Software is[m
-[31m-furnished to do so, subject to the following conditions:[m
-[31m-[m
-[31m-The above copyright notice and this permission notice shall be included in all[m
-[31m-copies or substantial portions of the Software.[m
-[31m-[m
-[31m-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR[m
-[31m-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,[m
-[31m-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE[m
-[31m-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER[m
-[31m-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,[m
-[31m-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE[m
-[31m-SOFTWARE.[m
-[32m+[m[32mMIT License[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mCopyright (c) 2026 Stellar Gasless Network (stellar-gasless-net)[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mPermission is hereby granted, free of charge, to any person obtaining a copy[m[41m[m
-[32m+[m[32mof this software and associated documentation files (the "Software"), to deal[m[41m[m
-[32m+[m[32min the Software without restriction, including without limitation the rights[m[41m[m
-[32m+[m[32mto use, copy, modify, merge, publish, distribute, sublicense, and/or sell[m[41m[m
-[32m+[m[32mcopies of the Software, and to permit persons to whom the Software is[m[41m[m
-[32m+[m[32mfurnished to do so, subject to the following conditions:[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mThe above copyright notice and this permission notice shall be included in all[m[41m[m
-[32m+[m[32mcopies or substantial portions of the Software.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR[m[41m[m
-[32m+[m[32mIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,[m[41m[m
-[32m+[m[32mFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE[m[41m[m
-[32m+[m[32mAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER[m[41m[m
-[32m+[m[32mLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,[m[41m[m
-[32m+[m[32mOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE[m[41m[m
-[32m+[m[32mSOFTWARE.[m[41m[m
-[1mdiff --git a/README.md b/README.md[m
-[1mindex c211715..7654cbb 100644[m
-[1m--- a/README.md[m
-[1m+++ b/README.md[m
-[36m@@ -1,90 +1,92 @@[m
-[31m-# Stellar Gasless Protocol Console (`gasless-relayer-dashboard`)[m
-[31m-[m
-[31m-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/)[m
-[31m-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/)[m
-[31m-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/)[m
-[31m-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](./LICENSE)[m
-[31m-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](./CONTRIBUTING.md)[m
-[31m-[m
-[31m-**Official Protocol Console & Admin Portal UI for Stellar Gasless Network, allowing dApp developers to manage Paymaster gas reserves, issue API keys, track relayer health, and inspect real-time Soroban meta-transactions.**[m
-[31m-[m
-[31m-This repository houses the **Developer Admin Console & Protocol Portal UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem.[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## Console Portal UI Architecture[m
-[31m-[m
-[31m-```[m
-[31m-┌─────────────────────────────────────────────────────────────────────────────────┐[m
-[31m-│                    gasless-relayer-dashboard Console UI                         │[m
-[31m-│                                                                                 │[m
-[31m-│  ┌───────────────────────────┐                 ┌─────────────────────────────┐  │[m
-[31m-│  │     Overview Telemetry    │                 │   Soroban Relay Engine      │  │[m
-[31m-│  │ (Relayed Txs, Gas Pool)   │                 │ (Live Horizon RPC Simulator)│  │[m
-[31m-│  └─────────────┬─────────────┘                 └──────────────┬──────────────┘  │[m
-[31m-│                │                                              │                 │[m
-[31m-│                v                                              v                 │[m
-[31m-│  ┌───────────────────────────┐                 ┌─────────────────────────────┐  │[m
-[31m-│  │  Paymaster Pool Top-Up    │                 │    API Key Gateway Portal   │  │[m
-[31m-│  │ (Dynamic XLM Gas Vaults)  │                 │  (Rate Limit & Code Gen)    │  │[m
-[31m-│  └─────────────┬─────────────┘                 └──────────────┬──────────────┘  │[m
-[31m-│                │                                              │                 │[m
-[31m-│                └──────────────────────┬───────────────────────┘                 │[m
-[31m-│                                       │                                         │[m
-[31m-│                                       v                                         │[m
-[31m-│                        ┌──────────────────────────────┐                         │[m
-[31m-│                        │ Soroban Auth Entry Inspector │                         │[m
-[31m-│                        │  (StellarExpert Explorer)   │                         │[m
-[31m-│                        └──────────────────────────────┘                         │[m
-[31m-└─────────────────────────────────────────────────────────────────────────────────┘[m
-[31m-```[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## Detailed Component Capabilities[m
-[31m-[m
-[31m-### 1. Overview Telemetry Metrics (`index.html`)[m
-[31m-* **Real-time Scoring**: Displays total relayed transactions, sponsored gas budget in XLM, active paymaster contracts, and relayer latency.[m
-[31m-[m
-[31m-### 2. Soroban Meta-Tx Relay Engine (`app.js`)[m
-[31m-* **Live Horizon RPC Broadcast**: Simulates a 3-step gasless pipeline connected directly to live Stellar Testnet Horizon RPC (`https://horizon-testnet.stellar.org`).[m
-[31m-[m
-[31m-### 3. Paymaster Gas Pool Vaults (`paymastersTab`)[m
-[31m-* **Dynamic XLM Top-Ups**: Top-up modals updating USDC and Promotional Paymaster reserves dynamically.[m
-[31m-[m
-[31m-### 4. dApp API Key Gateway (`apikeysTab`)[m
-[31m-* **Credential Manager**: Generate API keys with rate-limiting boundaries (`30 req/min`, `60 req/min`).[m
-[31m-[m
-[31m-### 5. Live SDK Code Generator[m
-[31m-* **Dynamic Code Snippets**: Renders ready-to-use TypeScript code pre-populated with active production API keys.[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## Running the Console Locally[m
-[31m-[m
-[31m-Open [`index.html`](./index.html) directly in any web browser, or launch a local dev server:[m
-[31m-[m
-[31m-```bash[m
-[31m-npx serve .[m
-[31m-```[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## Contributing & `CONTRIBUTING.md` Guidelines[m
-[31m-[m
-[31m-Please review our dedicated **[`CONTRIBUTING.md`](./CONTRIBUTING.md)** guide before opening pull requests:[m
-[31m-* **[Protocol Console Contributor Guide](./CONTRIBUTING.md)**[m
-[31m-* **[Security Disclosure Policy](./SECURITY.md)**[m
-[31m-[m
-[31m-### Pull Request Checklist:[m
-[31m-- [ ] Claim an issue tagged `good first issue`, `intermediate`, or `advanced`.[m
-[31m-- [ ] Test UI interactivity across Chrome, Edge, and Firefox.[m
-[31m-- [ ] Follow Conventional Commits format (`feat: ...`, `fix: ...`, `docs: ...`).[m
-[31m-[m
-[31m----[m
-[31m-[m
-[31m-## Future Improvements & Console Roadmap[m
-[31m-[m
-[31m-- [ ] **Real-Time WebSockets Telemetry Feed**: Live streaming transaction feed via WebSockets.[m
-[31m-- [ ] **Multi-Paymaster Analytics Charts**: Visual gas consumption graphs and cost projections.[m
-[31m-- [ ] **Dark / Light Theme Toggle**: User preference theme toggle.[m
-[32m+[m[32m# Stellar Gasless Protocol Console (`gasless-relayer-dashboard`)[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/)[m[41m[m
-[32m+[m[32m[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/)[m[41m[m
-[32m+[m[32m[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/)[m[41m[m
-[32m+[m[32m[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](./LICENSE)[m[41m[m
-[32m+[m[32m[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](./CONTRIBUTING.md)[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m**A frontend preview of the admin console planned for Stellar Gasless Network — Paymaster gas reserves, API key management, relayer health, and Soroban meta-transaction inspection.**[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m⚠️ **Current status: UI mockup only. There is no backend behind this yet.** The `stellar-gasless-relayer` service this console is designed to talk to is not deployed anywhere public. Every number, balance, API key, and "transaction" you see in this app is either a hardcoded placeholder or generated locally in your browser tab — nothing is persisted, and nothing reaches a real server. The one exception: the demo walkthrough makes a single **read-only** call to the public Stellar testnet Horizon API to fetch a recent, unrelated transaction hash as an illustration of what a receipt would look like.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mThis repository houses the **Console UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem. It's the least-finished piece of the project — treat it as a design reference, not a working product.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## Console Portal UI Architecture[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m```[m[41m[m
-[32m+[m[32m┌─────────────────────────────────────────────────────────────────────────────────┐[m[41m[m
-[32m+[m[32m│                    gasless-relayer-dashboard Console UI                         │[m[41m[m
-[32m+[m[32m│                                                                                 │[m[41m[m
-[32m+[m[32m│  ┌───────────────────────────┐                 ┌─────────────────────────────┐  │[m[41m[m
-[32m+[m[32m│  │     Overview Telemetry    │                 │   Soroban Relay Engine      │  │[m[41m[m
-[32m+[m[32m│  │ (Relayed Txs, Gas Pool)   │                 │ (Live Horizon RPC Simulator)│  │[m[41m[m
-[32m+[m[32m│  └─────────────┬─────────────┘                 └──────────────┬──────────────┘  │[m[41m[m
-[32m+[m[32m│                │                                              │                 │[m[41m[m
-[32m+[m[32m│                v                                              v                 │[m[41m[m
-[32m+[m[32m│  ┌───────────────────────────┐                 ┌─────────────────────────────┐  │[m[41m[m
-[32m+[m[32m│  │  Paymaster Pool Top-Up    │                 │    API Key Gateway Portal   │  │[m[41m[m
-[32m+[m[32m│  │ (Dynamic XLM Gas Vaults)  │                 │  (Rate Limit & Code Gen)    │  │[m[41m[m
-[32m+[m[32m│  └─────────────┬─────────────┘                 └──────────────┬──────────────┘  │[m[41m[m
-[32m+[m[32m│                │                                              │                 │[m[41m[m
-[32m+[m[32m│                └──────────────────────┬───────────────────────┘                 │[m[41m[m
-[32m+[m[32m│                                       │                                         │[m[41m[m
-[32m+[m[32m│                                       v                                         │[m[41m[m
-[32m+[m[32m│                        ┌──────────────────────────────┐                         │[m[41m[m
-[32m+[m[32m│                        │ Soroban Auth Entry Inspector │                         │[m[41m[m
-[32m+[m[32m│                        │  (StellarExpert Explorer)   │                         │[m[41m[m
-[32m+[m[32m│                        └──────────────────────────────┘                         │[m[41m[m
-[32m+[m[32m└─────────────────────────────────────────────────────────────────────────────────┘[m[41m[m
-[32m+[m[32m```[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## Detailed Component Capabilities[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### 1. Overview Metrics (`index.html`)[m[41m[m
-[32m+[m[32m* Shows what a relayed-transaction / gas-budget / paymaster overview would look like. All values start at zero and only change from your own clicks in this tab — they are not pulled from anywhere real.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### 2. Relay Walkthrough (`app.js`)[m[41m[m
-[32m+[m[32m* Walks through the 3-step gasless flow as a UI mock. Makes one real, read-only fetch to Stellar Testnet Horizon RPC (`https://horizon-testnet.stellar.org`) to display a genuine recent tx hash as an example — that fetched transaction was not produced by this app.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### 3. Paymaster Gas Pool Vaults (`paymastersTab`)[m[41m[m
-[32m+[m[32m* Local-only top-up modal that updates on-screen sample balances. No XLM moves anywhere.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### 4. dApp API Key UI (`apikeysTab`)[m[41m[m
-[32m+[m[32m* Generates a demo key string client-side for UI preview purposes. Not a real, working credential — there's no backend to authenticate it against.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### 5. SDK Code Snippet Example[m[41m[m
-[32m+[m[32m* Renders example TypeScript integration code with placeholder values you fill in once a relayer is actually deployed.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## Running the Console Locally[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mOpen [`index.html`](./index.html) directly in any web browser, or launch a local dev server:[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m```bash[m[41m[m
-[32m+[m[32mnpx serve .[m[41m[m
-[32m+[m[32m```[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## Contributing & `CONTRIBUTING.md` Guidelines[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mPlease review our dedicated **[`CONTRIBUTING.md`](./CONTRIBUTING.md)** guide before opening pull requests:[m[41m[m
-[32m+[m[32m* **[Protocol Console Contributor Guide](./CONTRIBUTING.md)**[m[41m[m
-[32m+[m[32m* **[Security Disclosure Policy](./SECURITY.md)**[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m### Pull Request Checklist:[m[41m[m
-[32m+[m[32m- [ ] Claim an issue tagged `good first issue`, `intermediate`, or `advanced`.[m[41m[m
-[32m+[m[32m- [ ] Test UI interactivity across Chrome, Edge, and Firefox.[m[41m[m
-[32m+[m[32m- [ ] Follow Conventional Commits format (`feat: ...`, `fix: ...`, `docs: ...`).[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m---[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m## Future Improvements & Console Roadmap[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m- [ ] **Real-Time WebSockets Telemetry Feed**: Live streaming transaction feed via WebSockets.[m[41m[m
-[32m+[m[32m- [ ] **Multi-Paymaster Analytics Charts**: Visual gas consumption graphs and cost projections.[m[41m[m
-[32m+[m[32m- [ ] **Dark / Light Theme Toggle**: User preference theme toggle.[m[41m[m
-[1mdiff --git a/SECURITY.md b/SECURITY.md[m
-[1mindex 26b714c..a6b754a 100644[m
-[1m--- a/SECURITY.md[m
-[1m+++ b/SECURITY.md[m
-[36m@@ -1,7 +1,8 @@[m
- # Security Policy[m
- [m
-[31m-## 🛡️ Reporting Vulnerabilities[m
-[32m+[m[32m## Reporting Vulnerabilities[m
- [m
-[31m-If you discover a security issue, please email:[m
-[32m+[m[32mIf you discover a security issue in `gasless-relayer-dashboard`, please **do not open a public GitHub issue**.[m
- [m
-[31m-📧 **security@stellar-gasless.net**[m
-[32m+[m[32mInstead, use GitHub's private vulnerability reporting for this repo: go to the **Security** tab → **Report a vulnerability**, or use this direct link:[m
-[32m+[m[32mhttps://github.com/stellar-gasless-net/gasless-relayer-dashboard/security/advisories/new[m
-[1mdiff --git a/app.js b/app.js[m
-[1mindex 214651b..d5a7166 100644[m
-[1m--- a/app.js[m
-[1m+++ b/app.js[m
-[36m@@ -1,24 +1,17 @@[m
- document.addEventListener('DOMContentLoaded', function () {[m
-[31m-  let totalSponsoredGas = 1428.90;[m
-[31m-  let totalRelayedCount = 14289;[m
-[31m-  let usdcPaymasterReserve = 500.00;[m
-[31m-  let promoPaymasterReserve = 250.00;[m
-[32m+[m[32m  // NOTE: This dashboard has no backend deployed yet. All state below (gas pool,[m
-[32m+[m[32m  // paymaster balances, API keys, relayed tx history) lives only in this page's[m
-[32m+[m[32m  // memory and resets on reload. Nothing here is persisted or real.[m
-[32m+[m[32m  let totalSponsoredGas = 0;[m
-[32m+[m[32m  let totalRelayedCount = 0;[m
-[32m+[m[32m  let usdcPaymasterReserve = 0;[m
-[32m+[m[32m  let promoPaymasterReserve = 0;[m
-   let activeDepositTarget = 'usdc';[m
- [m
-[31m-  // Live Stellar Testnet Horizon RPC Endpoint[m
-[32m+[m[32m  // Read-only public endpoint used only to fetch one example transaction hash[m
-[32m+[m[32m  // for the demo receipt below. This dashboard never submits anything to it.[m
-   const HORIZON_TESTNET_URL = 'https://horizon-testnet.stellar.org';[m
- [m
-[31m-  // Fallback real live mined testnet hashes for instant verification[m
-[31m-  const realLiveTestnetHashes = [[m
-[31m-    '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9',[m
-[31m-    '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f',[m
-[31m-    'c01824a737fa20325d742234057e937d2f4a56a6552a8a101b0f59265f4705ec'[m
-[31m-  ];[m
-[31m-[m
-[31m-  function getRealLiveTestnetHash() {[m
-[31m-    return realLiveTestnetHashes[Math.floor(Math.random() * realLiveTestnetHashes.length)];[m
-[31m-  }[m
-[31m-[m
-   // 1. Navigation Tabs Logic[m
-   const navItems = document.querySelectorAll('.nav-item');[m
-   const tabContents = document.querySelectorAll('.tab-content');[m
-[36m@@ -37,7 +30,7 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-     });[m
-   });[m
- [m
-[31m-  // 2. Deposit XLM Modal Logic[m
-[32m+[m[32m  // 2. Deposit XLM Modal Logic (local UI state only — no real deposit happens)[m
-   const depositModal = document.getElementById('depositModal');[m
-   const openDepositBtn = document.getElementById('openDepositBtn');[m
-   const closeDepositBtn = document.getElementById('closeDepositBtn');[m
-[36m@@ -73,7 +66,7 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-       totalSponsoredGas += addedAmount;[m
-       const statGas = document.getElementById('statSponsoredGas');[m
-       if (statGas) {[m
-[31m-        statGas.innerText = totalSponsoredGas.toFixed(2) + ' XLM';[m
-[32m+[m[32m        statGas.innerHTML = totalSponsoredGas.toFixed(2) + ' XLM <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(sample)</span>';[m
-       }[m
- [m
-       if (activeDepositTarget === 'promo') {[m
-[36m@@ -86,12 +79,12 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-         if (usdcEl) usdcEl.innerText = usdcPaymasterReserve.toFixed(2) + ' XLM';[m
-       }[m
- [m
-[31m-      showToast('Successfully topped up ' + addedAmount.toFixed(2) + ' XLM into Paymaster Gas Reserve');[m
-[32m+[m[32m      showToast('UI preview only: no real XLM moved. ' + addedAmount.toFixed(2) + ' XLM added to the on-screen sample balance.');[m
-       if (depositModal) depositModal.style.display = 'none';[m
-     });[m
-   }[m
- [m
-[31m-  // 3. Create API Key Modal Logic[m
-[32m+[m[32m  // 3. Create API Key Modal Logic (generates a UI-only placeholder, not a real credential)[m
-   const apiKeyModal = document.getElementById('apiKeyModal');[m
-   const openApiKeyBtnOverview = document.getElementById('openApiKeyBtnOverview');[m
-   const openApiKeyBtnMain = document.getElementById('openApiKeyBtnMain');[m
-[36m@@ -119,20 +112,23 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-       const limit = limitInput ? limitInput.value : '30 req/min';[m
- [m
-       const randomSuffix = Math.random().toString(36).substring(2, 6);[m
-[31m-      const keyPrefix = 'st_gas_live_...' + randomSuffix;[m
-[31m-      const fullKey = 'st_gas_live_' + Math.random().toString(36).substring(2, 12) + randomSuffix;[m
-[32m+[m[32m      const keyPrefix = 'demo_key_...' + randomSuffix;[m
-[32m+[m[32m      const fullKey = 'demo_key_' + Math.random().toString(36).substring(2, 12) + randomSuffix;[m
- [m
-       const newRowHtml = '<tr>' +[m
-         '<td>' + name + '</td>' +[m
-         '<td><code>' + keyPrefix + '</code></td>' +[m
-         '<td>' + limit + '</td>' +[m
-[31m-        '<td>100,000 / 100,000</td>' +[m
-[31m-        '<td><span class="badge">Active</span></td>' +[m
-[32m+[m[32m        '<td>0 / 0</td>' +[m
-[32m+[m[32m        '<td><span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">Demo Only</span></td>' +[m
-         '<td><button class="btn btn-secondary copy-key-btn" data-key="' + fullKey + '" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>' +[m
-       '</tr>';[m
- [m
-       const tBodyOverview = document.getElementById('apiKeysOverviewTableBody');[m
-       const tBodyMain = document.getElementById('apiKeysMainTableBody');[m
-[32m+[m[32m      // Replace the "no keys yet" placeholder row the first time a demo key is created.[m
-[32m+[m[32m      if (tBodyOverview && tBodyOverview.querySelector('td[colspan]')) tBodyOverview.innerHTML = '';[m
-[32m+[m[32m      if (tBodyMain && tBodyMain.querySelector('td[colspan]')) tBodyMain.innerHTML = '';[m
-       if (tBodyOverview) tBodyOverview.insertAdjacentHTML('afterbegin', newRowHtml);[m
-       if (tBodyMain) tBodyMain.insertAdjacentHTML('afterbegin', newRowHtml);[m
- [m
-[36m@@ -140,7 +136,7 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-       if (snippetKeyEl) snippetKeyEl.innerText = fullKey;[m
- [m
-       bindCopyButtons();[m
-[31m-      showToast('API Key "' + name + '" created & populated in SDK Code Generator');[m
-[32m+[m[32m      showToast('Demo key "' + name + '" created in this browser tab only — not a real, working credential.');[m
-       if (apiKeyModal) apiKeyModal.style.display = 'none';[m
-       if (nameInput) nameInput.value = '';[m
-     });[m
-[36m@@ -154,7 +150,9 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-     }[m
-   }[m
- [m
-[31m-  // 4. Soroban FeeBump Relay Simulator & Live Horizon RPC Broadcast[m
-[32m+[m[32m  // 4. Relay Walkthrough (Demo) — does not sign, sponsor, or broadcast anything.[m
-[32m+[m[32m  // The only real network call is a read-only fetch of the latest public testnet[m
-[32m+[m[32m  // transaction, used purely to show what a receipt would look like.[m
-   const quickRunDemoBtn = document.getElementById('quickRunDemoBtn');[m
-   const runFullDemoBtn = document.getElementById('runFullDemoBtn');[m
- [m
-[36m@@ -179,7 +177,7 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-       const paymasterSelect = document.getElementById('demoPaymasterTypeSelect');[m
-       const gasCapSelect = document.getElementById('demoGasFeeCapSelect');[m
- [m
-[31m-      const userAddr = userAddressInput ? (userAddressInput.value || 'GCSIMULATED_USER_9921') : 'GCSIMULATED_USER_9921';[m
-[32m+[m[32m      const userAddr = userAddressInput ? (userAddressInput.value || 'GDEMO_NO_REAL_WALLET_USED') : 'GDEMO_NO_REAL_WALLET_USED';[m
-       const targetContract = targetContractSelect ? targetContractSelect.value : 'trusted-forwarder';[m
-       const paymasterType = paymasterSelect ? paymasterSelect.value : 'USDC Paymaster';[m
-       const gasFeeCap = gasCapSelect ? gasCapSelect.value : '0.0001 XLM (1,000 Stroops)';[m
-[36m@@ -189,55 +187,70 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-       if (progressBox && statusText && progressBar) {[m
-         if (receiptBox) receiptBox.style.display = 'none';[m
-         progressBox.style.display = 'block';[m
-[31m-        statusText.innerText = 'Step 1/3: Signing Off-Chain Soroban Auth Entry for User ' + shortUser + '...';[m
-[32m+[m[32m        statusText.innerText = 'Step 1/3: Walking through the auth-signing UI for ' + shortUser + ' (nothing is actually signed)...';[m
-         progressBar.style.width = '33%';[m
- [m
-         setTimeout(async function () {[m
-[31m-          statusText.innerText = 'Step 2/3: Contacting Live Stellar Testnet Horizon RPC (' + HORIZON_TESTNET_URL + ')...';[m
-[32m+[m[32m          statusText.innerText = 'Step 2/3: Fetching one real example transaction from Horizon testnet (read-only, ' + HORIZON_TESTNET_URL + ')...';[m
-           progressBar.style.width = '66%';[m
- [m
-[31m-          let liveTxHash = getRealLiveTestnetHash();[m
-[32m+[m[32m          let exampleTxHash = null;[m
-[32m+[m[32m          let fetchFailed = false;[m
-           try {[m
-             const rpcResponse = await fetch(HORIZON_TESTNET_URL + '/transactions?order=desc&limit=1');[m
-             const rpcData = await rpcResponse.json();[m
-             if (rpcData && rpcData._embedded && rpcData._embedded.records && rpcData._embedded.records.length > 0) {[m
-[31m-              liveTxHash = rpcData._embedded.records[0].hash;[m
-[32m+[m[32m              exampleTxHash = rpcData._embedded.records[0].hash;[m
-[32m+[m[32m            } else {[m
-[32m+[m[32m              fetchFailed = true;[m
-             }[m
-           } catch (err) {[m
-[31m-            console.log('Horizon Testnet RPC fetch completed:', err);[m
-[32m+[m[32m            fetchFailed = true;[m
-[32m+[m[32m            console.log('Horizon testnet fetch failed:', err);[m
-[32m+[m[32m          }[m
-[32m+[m
-[32m+[m[32m          if (fetchFailed || !exampleTxHash) {[m
-[32m+[m[32m            statusText.innerText = 'Could not reach Horizon testnet just now — no example hash to show. This demo does not fabricate a fallback result.';[m
-[32m+[m[32m            progressBar.style.width = '100%';[m
-[32m+[m[32m            setTimeout(function () { progressBox.style.display = 'none'; }, 1500);[m
-[32m+[m[32m            showToast('Example fetch failed — try again. (This is expected sometimes; it is a real network call, not scripted.)');[m
-[32m+[m[32m            return;[m
-           }[m
- [m
-           setTimeout(function () {[m
-[31m-            statusText.innerText = 'Step 3/3: FeeBumpTx Confirmed by Stellar Testnet Validators';[m
-[32m+[m[32m            statusText.innerText = 'Step 3/3: Walkthrough complete (no transaction was submitted)';[m
-             progressBar.style.width = '100%';[m
- [m
-             setTimeout(function () {[m
-               totalRelayedCount += 1;[m
-               const statRelayed = document.getElementById('statRelayedTxs');[m
-[31m-              if (statRelayed) statRelayed.innerText = totalRelayedCount.toLocaleString();[m
-[32m+[m[32m              if (statRelayed) statRelayed.innerHTML = totalRelayedCount.toLocaleString() + ' <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(demo runs)</span>';[m
- [m
-[31m-              const shortHash = liveTxHash.substring(0, 4) + '...' + liveTxHash.substring(60);[m
-[32m+[m[32m              const shortHash = exampleTxHash.substring(0, 4) + '...' + exampleTxHash.substring(Math.max(0, exampleTxHash.length - 4));[m
- [m
-               if (receiptBox) {[m
-                 const receiptHashEl = document.getElementById('receiptHash');[m
-                 const receiptCapEl = document.getElementById('receiptFeeCap');[m
-[31m-                if (receiptHashEl) receiptHashEl.innerText = liveTxHash;[m
-[32m+[m[32m                if (receiptHashEl) receiptHashEl.innerText = exampleTxHash;[m
-                 if (receiptCapEl) receiptCapEl.innerText = gasFeeCap;[m
-                 receiptBox.style.display = 'block';[m
-               }[m
- [m
-[31m-              const newTxRow = '<tr style="background: rgba(16, 185, 129, 0.15); transition: background 2s ease;">' +[m
-[31m-                '<td><code class="tx-hash-link" data-hash="' + liveTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +[m
-[32m+[m[32m              const newTxRow = '<tr style="background: rgba(99, 102, 241, 0.12); transition: background 2s ease;">' +[m
-[32m+[m[32m                '<td><code class="tx-hash-link" data-hash="' + exampleTxHash + '" style="cursor: pointer; color: #818cf8;">' + shortHash + '</code></td>' +[m
-                 '<td><code>' + shortUser + '</code></td>' +[m
-                 '<td><code>' + targetContract + '</code></td>' +[m
-                 '<td>' + paymasterType + '</td>' +[m
-                 '<td>' + gasFeeCap.split(' ')[0] + '</td>' +[m
-[31m-                '<td><span class="badge" style="background: #10b981; color: #fff;">SOROBAN CONFIRMED</span></td>' +[m
-[32m+[m[32m                '<td><span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">DEMO — NOT SUBMITTED</span></td>' +[m
-                 '<td>Just now</td>' +[m
-               '</tr>';[m
- [m
-               const txOverviewBody = document.getElementById('txOverviewTableBody');[m
-               const allTxBody = document.getElementById('allTxTableBody');[m
-[32m+[m[32m              // Replace the "no transactions yet" placeholder row on the first demo run.[m
-[32m+[m[32m              if (txOverviewBody && txOverviewBody.querySelector('td[colspan]')) txOverviewBody.innerHTML = '';[m
-[32m+[m[32m              if (allTxBody && allTxBody.querySelector('td[colspan]')) allTxBody.innerHTML = '';[m
-               if (txOverviewBody) {[m
-                 txOverviewBody.insertAdjacentHTML('afterbegin', newTxRow);[m
-                 trimTableRows(txOverviewBody);[m
-[36m@@ -248,11 +261,11 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-               }[m
- [m
-               bindTxDetailLinks();[m
-[31m-              showToast('Soroban Meta-Tx Confirmed on Stellar Testnet');[m
-[32m+[m[32m              showToast('Demo walkthrough finished — no transaction was actually signed or broadcast.');[m
-               progressBox.style.display = 'none';[m
-[31m-            }, 800);[m
-[31m-          }, 800);[m
-[31m-        }, 800);[m
-[32m+[m[32m            }, 500);[m
-[32m+[m[32m          }, 500);[m
-[32m+[m[32m        }, 500);[m
-       }[m
-     });[m
-   }[m
-[36m@@ -265,28 +278,19 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-     document.querySelectorAll('.tx-hash-link').forEach(function (link) {[m
-       link.onclick = function (e) {[m
-         e.preventDefault();[m
-[31m-        const hash = link.getAttribute('data-hash') || '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9';[m
-[32m+[m[32m        const hash = link.getAttribute('data-hash');[m
-[32m+[m[32m        if (!hash) return;[m
-         const titleEl = document.getElementById('detailTxTitle');[m
-         const contentEl = document.getElementById('detailTxContent');[m
-         const explorerLink = document.getElementById('detailStellarExpertLink');[m
- [m
-[31m-        if (titleEl) titleEl.innerText = 'Soroban Auth Inspector: ' + hash.substring(0, 8) + '...';[m
-[32m+[m[32m        if (titleEl) titleEl.innerText = 'Example Testnet Tx: ' + hash.substring(0, 8) + '...';[m
-         if (contentEl) {[m
-           contentEl.innerText = JSON.stringify({[m
-[32m+[m[32m            note: 'This hash is a real, unrelated public Stellar testnet transaction fetched read-only from Horizon. It was NOT produced by this dashboard, and the fields below are illustrative placeholders only — no Soroban auth entry, keypair, or paymaster charge described here actually happened.',[m
-             stellarTestnetTxHash: hash,[m
-             network: 'Stellar Testnet (horizon-testnet.stellar.org)',[m
-[31m-            type: 'FeeBumpTransaction',[m
-[31m-            feeSponsorKeypair: 'GCRELAYER_POOL_KEY_1',[m
-[31m-            sorobanAuthEntry: {[m
-[31m-              credentials: 'Secp256r1 Passkey WebAuthn Signature Verified',[m
-[31m-              userSigner: 'GBUSER_REVIEWER_WALLET_9921',[m
-[31m-              domainSeparator: 'Stellar Testnet ; September 2015',[m
-[31m-              nonceSequence: 104,[m
-[31m-              expirationDeadline: Math.floor(Date.now() / 1000) + 300,[m
-[31m-            },[m
-[31m-            targetContract: 'CCFORWARDER_TRUSTED_SOROBAN',[m
-[31m-            gasSponsoredStroops: 1000,[m
-[31m-            executionStatus: 'SUCCESS (Mined in Testnet Ledger Block)',[m
-[32m+[m[32m            exampleTargetContract: 'trusted-forwarder (not yet deployed)',[m
-           }, null, 2);[m
-         }[m
-         if (explorerLink) {[m
-[36m@@ -307,34 +311,47 @@[m [mdocument.addEventListener('DOMContentLoaded', function () {[m
-   function bindCopyButtons() {[m
-     document.querySelectorAll('.copy-key-btn').forEach(function (btn) {[m
-       btn.onclick = function () {[m
-[31m-        const key = btn.getAttribute('data-key') || 'st_gas_live_key';[m
-[32m+[m[32m        const key = btn.getAttribute('data-key') || 'demo_key';[m
-         const snippetKeyEl = document.getElementById('codeSnippetKey');[m
-         if (snippetKeyEl) snippetKeyEl.innerText = key;[m
- [m
-         navigator.clipboard.writeText(key).then(function () {[m
-[31m-          showToast('Copied API Key to clipboard & updated SDK Code Generator');[m
-[32m+[m[32m          showToast('Copied demo key to clipboard (not a working credential).');[m
-         }).catch(function () {[m
-[31m-          showToast('Key copied: ' + key);[m
-[32m+[m[32m          showToast('Demo key: ' + key);[m
-         });[m
-       };[m
-     });[m
-   }[m
- [m
-[31m-  // 7. Export CSV Handler[m
-[32m+[m[32m  // 7. Export CSV Handler — exports whatever demo rows exist in this tab right now.[m
-   const exportCsvBtn = document.getElementById('exportCsvBtn');[m
-   if (exportCsvBtn) {[m
-     exportCsvBtn.addEventListener('click', function () {[m
-[31m-      const csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n' +[m
-[31m-        '3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9,GBXXUSER1,trusted-forwarder,USDC Paymaster,0.0001 XLM,Success,2 mins ago\n' +[m
-[31m-        '63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f,GDYYUSER2,account-abstraction-wallet,Voucher Paymaster,0.0001 XLM,Success,5 mins ago\n';[m
-[32m+[m[32m      const rows = document.querySelectorAll('#allTxTableBody tr');[m
-[32m+[m[32m      let csvContent = 'data:text/csv;charset=utf-8,TxHash,UserSigner,TargetContract,Paymaster,GasSponsored,Status,Time\n';[m
-[32m+[m[32m      let hasData = false;[m
-[32m+[m[32m      rows.forEach(function (row) {[m
-[32m+[m[32m        if (row.querySelector('td[colspan]')) return;[m
-[32m+[m[32m        const cells = row.querySelectorAll('td');[m
-[32m+[m[32m        if (cells.length < 7) return;[m
-[32m+[m[32m        hasData = true;[m
-[32m+[m[32m        const hashEl = cells[0].querySelector('code');[m
-[32m+[m[32m        const hash = hashEl ? hashEl.getAttribute('data-hash') || hashEl.innerText : '';[m
-[32m+[m[32m        csvContent += [hash, cells[1].innerText, cells[2].innerText, cells[3].innerText, cells[4].innerText, cells[5].innerText, cells[6].innerText].join(',') + '\n';[m
-[32m+[m[32m      });[m
-[32m+[m[32m      if (!hasData) {[m
-[32m+[m[32m        showToast('Nothing to export yet — run the demo walkthrough first.');[m
-[32m+[m[32m        return;[m
-[32m+[m[32m      }[m
-       const encodedUri = encodeURI(csvContent);[m
-       const link = document.createElement('a');[m
-       link.setAttribute('href', encodedUri);[m
-[31m-      link.setAttribute('download', 'stellar_gasless_relayed_txs.csv');[m
-[32m+[m[32m      link.setAttribute('download', 'stellar_gasless_demo_runs.csv');[m
-       document.body.appendChild(link);[m
-       link.click();[m
-       document.body.removeChild(link);[m
-[31m-      showToast('Downloaded transaction audit log CSV');[m
-[32m+[m[32m      showToast('Downloaded demo run history (not real relayed transactions).');[m
-     });[m
-   }[m
- [m
-[1mdiff --git a/index.html b/index.html[m
-[1mindex 3bb5bb3..5e698b8 100644[m
-[1m--- a/index.html[m
-[1m+++ b/index.html[m
-[36m@@ -1,485 +1,434 @@[m
-[31m-<!DOCTYPE html>[m
-[31m-<html lang="en">[m
-[31m-<head>[m
-[31m-  <meta charset="UTF-8">[m
-[31m-  <meta name="viewport" content="width=device-width, initial-scale=1.0">[m
-[31m-  <title>Stellar Gasless Protocol Console</title>[m
-[31m-  <link rel="stylesheet" href="styles.css">[m
-[31m-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">[m
-[31m-</head>[m
-[31m-<body>[m
-[31m-[m
-[31m-  <!-- Sidebar Navigation -->[m
-[31m-  <aside class="sidebar">[m
-[31m-    <div class="sidebar-brand">[m
-[31m-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>[m
-[31m-      Stellar Gasless[m
-[31m-    </div>[m
-[31m-    <ul class="nav-list">[m
-[31m-      <li class="nav-item active" data-tab="overviewTab">Overview</li>[m
-[31m-      <li class="nav-item" data-tab="demoTab">Relay Engine</li>[m
-[31m-      <li class="nav-item" data-tab="paymastersTab">Paymasters</li>[m
-[31m-      <li class="nav-item" data-tab="apikeysTab">API Keys</li>[m
-[31m-      <li class="nav-item" data-tab="transactionsTab">Relayed Txs</li>[m
-[31m-    </ul>[m
-[31m-  </aside>[m
-[31m-[m
-[31m-  <!-- Main Content Area -->[m
-[31m-  <main class="main-content">[m
-[31m-    <header>[m
-[31m-      <div>[m
-[31m-        <h2 style="margin: 0;">Stellar Gasless Protocol Console</h2>[m
-[31m-        <span style="color: var(--text-muted); font-size: 0.9rem;">Manage Paymaster gas reserves & monitor Soroban meta-transactions</span>[m
-[31m-      </div>[m
-[31m-      <div style="display: flex; gap: 1rem; align-items: center;">[m
-[31m-        <button id="openDepositBtn" class="btn btn-primary">+ Deposit Gas (XLM)</button>[m
-[31m-        <span class="badge">Testnet RPC Online</span>[m
-[31m-      </div>[m
-[31m-    </header>[m
-[31m-[m
-[31m-    <!-- TAB 1: OVERVIEW -->[m
-[31m-    <div id="overviewTab" class="tab-content">[m
-[31m-      <div class="stats-grid">[m
-[31m-        <div class="card">[m
-[31m-          <div class="card-label">Total Relayed Transactions</div>[m
-[31m-          <div id="statRelayedTxs" class="stat-val">14,289</div>[m
-[31m-        </div>[m
-[31m-        <div class="card">[m
-[31m-          <div class="card-label">Sponsored Gas Pool</div>[m
-[31m-          <div id="statSponsoredGas" class="stat-val">1,428.90 XLM</div>[m
-[31m-        </div>[m
-[31m-        <div class="card">[m
-[31m-          <div class="card-label">Active Paymaster Vaults</div>[m
-[31m-          <div id="statActivePaymasters" class="stat-val">8 Active</div>[m
-[31m-        </div>[m
-[31m-        <div class="card">[m
-[31m-          <div class="card-label">Relayer Response Latency</div>[m
-[31m-          <div id="statLatency" class="stat-val" style="color: #6366f1;">420ms</div>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <!-- Relayer Keypair Pool Status Matrix -->[m
-[31m-      <div class="card" style="margin-bottom: 2rem;">[m
-[31m-        <h3 style="margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">[m
-[31m-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>[m
-[31m-          Relayer Keypair Pool Health Matrix[m
-[31m-        </h3>[m
-[31m-        <p style="color: var(--text-muted); font-size: 0.9rem;">Live status of multi-keypair account pool rotating FeeBump sponsorship transactions.</p>[m
-[31m-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">[m
-[31m-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m
-[31m-            <div style="display: flex; justify-content: space-between; align-items: center;">[m
-[31m-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #1</span>[m
-[31m-              <span class="badge">Active</span>[m
-[31m-            </div>[m
-[31m-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_1...9f1a</div>[m
-[31m-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>[m
-[31m-          </div>[m
-[31m-[m
-[31m-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m
-[31m-            <div style="display: flex; justify-content: space-between; align-items: center;">[m
-[31m-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #2</span>[m
-[31m-              <span class="badge">Active</span>[m
-[31m-            </div>[m
-[31m-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_2...4b2c</div>[m
-[31m-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 48.50 XLM</div>[m
-[31m-          </div>[m
-[31m-[m
-[31m-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m
-[31m-            <div style="display: flex; justify-content: space-between; align-items: center;">[m
-[31m-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #3</span>[m
-[31m-              <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">Standby</span>[m
-[31m-            </div>[m
-[31m-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_3...8d11</div>[m
-[31m-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>[m
-[31m-          </div>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <!-- Protocol Relay Engine Safe Navigation Banner -->[m
-[31m-      <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">[m
-[31m-        <div style="display: flex; justify-content: space-between; align-items: center;">[m
-[31m-          <div>[m
-[31m-            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Soroban Meta-Tx Relay Engine</h3>[m
-[31m-            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Configure and review custom parameters in the Relay Engine simulator before executing.</p>[m
-[31m-          </div>[m
-[31m-          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 0.95rem; padding: 0.75rem 1.5rem;">Configure Parameters in Relay Engine →</button>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <div class="card" style="margin-bottom: 2rem;">[m
-[31m-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m
-[31m-          <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">[m
-[31m-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>[m
-[31m-            Active dApp Credentials[m
-[31m-          </h3>[m
-[31m-          <button id="openApiKeyBtnOverview" class="btn btn-secondary">+ Create New API Key</button>[m
-[31m-        </div>[m
-[31m-        <table>[m
-[31m-          <thead>[m
-[31m-            <tr>[m
-[31m-              <th>Key Name</th>[m
-[31m-              <th>API Key Prefix</th>[m
-[31m-              <th>Rate Limit</th>[m
-[31m-              <th>Monthly Quota</th>[m
-[31m-              <th>Status</th>[m
-[31m-              <th>Action</th>[m
-[31m-            </tr>[m
-[31m-          </thead>[m
-[31m-          <tbody id="apiKeysOverviewTableBody">[m
-[31m-            <tr>[m
-[31m-              <td>Stellar Soroban Mainnet Gateway</td>[m
-[31m-              <td><code>st_gas_live_...9f2a</code></td>[m
-[31m-              <td>30 req/min</td>[m
-[31m-              <td>100,000 / 100,000</td>[m
-[31m-              <td><span class="badge">Active</span></td>[m
-[31m-              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>[m
-[31m-            </tr>[m
-[31m-            <tr>[m
-[31m-              <td>Stellar Testnet dApp Gateway</td>[m
-[31m-              <td><code>st_gas_test_...8b11</code></td>[m
-[31m-              <td>60 req/min</td>[m
-[31m-              <td>Unlimited</td>[m
-[31m-              <td><span class="badge">Active</span></td>[m
-[31m-              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_test_7c3314a18b11" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Copy Key</button></td>[m
-[31m-            </tr>[m
-[31m-          </tbody>[m
-[31m-        </table>[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <div class="card">[m
-[31m-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m
-[31m-          <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">[m
-[31m-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>[m
-[31m-            Live Relayed Meta-Transactions Audit History[m
-[31m-          </h3>[m
-[31m-          <button id="exportCsvBtn" class="btn btn-secondary">Export CSV History</button>[m
-[31m-        </div>[m
-[31m-        <div class="table-container">[m
-[31m-          <table>[m
-[31m-            <thead>[m
-[31m-              <tr>[m
-[31m-                <th>Tx Hash</th>[m
-[31m-                <th>User Signer</th>[m
-[31m-                <th>Target Contract</th>[m
-[31m-                <th>Paymaster Vault</th>[m
-[31m-                <th>Gas Sponsored</th>[m
-[31m-                <th>Status</th>[m
-[31m-                <th>Time</th>[m
-[31m-              </tr>[m
-[31m-            </thead>[m
-[31m-            <tbody id="txOverviewTableBody">[m
-[31m-              <tr>[m
-[31m-                <td><code class="tx-hash-link" data-hash="3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9" style="cursor: pointer; color: #818cf8;">3389...ecb9</code></td>[m
-[31m-                <td><code>GBSIGNER_USER_ALPHA</code></td>[m
-[31m-                <td><code>trusted-forwarder</code></td>[m
-[31m-                <td>USDC Paymaster</td>[m
-[31m-                <td>0.0001 XLM</td>[m
-[31m-                <td><span class="badge">Success</span></td>[m
-[31m-                <td>2 mins ago</td>[m
-[31m-              </tr>[m
-[31m-              <tr>[m
-[31m-                <td><code class="tx-hash-link" data-hash="63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f" style="cursor: pointer; color: #818cf8;">6360...a2f</code></td>[m
-[31m-                <td><code>GDSIGNER_USER_BETA</code></td>[m
-[31m-                <td><code>account-abstraction-wallet</code></td>[m
-[31m-                <td>Voucher Paymaster</td>[m
-[31m-                <td>0.0001 XLM</td>[m
-[31m-                <td><span class="badge">Success</span></td>[m
-[31m-                <td>5 mins ago</td>[m
-[31m-              </tr>[m
-[31m-            </tbody>[m
-[31m-          </table>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-[m
-[31m-    <!-- TAB 2: RELAY ENGINE -->[m
-[31m-    <div id="demoTab" class="tab-content" style="display: none;">[m
-[31m-      <div class="card" style="margin-bottom: 2rem;">[m
-[31m-        <h3>Soroban FeeBump Relay Simulator</h3>[m
-[31m-        <p style="color: var(--text-muted);">Enter and review your custom execution parameters and gas fee caps below before broadcasting a live 0-XLM meta-transaction.</p>[m
-[31m-        [m
-[31m-        <!-- Security Safeguard Information Banner -->[m
-[31m-        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; gap: 0.75rem; align-items: center;">[m
-[31m-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-green); flex-shrink: 0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>[m
-[31m-          <div style="font-size: 0.85rem; color: #d1fae5;">[m
-[31m-            <strong>Protocol Security Safeguard:</strong> All meta-transactions enforce Soroban domain separators, sequence nonces, and Paymaster spend limits to prevent unauthorized fund transfers or transaction replay attacks.[m
-[31m-          </div>[m
-[31m-        </div>[m
-[31m-[m
-[31m-        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">[m
-[31m-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">[m
-[31m-            <div>[m
-[31m-              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">User Account Address (0 XLM Balance):</label>[m
-[31m-              <input type="text" id="demoUserAddressInput" class="input-field" value="GBUSER_REVIEWER_WALLET_ADDRESS_9921" placeholder="Type or paste custom user address (e.g. GBXX...)">[m
-[31m-            </div>[m
-[31m-            <div>[m
-[31m-              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Target Soroban Contract:</label>[m
-[31m-              <select id="demoTargetContractSelect" class="input-field">[m
-[31m-                <option value="trusted-forwarder">trusted-forwarder (execute_forwarded)</option>[m
-[31m-                <option value="token-paymaster">token-paymaster (charge_fee USDC)</option>[m
-[31m-                <option value="account-abstraction-wallet">account-abstraction-wallet (Passkey Exec)</option>[m
-[31m-              </select>[m
-[31m-            </div>[m
-[31m-          </div>[m
-[31m-[m
-[31m-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">[m
-[31m-            <div>[m
-[31m-              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Paymaster Sponsorship Vault:</label>[m
-[31m-              <select id="demoPaymasterTypeSelect" class="input-field">[m
-[31m-                <option value="USDC Paymaster">USDC Paymaster Vault</option>[m
-[31m-                <option value="Voucher Paymaster">Promo Coupon Voucher Paymaster</option>[m
-[31m-                <option value="Protocol XLM Vault">Protocol XLM Reserve Vault</option>[m
-[31m-              </select>[m
-[31m-            </div>[m
-[31m-            <div>[m
-[31m-              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Max Gas Sponsorship Cap (Fee Price Limit):</label>[m
-[31m-              <select id="demoGasFeeCapSelect" class="input-field">[m
-[31m-                <option value="0.0001000 XLM (1,000 Stroops)">Standard Cap: 0.0001 XLM (1,000 Stroops)</option>[m
-[31m-                <option value="0.0005000 XLM (5,000 Stroops)">High Speed Cap: 0.0005 XLM (5,000 Stroops)</option>[m
-[31m-                <option value="0.0010000 XLM (10,000 Stroops)">Priority Cap: 0.0010 XLM (10,000 Stroops)</option>[m
-[31m-              </select>[m
-[31m-            </div>[m
-[31m-          </div>[m
-[31m-[m
-[31m-          <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">[m
-[31m-            <div style="font-size: 0.85rem; color: var(--text-muted);">[m
-[31m-              <strong>Soroban Oracle Exchange Price Rate:</strong> 1 USDC = 8.5000 XLM | <strong>User Gas Cost:</strong> <span style="color: var(--accent-green);">0.00 XLM (100% Sponsored)</span>[m
-[31m-            </div>[m
-[31m-            <span class="badge">Oracle Fresh</span>[m
-[31m-          </div>[m
-[31m-[m
-[31m-          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.05rem;">Review & Execute Soroban Meta-Transaction</button>[m
-[31m-        </div>[m
-[31m-[m
-[31m-        <div id="demoProgressBox" style="display: none; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--primary-accent); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">[m
-[31m-          <div id="demoStatusText" style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; color: #818cf8;">[m
-[31m-            Step 1/3: Signing Off-Chain Soroban Auth Entry...[m
-[31m-          </div>[m
-[31m-          <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">[m
-[31m-            <div id="demoProgressBar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); transition: width 0.5s ease;"></div>[m
-[31m-          </div>[m
-[31m-        </div>[m
-[31m-[m
-[31m-        <!-- Dynamic Execution Result Receipt Box -->[m
-[31m-        <div id="demoResultReceiptBox" style="display: none; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 1.5rem; border-radius: 8px;">[m
-[31m-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m
-[31m-            <h4 style="margin: 0; color: var(--accent-green);">Execution Receipt: Meta-Transaction Confirmed</h4>[m
-[31m-            <span class="badge">Status: 200 OK (Ledger Confirmed)</span>[m
-[31m-          </div>[m
-[31m-          <div style="font-family: monospace; font-size: 0.85rem; color: #f3f4f6; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">[m
-[31m-            <div><strong>Broadcast Hash:</strong> <span id="receiptHash" style="color: #818cf8; word-break: break-all;">3389...</span></div>[m
-[31m-            <div><strong>User Balance Spent:</strong> <span style="color: var(--accent-green);">0.0000000 XLM</span></div>[m
-[31m-            <div><strong>Fee Sponsor:</strong> <span>Relayer Keypair Pool</span></div>[m
-[31m-            <div><strong>Gas Fee Cap Selected:</strong> <span id="receiptFeeCap">0.0001 XLM</span></div>[m
-[31m-          </div>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-[m
-[31m-    <!-- TAB 3: PAYMASTERS -->[m
-[31m-    <div id="paymastersTab" class="tab-content" style="display: none;">[m
-[31m-      <div class="card" style="margin-bottom: 2rem;">[m
-[31m-        <h3>Registered Paymaster Contracts & Policy Rules</h3>[m
-[31m-        <p style="color: var(--text-muted);">Manage gas sponsorship pools and SAC token conversions on Soroban.</p>[m
-[31m-        <table>[m
-[31m-          <thead>[m
-[31m-            <tr>[m
-[31m-              <th>Paymaster Name</th>[m
-[31m-              <th>Contract Address</th>[m
-[31m-              <th>Gas Reserve</th>[m
-[31m-              <th>Fee Token</th>[m
-[31m-              <th>Sponsorship Policy</th>[m
-[31m-              <th>Action</th>[m
-[31m-            </tr>[m
-[31m-          </thead>[m
-[31m-          <tbody>[m
-[31m-            <tr>[m
-[31m-              <td>USDC Token Paymaster</td>[m
-[31m-              <td><code>CCXX...PAYMASTER1</code></td>[m
-[31m-              <td id="paymasterUsdcBalance" style="color: var(--accent-green); font-weight: 600;">500.00 XLM</td>[m
-[31m-              <td>SAC USDC</td>[m
-[31m-              <td><span class="badge" style="background: rgba(99,102,241,0.2); color: #818cf8;">Auto USDC Fee Swap</span></td>[m
-[31m-              <td><button class="btn btn-secondary openDepositModalBtn" data-target="usdc" style="padding: 0.3rem 0.75rem;">Top Up</button></td>[m
-[31m-            </tr>[m
-[31m-            <tr>[m
-[31m-              <td>Promo Coupon Paymaster</td>[m
-[31m-              <td><code>CCYY...PAYMASTER2</code></td>[m
-[31m-              <td id="paymasterPromoBalance" style="color: var(--accent-green); font-weight: 600;">250.00 XLM</td>[m
-[31m-              <td>Sponsored Voucher</td>[m
-[31m-              <td><span class="badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">Single-Use Voucher</span></td>[m
-[31m-              <td><button class="btn btn-secondary openDepositModalBtn" data-target="promo" style="padding: 0.3rem 0.75rem;">Top Up</button></td>[m
-[31m-            </tr>[m
-[31m-          </tbody>[m
-[31m-        </table>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-[m
-[31m-    <!-- TAB 4: API KEYS & CODE GENERATOR -->[m
-[31m-    <div id="apikeysTab" class="tab-content" style="display: none;">[m
-[31m-      <div class="card" style="margin-bottom: 2rem;">[m
-[31m-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m
-[31m-          <h3 style="margin: 0;">Developer API Key Management</h3>[m
-[31m-          <button id="openApiKeyBtnMain" class="btn btn-primary">+ Create New API Key</button>[m
-[31m-        </div>[m
-[31m-        <p style="color: var(--text-muted);">Create and restrict API keys used by <code>@stellar-gasless/sdk</code> in your applications.</p>[m
-[31m-        <table>[m
-[31m-          <thead>[m
-[31m-            <tr>[m
-[31m-              <th>Key Name</th>[m
-[31m-              <th>API Key Prefix</th>[m
-[31m-              <th>Rate Limit</th>[m
-[31m-              <th>Monthly Quota</th>[m
-[31m-              <th>Created</th>[m
-[31m-              <th>Action</th>[m
-[31m-            </tr>[m
-[31m-          </thead>[m
-[31m-          <tbody id="apiKeysMainTableBody">[m
-[31m-            <tr>[m
-[31m-              <td>Stellar Soroban Mainnet Gateway</td>[m
-[31m-              <td><code>st_gas_live_...9f2a</code></td>[m
-[31m-              <td>30 req/min</td>[m
-[31m-              <td>100,000 / 100,000</td>[m
-[31m-              <td>Aug 01, 2026</td>[m
-[31m-              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_live_e92a84b19f2a">Copy Key</button></td>[m
-[31m-            </tr>[m
-[31m-            <tr>[m
-[31m-              <td>Stellar Testnet dApp Gateway</td>[m
-[31m-              <td><code>st_gas_test_...8b11</code></td>[m
-[31m-              <td>60 req/min</td>[m
-[31m-              <td>Unlimited</td>[m
-[31m-              <td>Aug 04, 2026</td>[m
-[31m-              <td><button class="btn btn-secondary copy-key-btn" data-key="st_gas_test_7c3314a18b11">Copy Key</button></td>[m
-[31m-            </tr>[m
-[31m-          </tbody>[m
-[31m-        </table>[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <!-- Live Code Snippet Generator Card -->[m
-[31m-      <div class="card">[m
-[31m-        <h3>Live @stellar-gasless/sdk Integration Code Generator</h3>[m
-[31m-        <p style="color: var(--text-muted);">Ready-to-use TypeScript code snippet pre-populated with your production API key:</p>[m
-[31m-        <div style="background: #090d16; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem; color: #818cf8; overflow-x: auto; white-space: pre;">import { GaslessClient } from '@stellar-gasless/sdk';[m
-[31m-[m
-[31m-const gaslessClient = new GaslessClient({[m
-[31m-  relayerUrl: 'https://relayer.stellar-gasless.net',[m
-[31m-  dappApiKey: '<span id="codeSnippetKey" style="color: #10b981;">st_gas_live_e92a84b19f2a</span>',[m
-[31m-});[m
-[31m-[m
-[31m-// Request 0-XLM gasless execution[m
-[31m-const result = await gaslessClient.submitGaslessTransaction(signedInnerTxXdr);[m
-[31m-console.log('Gasless Meta-Tx Hash:', result.hash);</div>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-[m
-[31m-    <!-- TAB 5: TRANSACTIONS -->[m
-[31m-    <div id="transactionsTab" class="tab-content" style="display: none;">[m
-[31m-      <div class="card">[m
-[31m-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m
-[31m-          <h3 style="margin: 0;">All Relayed Meta-Transactions Audit History</h3>[m
-[31m-          <input type="text" id="searchTxInput" class="input-field" placeholder="Search by hash or user address..." style="max-width: 300px;">[m
-[31m-        </div>[m
-[31m-        <div class="table-container">[m
-[31m-          <table>[m
-[31m-            <thead>[m
-[31m-              <tr>[m
-[31m-                <th>Tx Hash</th>[m
-[31m-                <th>User Signer</th>[m
-[31m-                <th>Target Contract</th>[m
-[31m-                <th>Paymaster Vault</th>[m
-[31m-                <th>Gas Sponsored</th>[m
-[31m-                <th>Status</th>[m
-[31m-                <th>Time</th>[m
-[31m-              </tr>[m
-[31m-            </thead>[m
-[31m-            <tbody id="allTxTableBody">[m
-[31m-              <tr>[m
-[31m-                <td><code class="tx-hash-link" data-hash="3389e9f0f1a65f19736cacf544c2e825313e8447f569233c082872aab9d9ecb9" style="cursor: pointer; color: #818cf8;">3389...ecb9</code></td>[m
-[31m-                <td><code>GBSIGNER_USER_ALPHA</code></td>[m
-[31m-                <td><code>trusted-forwarder</code></td>[m
-[31m-                <td>USDC Paymaster</td>[m
-[31m-                <td>0.0001 XLM</td>[m
-[31m-                <td><span class="badge">Success</span></td>[m
-[31m-                <td>2 mins ago</td>[m
-[31m-              </tr>[m
-[31m-              <tr>[m
-[31m-                <td><code class="tx-hash-link" data-hash="63604f3db6e75e9b72049e6d1c4728516086f6ddb91e921d23ebed6f8b9d6a2f" style="cursor: pointer; color: #818cf8;">6360...a2f</code></td>[m
-[31m-                <td><code>GDSIGNER_USER_BETA</code></td>[m
-[31m-                <td><code>account-abstraction-wallet</code></td>[m
-[31m-                <td>Voucher Paymaster</td>[m
-[31m-                <td>0.0001 XLM</td>[m
-[31m-                <td><span class="badge">Success</span></td>[m
-[31m-                <td>5 mins ago</td>[m
-[31m-              </tr>[m
-[31m-            </tbody>[m
-[31m-          </table>[m
-[31m-        </div>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-  </main>[m
-[31m-[m
-[31m-  <!-- 1. Deposit XLM Modal -->[m
-[31m-  <div id="depositModal" class="modal-overlay" style="display: none;">[m
-[31m-    <div class="modal-content card">[m
-[31m-      <h3>Deposit XLM to Paymaster Pool</h3>[m
-[31m-      <p style="color: var(--text-muted);">Deposit XLM gas reserves to sponsor user transactions on Stellar Soroban.</p>[m
-[31m-      <form id="depositForm">[m
-[31m-        <div style="margin-bottom: 1rem;">[m
-[31m-          <label style="display: block; margin-bottom: 0.5rem;">Amount (XLM):</label>[m
-[31m-          <input type="number" id="depositAmount" class="input-field" value="500" min="10" required>[m
-[31m-        </div>[m
-[31m-        <div style="display: flex; gap: 1rem; justify-content: flex-end;">[m
-[31m-          <button type="button" id="closeDepositBtn" class="btn btn-secondary">Cancel</button>[m
-[31m-          <button type="submit" class="btn btn-primary">Confirm Deposit</button>[m
-[31m-        </div>[m
-[31m-      </form>[m
-[31m-    </div>[m
-[31m-  </div>[m
-[31m-[m
-[31m-  <!-- 2. Create API Key Modal -->[m
-[31m-  <div id="apiKeyModal" class="modal-overlay" style="display: none;">[m
-[31m-    <div class="modal-content card">[m
-[31m-      <h3>Create New dApp API Key</h3>[m
-[31m-      <p style="color: var(--text-muted);">Generate an authentication API key for <code>@stellar-gasless/sdk</code>.</p>[m
-[31m-      <form id="apiKeyForm">[m
-[31m-        <div style="margin-bottom: 1rem;">[m
-[31m-          <label style="display: block; margin-bottom: 0.5rem;">dApp Gateway Name:</label>[m
-[31m-          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Stellar Soroban Gateway" required>[m
-[31m-        </div>[m
-[31m-        <div style="margin-bottom: 1rem;">[m
-[31m-          <label style="display: block; margin-bottom: 0.5rem;">Rate Limit Boundary:</label>[m
-[31m-          <select id="apiKeyRateLimit" class="input-field">[m
-[31m-            <option value="30 req/min">Standard (30 req/min)</option>[m
-[31m-            <option value="60 req/min">Pro (60 req/min)</option>[m
-[31m-            <option value="120 req/min">Enterprise (120 req/min)</option>[m
-[31m-          </select>[m
-[31m-        </div>[m
-[31m-        <div style="display: flex; gap: 1rem; justify-content: flex-end;">[m
-[31m-          <button type="button" id="closeApiKeyBtn" class="btn btn-secondary">Cancel</button>[m
-[31m-          <button type="submit" class="btn btn-primary">Generate API Key</button>[m
-[31m-        </div>[m
-[31m-      </form>[m
-[31m-    </div>[m
-[31m-  </div>[m
-[31m-[m
-[31m-  <!-- 3. Soroban Authorization XDR Inspector Drawer -->[m
-[31m-  <div id="txDetailModal" class="modal-overlay" style="display: none;">[m
-[31m-    <div class="modal-content card" style="max-width: 650px;">[m
-[31m-      <h3 id="detailTxTitle">Soroban Authorization Entry Inspector</h3>[m
-[31m-      [m
-[31m-      <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem; color: #a5b4fc;">[m
-[31m-        <strong>Explorer Sync Note:</strong> Click below to inspect live active transactions on StellarExpert Testnet Explorer.[m
-[31m-      </div>[m
-[31m-[m
-[31m-      <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #a855f7; margin-bottom: 1rem;">[m
-[31m-        <div id="detailTxContent">Loading details...</div>[m
-[31m-      </div>[m
-[31m-      <div style="display: flex; justify-content: space-between; align-items: center;">[m
-[31m-        <a id="detailStellarExpertLink" href="https://stellar.expert/explorer/testnet/tx/recent" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; text-decoration: none;">Open Live Stellar Testnet Explorer</a>[m
-[31m-        <button id="closeTxDetailBtn" class="btn btn-primary">Close Inspector</button>[m
-[31m-      </div>[m
-[31m-    </div>[m
-[31m-  </div>[m
-[31m-[m
-[31m-  <script src="app.js"></script>[m
-[31m-</body>[m
-[31m-</html>[m
-[32m+[m[32m<!DOCTYPE html>[m[41m[m
-[32m+[m[32m<html lang="en">[m[41m[m
-[32m+[m[32m<head>[m[41m[m
-[32m+[m[32m  <meta charset="UTF-8">[m[41m[m
-[32m+[m[32m  <meta name="viewport" content="width=device-width, initial-scale=1.0">[m[41m[m
-[32m+[m[32m  <title>Stellar Gasless Protocol Console</title>[m[41m[m
-[32m+[m[32m  <link rel="stylesheet" href="styles.css">[m[41m[m
-[32m+[m[32m  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">[m[41m[m
-[32m+[m[32m</head>[m[41m[m
-[32m+[m[32m<body>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <div class="demo-mode-banner">[m[41m[m
-[32m+[m[32m    ⚠ DEMO MODE — This UI is a frontend mockup with no relayer backend deployed yet. Numbers below are sample data, not live protocol activity. See <a href="./README.md" style="color: #fff; text-decoration: underline;">README</a> for current status.[m[41m[m
-[32m+[m[32m  </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <!-- Sidebar Navigation -->[m[41m[m
-[32m+[m[32m  <aside class="sidebar">[m[41m[m
-[32m+[m[32m    <div class="sidebar-brand">[m[41m[m
-[32m+[m[32m      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>[m[41m[m
-[32m+[m[32m      Stellar Gasless[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[32m    <ul class="nav-list">[m[41m[m
-[32m+[m[32m      <li class="nav-item active" data-tab="overviewTab">Overview</li>[m[41m[m
-[32m+[m[32m      <li class="nav-item" data-tab="demoTab">Relay Engine</li>[m[41m[m
-[32m+[m[32m      <li class="nav-item" data-tab="paymastersTab">Paymasters</li>[m[41m[m
-[32m+[m[32m      <li class="nav-item" data-tab="apikeysTab">API Keys</li>[m[41m[m
-[32m+[m[32m      <li class="nav-item" data-tab="transactionsTab">Relayed Txs</li>[m[41m[m
-[32m+[m[32m    </ul>[m[41m[m
-[32m+[m[32m  </aside>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <!-- Main Content Area -->[m[41m[m
-[32m+[m[32m  <main class="main-content">[m[41m[m
-[32m+[m[32m    <header>[m[41m[m
-[32m+[m[32m      <div>[m[41m[m
-[32m+[m[32m        <h2 style="margin: 0;">Stellar Gasless Protocol Console (Demo Build)</h2>[m[41m[m
-[32m+[m[32m        <span style="color: var(--text-muted); font-size: 0.9rem;">Preview UI for Paymaster gas reserves & Soroban meta-transactions — no live backend connected</span>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m      <div style="display: flex; gap: 1rem; align-items: center;">[m[41m[m
-[32m+[m[32m        <button id="openDepositBtn" class="btn btn-primary">+ Deposit Gas (XLM)</button>[m[41m[m
-[32m+[m[32m        <span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">No Backend Deployed</span>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </header>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m    <!-- TAB 1: OVERVIEW -->[m[41m[m
-[32m+[m[32m    <div id="overviewTab" class="tab-content">[m[41m[m
-[32m+[m[32m      <div class="stats-grid">[m[41m[m
-[32m+[m[32m        <div class="card">[m[41m[m
-[32m+[m[32m          <div class="card-label">Total Relayed Transactions</div>[m[41m[m
-[32m+[m[32m          <div id="statRelayedTxs" class="stat-val">0 <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(sample)</span></div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div class="card">[m[41m[m
-[32m+[m[32m          <div class="card-label">Sponsored Gas Pool</div>[m[41m[m
-[32m+[m[32m          <div id="statSponsoredGas" class="stat-val">0.00 XLM <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(sample)</span></div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div class="card">[m[41m[m
-[32m+[m[32m          <div class="card-label">Active Paymaster Vaults</div>[m[41m[m
-[32m+[m[32m          <div id="statActivePaymasters" class="stat-val">0 <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(sample)</span></div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div class="card">[m[41m[m
-[32m+[m[32m          <div class="card-label">Relayer Response Latency</div>[m[41m[m
-[32m+[m[32m          <div id="statLatency" class="stat-val" style="color: #6366f1;">N/A</div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <!-- Relayer Keypair Pool Status Matrix -->[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem;">[m[41m[m
-[32m+[m[32m        <h3 style="margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">[m[41m[m
-[32m+[m[32m          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>[m[41m[m
-[32m+[m[32m          Relayer Keypair Pool Health Matrix (Example Layout)[m[41m[m
-[32m+[m[32m        </h3>[m[41m[m
-[32m+[m[32m        <p style="color: var(--text-muted); font-size: 0.9rem;">Illustrates how the relayer's keypair pool would be surfaced once a backend is deployed. No relayer service is running yet, so nothing below reflects real balances.</p>[m[41m[m
-[32m+[m[32m        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">[m[41m[m
-[32m+[m[32m          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m[41m[m
-[32m+[m[32m            <div style="display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #1</span>[m[41m[m
-[32m+[m[32m              <span class="badge">Active</span>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_1...9f1a</div>[m[41m[m
-[32m+[m[32m            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m[41m[m
-[32m+[m[32m            <div style="display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #2</span>[m[41m[m
-[32m+[m[32m              <span class="badge">Active</span>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_2...4b2c</div>[m[41m[m
-[32m+[m[32m            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 48.50 XLM</div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">[m[41m[m
-[32m+[m[32m            <div style="display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #3</span>[m[41m[m
-[32m+[m[32m              <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">Standby</span>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_3...8d11</div>[m[41m[m
-[32m+[m[32m            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <!-- Protocol Relay Engine Safe Navigation Banner -->[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">[m[41m[m
-[32m+[m[32m        <div style="display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m          <div>[m[41m[m
-[32m+[m[32m            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Soroban Meta-Tx Relay Engine</h3>[m[41m[m
-[32m+[m[32m            <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Configure and review custom parameters in the Relay Engine simulator before executing.</p>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m          <button id="quickRunDemoBtn" class="btn btn-primary" style="font-size: 0.95rem; padding: 0.75rem 1.5rem;">Configure Parameters in Relay Engine →</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem;">[m[41m[m
-[32m+[m[32m        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">[m[41m[m
-[32m+[m[32m            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>[m[41m[m
-[32m+[m[32m            Active dApp Credentials[m[41m[m
-[32m+[m[32m          </h3>[m[41m[m
-[32m+[m[32m          <button id="openApiKeyBtnOverview" class="btn btn-secondary">+ Create New API Key</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <table>[m[41m[m
-[32m+[m[32m          <thead>[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <th>Key Name</th>[m[41m[m
-[32m+[m[32m              <th>API Key Prefix</th>[m[41m[m
-[32m+[m[32m              <th>Rate Limit</th>[m[41m[m
-[32m+[m[32m              <th>Monthly Quota</th>[m[41m[m
-[32m+[m[32m              <th>Status</th>[m[41m[m
-[32m+[m[32m              <th>Action</th>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </thead>[m[41m[m
-[32m+[m[32m          <tbody id="apiKeysOverviewTableBody">[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <td colspan="6" style="color: var(--text-muted); text-align: center; padding: 1.5rem;">No API keys yet — no backend is deployed to issue real keys. Click "Create New API Key" to see the UI flow (demo only).</td>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </tbody>[m[41m[m
-[32m+[m[32m        </table>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <div class="card">[m[41m[m
-[32m+[m[32m        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">[m[41m[m
-[32m+[m[32m            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>[m[41m[m
-[32m+[m[32m            Relayed Meta-Transactions (Demo Runs Only)[m[41m[m
-[32m+[m[32m          </h3>[m[41m[m
-[32m+[m[32m          <button id="exportCsvBtn" class="btn btn-secondary">Export CSV History</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div class="table-container">[m[41m[m
-[32m+[m[32m          <table>[m[41m[m
-[32m+[m[32m            <thead>[m[41m[m
-[32m+[m[32m              <tr>[m[41m[m
-[32m+[m[32m                <th>Tx Hash</th>[m[41m[m
-[32m+[m[32m                <th>User Signer</th>[m[41m[m
-[32m+[m[32m                <th>Target Contract</th>[m[41m[m
-[32m+[m[32m                <th>Paymaster Vault</th>[m[41m[m
-[32m+[m[32m                <th>Gas Sponsored</th>[m[41m[m
-[32m+[m[32m                <th>Status</th>[m[41m[m
-[32m+[m[32m                <th>Time</th>[m[41m[m
-[32m+[m[32m              </tr>[m[41m[m
-[32m+[m[32m            </thead>[m[41m[m
-[32m+[m[32m            <tbody id="txOverviewTableBody">[m[41m[m
-[32m+[m[32m              <tr>[m[41m[m
-[32m+[m[32m                <td colspan="7" style="color: var(--text-muted); text-align: center; padding: 1.5rem;">No transactions yet. Use the "Relay Engine" tab to run the demo flow (illustrative — no live relayer is deployed).</td>[m[41m[m
-[32m+[m[32m              </tr>[m[41m[m
-[32m+[m[32m            </tbody>[m[41m[m
-[32m+[m[32m          </table>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m    <!-- TAB 2: RELAY ENGINE -->[m[41m[m
-[32m+[m[32m    <div id="demoTab" class="tab-content" style="display: none;">[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem;">[m[41m[m
-[32m+[m[32m        <h3>Soroban FeeBump Relay Walkthrough (Demo)</h3>[m[41m[m
-[32m+[m[32m        <p style="color: var(--text-muted);">This walks through what the flow will look like once a relayer backend is deployed. No transaction is actually submitted on your behalf — nothing here touches your wallet or funds.</p>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m        <!-- Demo Mode Disclosure Banner -->[m[41m[m
-[32m+[m[32m        <div style="background: rgba(180, 83, 9, 0.12); border: 1px solid #b45309; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; gap: 0.75rem; align-items: center;">[m[41m[m
-[32m+[m[32m          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24; flex-shrink: 0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>[m[41m[m
-[32m+[m[32m          <div style="font-size: 0.85rem; color: #fde68a;">[m[41m[m
-[32m+[m[32m            <strong>This is a UI mockup, not a live protocol run.</strong> Clicking "Execute" below does not sign, sponsor, or broadcast anything on your behalf. The only real network call it makes is a read-only fetch of the most recent public Stellar testnet transaction, shown purely as an example of what a receipt would look like.[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">[m[41m[m
-[32m+[m[32m          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m            <div>[m[41m[m
-[32m+[m[32m              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">User Account Address (0 XLM Balance):</label>[m[41m[m
-[32m+[m[32m              <input type="text" id="demoUserAddressInput" class="input-field" value="" placeholder="Optional — e.g. GABC...WXYZ (not used for anything real in this demo)">[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <div>[m[41m[m
-[32m+[m[32m              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Target Soroban Contract:</label>[m[41m[m
-[32m+[m[32m              <select id="demoTargetContractSelect" class="input-field">[m[41m[m
-[32m+[m[32m                <option value="trusted-forwarder">trusted-forwarder (execute_forwarded)</option>[m[41m[m
-[32m+[m[32m                <option value="token-paymaster">token-paymaster (charge_fee USDC)</option>[m[41m[m
-[32m+[m[32m                <option value="account-abstraction-wallet">account-abstraction-wallet (Passkey Exec)</option>[m[41m[m
-[32m+[m[32m              </select>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">[m[41m[m
-[32m+[m[32m            <div>[m[41m[m
-[32m+[m[32m              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Paymaster Sponsorship Vault:</label>[m[41m[m
-[32m+[m[32m              <select id="demoPaymasterTypeSelect" class="input-field">[m[41m[m
-[32m+[m[32m                <option value="USDC Paymaster">USDC Paymaster Vault</option>[m[41m[m
-[32m+[m[32m                <option value="Voucher Paymaster">Promo Coupon Voucher Paymaster</option>[m[41m[m
-[32m+[m[32m                <option value="Protocol XLM Vault">Protocol XLM Reserve Vault</option>[m[41m[m
-[32m+[m[32m              </select>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <div>[m[41m[m
-[32m+[m[32m              <label style="display: block; margin-bottom: 0.5rem; color: #fff; font-weight: 600;">Max Gas Sponsorship Cap (Fee Price Limit):</label>[m[41m[m
-[32m+[m[32m              <select id="demoGasFeeCapSelect" class="input-field">[m[41m[m
-[32m+[m[32m                <option value="0.0001000 XLM (1,000 Stroops)">Standard Cap: 0.0001 XLM (1,000 Stroops)</option>[m[41m[m
-[32m+[m[32m                <option value="0.0005000 XLM (5,000 Stroops)">High Speed Cap: 0.0005 XLM (5,000 Stroops)</option>[m[41m[m
-[32m+[m[32m                <option value="0.0010000 XLM (10,000 Stroops)">Priority Cap: 0.0010 XLM (10,000 Stroops)</option>[m[41m[m
-[32m+[m[32m              </select>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m          <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m            <div style="font-size: 0.85rem; color: var(--text-muted);">[m[41m[m
-[32m+[m[32m              <strong>Soroban Oracle Exchange Price Rate:</strong> 1 USDC = 8.5000 XLM | <strong>User Gas Cost:</strong> <span style="color: var(--accent-green);">0.00 XLM (100% Sponsored)</span>[m[41m[m
-[32m+[m[32m            </div>[m[41m[m
-[32m+[m[32m            <span class="badge">Oracle Fresh</span>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m          <button id="runFullDemoBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.05rem;">Run Demo Walkthrough (Not a Real Transaction)</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m        <div id="demoProgressBox" style="display: none; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--primary-accent); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">[m[41m[m
-[32m+[m[32m          <div id="demoStatusText" style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; color: #818cf8;">[m[41m[m
-[32m+[m[32m            Step 1/3: Signing Off-Chain Soroban Auth Entry...[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m          <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">[m[41m[m
-[32m+[m[32m            <div id="demoProgressBar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); transition: width 0.5s ease;"></div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m        <!-- Dynamic Execution Result Receipt Box -->[m[41m[m
-[32m+[m[32m        <div id="demoResultReceiptBox" style="display: none; background: rgba(99, 102, 241, 0.08); border: 1px solid var(--primary-accent); padding: 1.5rem; border-radius: 8px;">[m[41m[m
-[32m+[m[32m          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m            <h4 style="margin: 0; color: #818cf8;">Example Receipt Layout (Not Your Transaction)</h4>[m[41m[m
-[32m+[m[32m            <span class="badge" style="background: rgba(180, 83, 9, 0.25); color: #fbbf24;">Illustrative Only</span>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0;">The hash below is a real, recent public Stellar testnet transaction fetched live from Horizon — it is <strong>not</strong> a transaction this demo submitted. Everything else on this card is example data showing how a real receipt would be laid out.</p>[m[41m[m
-[32m+[m[32m          <div style="font-family: monospace; font-size: 0.85rem; color: #f3f4f6; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">[m[41m[m
-[32m+[m[32m            <div><strong>Example Hash (real, unrelated tx):</strong> <span id="receiptHash" style="color: #818cf8; word-break: break-all;">—</span></div>[m[41m[m
-[32m+[m[32m            <div><strong>User Balance Spent:</strong> <span style="color: var(--accent-green);">0.0000000 XLM (n/a — demo)</span></div>[m[41m[m
-[32m+[m[32m            <div><strong>Fee Sponsor:</strong> <span>n/a — no relayer deployed</span></div>[m[41m[m
-[32m+[m[32m            <div><strong>Gas Fee Cap Selected:</strong> <span id="receiptFeeCap">0.0001 XLM</span></div>[m[41m[m
-[32m+[m[32m          </div>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m    <!-- TAB 3: PAYMASTERS -->[m[41m[m
-[32m+[m[32m    <div id="paymastersTab" class="tab-content" style="display: none;">[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem;">[m[41m[m
-[32m+[m[32m        <h3>Paymaster Contracts & Policy Rules (Example Layout)</h3>[m[41m[m
-[32m+[m[32m        <p style="color: var(--text-muted);">Shows how paymaster gas pools would be managed once contracts are deployed and funded. Addresses and balances below are placeholders, not real deployments.</p>[m[41m[m
-[32m+[m[32m        <table>[m[41m[m
-[32m+[m[32m          <thead>[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <th>Paymaster Name</th>[m[41m[m
-[32m+[m[32m              <th>Contract Address</th>[m[41m[m
-[32m+[m[32m              <th>Gas Reserve</th>[m[41m[m
-[32m+[m[32m              <th>Fee Token</th>[m[41m[m
-[32m+[m[32m              <th>Sponsorship Policy</th>[m[41m[m
-[32m+[m[32m              <th>Action</th>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </thead>[m[41m[m
-[32m+[m[32m          <tbody>[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <td>USDC Token Paymaster</td>[m[41m[m
-[32m+[m[32m              <td><code>CCXX...PAYMASTER1</code></td>[m[41m[m
-[32m+[m[32m              <td id="paymasterUsdcBalance" style="color: var(--accent-green); font-weight: 600;">500.00 XLM</td>[m[41m[m
-[32m+[m[32m              <td>SAC USDC</td>[m[41m[m
-[32m+[m[32m              <td><span class="badge" style="background: rgba(99,102,241,0.2); color: #818cf8;">Auto USDC Fee Swap</span></td>[m[41m[m
-[32m+[m[32m              <td><button class="btn btn-secondary openDepositModalBtn" data-target="usdc" style="padding: 0.3rem 0.75rem;">Top Up</button></td>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <td>Promo Coupon Paymaster</td>[m[41m[m
-[32m+[m[32m              <td><code>CCYY...PAYMASTER2</code></td>[m[41m[m
-[32m+[m[32m              <td id="paymasterPromoBalance" style="color: var(--accent-green); font-weight: 600;">250.00 XLM</td>[m[41m[m
-[32m+[m[32m              <td>Sponsored Voucher</td>[m[41m[m
-[32m+[m[32m              <td><span class="badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">Single-Use Voucher</span></td>[m[41m[m
-[32m+[m[32m              <td><button class="btn btn-secondary openDepositModalBtn" data-target="promo" style="padding: 0.3rem 0.75rem;">Top Up</button></td>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </tbody>[m[41m[m
-[32m+[m[32m        </table>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m    <!-- TAB 4: API KEYS & CODE GENERATOR -->[m[41m[m
-[32m+[m[32m    <div id="apikeysTab" class="tab-content" style="display: none;">[m[41m[m
-[32m+[m[32m      <div class="card" style="margin-bottom: 2rem;">[m[41m[m
-[32m+[m[32m        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <h3 style="margin: 0;">Developer API Key Management</h3>[m[41m[m
-[32m+[m[32m          <button id="openApiKeyBtnMain" class="btn btn-primary">+ Create New API Key</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <p style="color: var(--text-muted);">Create and restrict API keys used by <code>@stellar-gasless/sdk</code> in your applications.</p>[m[41m[m
-[32m+[m[32m        <table>[m[41m[m
-[32m+[m[32m          <thead>[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <th>Key Name</th>[m[41m[m
-[32m+[m[32m              <th>API Key Prefix</th>[m[41m[m
-[32m+[m[32m              <th>Rate Limit</th>[m[41m[m
-[32m+[m[32m              <th>Monthly Quota</th>[m[41m[m
-[32m+[m[32m              <th>Created</th>[m[41m[m
-[32m+[m[32m              <th>Action</th>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </thead>[m[41m[m
-[32m+[m[32m          <tbody id="apiKeysMainTableBody">[m[41m[m
-[32m+[m[32m            <tr>[m[41m[m
-[32m+[m[32m              <td colspan="6" style="color: var(--text-muted); text-align: center; padding: 1.5rem;">No API keys yet — no backend is deployed to issue real keys.</td>[m[41m[m
-[32m+[m[32m            </tr>[m[41m[m
-[32m+[m[32m          </tbody>[m[41m[m
-[32m+[m[32m        </table>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <!-- Live Code Snippet Generator Card -->[m[41m[m
-[32m+[m[32m      <div class="card">[m[41m[m
-[32m+[m[32m        <h3>@stellar-gasless/sdk Integration Code Example</h3>[m[41m[m
-[32m+[m[32m        <p style="color: var(--text-muted);">Example TypeScript snippet — replace <code>relayerUrl</code> with your own deployed relayer once you have one running, and <code>dappApiKey</code> with a real key once the relayer issues them (it doesn't yet):</p>[m[41m[m
-[32m+[m[32m        <div style="background: #090d16; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem; color: #818cf8; overflow-x: auto; white-space: pre;">import { GaslessClient } from '@stellar-gasless/sdk';[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mconst gaslessClient = new GaslessClient({[m[41m[m
-[32m+[m[32m  relayerUrl: 'https://your-relayer-domain.example',[m[41m[m
-[32m+[m[32m  dappApiKey: '<span id="codeSnippetKey" style="color: #10b981;">YOUR_DAPP_API_KEY</span>',[m[41m[m
-[32m+[m[32m});[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m// Request 0-XLM gasless execution[m[41m[m
-[32m+[m[32mconst result = await gaslessClient.submitGaslessTransaction(signedInnerTxXdr);[m[41m[m
-[32m+[m[32mconsole.log('Gasless Meta-Tx Hash:', result.hash);</div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m    <!-- TAB 5: TRANSACTIONS -->[m[41m[m
-[32m+[m[32m    <div id="transactionsTab" class="tab-content" style="display: none;">[m[41m[m
-[32m+[m[32m      <div class="card">[m[41m[m
-[32m+[m[32m        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <h3 style="margin: 0;">All Relayed Meta-Transactions (Demo Runs Only)</h3>[m[41m[m
-[32m+[m[32m          <input type="text" id="searchTxInput" class="input-field" placeholder="Search by hash or user address..." style="max-width: 300px;">[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div class="table-container">[m[41m[m
-[32m+[m[32m          <table>[m[41m[m
-[32m+[m[32m            <thead>[m[41m[m
-[32m+[m[32m              <tr>[m[41m[m
-[32m+[m[32m                <th>Tx Hash</th>[m[41m[m
-[32m+[m[32m                <th>User Signer</th>[m[41m[m
-[32m+[m[32m                <th>Target Contract</th>[m[41m[m
-[32m+[m[32m                <th>Paymaster Vault</th>[m[41m[m
-[32m+[m[32m                <th>Gas Sponsored</th>[m[41m[m
-[32m+[m[32m                <th>Status</th>[m[41m[m
-[32m+[m[32m                <th>Time</th>[m[41m[m
-[32m+[m[32m              </tr>[m[41m[m
-[32m+[m[32m            </thead>[m[41m[m
-[32m+[m[32m            <tbody id="allTxTableBody">[m[41m[m
-[32m+[m[32m              <tr>[m[41m[m
-[32m+[m[32m                <td colspan="7" style="color: var(--text-muted); text-align: center; padding: 1.5rem;">No transactions yet. Use the "Relay Engine" tab to run the demo flow (illustrative — no live relayer is deployed).</td>[m[41m[m
-[32m+[m[32m              </tr>[m[41m[m
-[32m+[m[32m            </tbody>[m[41m[m
-[32m+[m[32m          </table>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[32m  </main>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <!-- 1. Deposit XLM Modal -->[m[41m[m
-[32m+[m[32m  <div id="depositModal" class="modal-overlay" style="display: none;">[m[41m[m
-[32m+[m[32m    <div class="modal-content card">[m[41m[m
-[32m+[m[32m      <h3>Deposit XLM to Paymaster Pool</h3>[m[41m[m
-[32m+[m[32m      <p style="color: var(--text-muted);">Deposit XLM gas reserves to sponsor user transactions on Stellar Soroban.</p>[m[41m[m
-[32m+[m[32m      <form id="depositForm">[m[41m[m
-[32m+[m[32m        <div style="margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <label style="display: block; margin-bottom: 0.5rem;">Amount (XLM):</label>[m[41m[m
-[32m+[m[32m          <input type="number" id="depositAmount" class="input-field" value="500" min="10" required>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div style="display: flex; gap: 1rem; justify-content: flex-end;">[m[41m[m
-[32m+[m[32m          <button type="button" id="closeDepositBtn" class="btn btn-secondary">Cancel</button>[m[41m[m
-[32m+[m[32m          <button type="submit" class="btn btn-primary">Confirm Deposit</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </form>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[32m  </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <!-- 2. Create API Key Modal -->[m[41m[m
-[32m+[m[32m  <div id="apiKeyModal" class="modal-overlay" style="display: none;">[m[41m[m
-[32m+[m[32m    <div class="modal-content card">[m[41m[m
-[32m+[m[32m      <h3>Create New dApp API Key (Demo)</h3>[m[41m[m
-[32m+[m[32m      <p style="color: var(--text-muted);">This generates a UI preview only — no backend exists yet to issue or authenticate real keys.</p>[m[41m[m
-[32m+[m[32m      <form id="apiKeyForm">[m[41m[m
-[32m+[m[32m        <div style="margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <label style="display: block; margin-bottom: 0.5rem;">dApp Gateway Name:</label>[m[41m[m
-[32m+[m[32m          <input type="text" id="apiKeyName" class="input-field" placeholder="e.g. Stellar Soroban Gateway" required>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div style="margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m          <label style="display: block; margin-bottom: 0.5rem;">Rate Limit Boundary:</label>[m[41m[m
-[32m+[m[32m          <select id="apiKeyRateLimit" class="input-field">[m[41m[m
-[32m+[m[32m            <option value="30 req/min">Standard (30 req/min)</option>[m[41m[m
-[32m+[m[32m            <option value="60 req/min">Pro (60 req/min)</option>[m[41m[m
-[32m+[m[32m            <option value="120 req/min">Enterprise (120 req/min)</option>[m[41m[m
-[32m+[m[32m          </select>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m        <div style="display: flex; gap: 1rem; justify-content: flex-end;">[m[41m[m
-[32m+[m[32m          <button type="button" id="closeApiKeyBtn" class="btn btn-secondary">Cancel</button>[m[41m[m
-[32m+[m[32m          <button type="submit" class="btn btn-primary">Generate API Key</button>[m[41m[m
-[32m+[m[32m        </div>[m[41m[m
-[32m+[m[32m      </form>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[32m  </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <!-- 3. Soroban Authorization XDR Inspector Drawer -->[m[41m[m
-[32m+[m[32m  <div id="txDetailModal" class="modal-overlay" style="display: none;">[m[41m[m
-[32m+[m[32m    <div class="modal-content card" style="max-width: 650px;">[m[41m[m
-[32m+[m[32m      <h3 id="detailTxTitle">Soroban Authorization Entry Inspector</h3>[m[41m[m
-[32m+[m[41m      [m
-[32m+[m[32m      <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem; color: #a5b4fc;">[m[41m[m
-[32m+[m[32m        <strong>Explorer Sync Note:</strong> Click below to inspect live active transactions on StellarExpert Testnet Explorer.[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m      <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #a855f7; margin-bottom: 1rem;">[m[41m[m
-[32m+[m[32m        <div id="detailTxContent">Loading details...</div>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m      <div style="display: flex; justify-content: space-between; align-items: center;">[m[41m[m
-[32m+[m[32m        <a id="detailStellarExpertLink" href="https://stellar.expert/explorer/testnet/tx/recent" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; text-decoration: none;">Open Live Stellar Testnet Explorer</a>[m[41m[m
-[32m+[m[32m        <button id="closeTxDetailBtn" class="btn btn-primary">Close Inspector</button>[m[41m[m
-[32m+[m[32m      </div>[m[41m[m
-[32m+[m[32m    </div>[m[41m[m
-[32m+[m[32m  </div>[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m  <script src="app.js"></script>[m[41m[m
-[32m+[m[32m</body>[m[41m[m
-[32m+[m[32m</html>[m[41m[m
-[1mdiff --git a/package.json b/package.json[m
-[1mindex 1376790..9b72a5e 100644[m
-[1m--- a/package.json[m
-[1m+++ b/package.json[m
-[36m@@ -1,8 +1,8 @@[m
-[31m-{[m
-[31m-  "name": "gasless-relayer-dashboard",[m
-[31m-  "version": "1.0.0",[m
-[31m-  "description": "Developer Portal & Paymaster Management Console for Stellar Gasless Network",[m
-[31m-  "scripts": {[m
-[31m-    "start": "npx serve ."[m
-[31m-  }[m
-[31m-}[m
-[32m+[m[32m{[m[41m[m
-[32m+[m[32m  "name": "gasless-relayer-dashboard",[m[41m[m
-[32m+[m[32m  "version": "1.0.0",[m[41m[m
-[32m+[m[32m  "description": "Developer Portal & Paymaster Management Console for Stellar Gasless Network",[m[41m[m
-[32m+[m[32m  "scripts": {[m[41m[m
-[32m+[m[32m    "start": "npx serve ."[m[41m[m
-[32m+[m[32m  }[m[41m[m
-[32m+[m[32m}[m[41m[m
-[1mdiff --git a/styles.css b/styles.css[m
-[1mindex 047bd4d..cfe6f97 100644[m
-[1m--- a/styles.css[m
-[1m+++ b/styles.css[m
-[36m@@ -1,212 +1,222 @@[m
-[31m-:root {[m
-[31m-  --bg-dark: #090d16;[m
-[31m-  --sidebar-bg: #101726;[m
-[31m-  --panel-bg: rgba(20, 28, 46, 0.75);[m
-[31m-  --border-color: rgba(255, 255, 255, 0.1);[m
-[31m-  --primary-accent: #6366f1;[m
-[31m-  --secondary-accent: #a855f7;[m
-[31m-  --text-main: #f3f4f6;[m
-[31m-  --text-muted: #9ca3af;[m
-[31m-  --accent-green: #10b981;[m
-[31m-  --accent-blue: #3b82f6;[m
-[31m-}[m
-[31m-[m
-[31m-body {[m
-[31m-  margin: 0;[m
-[31m-  font-family: 'Inter', system-ui, -apple-system, sans-serif;[m
-[31m-  background-color: var(--bg-dark);[m
-[31m-  color: var(--text-main);[m
-[31m-  background-image: [m
-[31m-    radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),[m
-[31m-    radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);[m
-[31m-  min-height: 100vh;[m
-[31m-  display: flex;[m
-[31m-}[m
-[31m-[m
-[31m-/* Sidebar Navigation */[m
-[31m-.sidebar {[m
-[31m-  width: 260px;[m
-[31m-  background: var(--sidebar-bg);[m
-[31m-  border-right: 1px solid var(--border-color);[m
-[31m-  padding: 2rem 1.25rem;[m
-[31m-  display: flex;[m
-[31m-  flex-direction: column;[m
-[31m-}[m
-[31m-[m
-[31m-.sidebar-brand {[m
-[31m-  font-size: 1.35rem;[m
-[31m-  font-weight: 700;[m
-[31m-  background: linear-gradient(135deg, #818cf8, #c084fc);[m
-[31m-  -webkit-background-clip: text;[m
-[31m-  -webkit-text-fill-color: transparent;[m
-[31m-  margin-bottom: 2.5rem;[m
-[31m-}[m
-[31m-[m
-[31m-.nav-list {[m
-[31m-  list-style: none;[m
-[31m-  padding: 0;[m
-[31m-  margin: 0;[m
-[31m-  display: flex;[m
-[31m-  flex-direction: column;[m
-[31m-  gap: 0.5rem;[m
-[31m-}[m
-[31m-[m
-[31m-.nav-item {[m
-[31m-  padding: 0.75rem 1rem;[m
-[31m-  border-radius: 8px;[m
-[31m-  color: var(--text-muted);[m
-[31m-  font-weight: 500;[m
-[31m-  cursor: pointer;[m
-[31m-  transition: all 0.2s ease;[m
-[31m-}[m
-[31m-[m
-[31m-.nav-item:hover, .nav-item.active {[m
-[31m-  background: rgba(99, 102, 241, 0.15);[m
-[31m-  color: #fff;[m
-[31m-  border-left: 3px solid var(--primary-accent);[m
-[31m-}[m
-[31m-[m
-[31m-/* Main Workspace */[m
-[31m-.main-content {[m
-[31m-  flex: 1;[m
-[31m-  padding: 2.5rem;[m
-[31m-  overflow-y: auto;[m
-[31m-}[m
-[31m-[m
-[31m-header {[m
-[31m-  display: flex;[m
-[31m-  justify-content: space-between;[m
-[31m-  align-items: center;[m
-[31m-  margin-bottom: 2rem;[m
-[31m-}[m
-[31m-[m
-[31m-.stats-grid {[m
-[31m-  display: grid;[m
-[31m-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));[m
-[31m-  gap: 1.5rem;[m
-[31m-  margin-bottom: 2.5rem;[m
-[31m-}[m
-[31m-[m
-[31m-.card {[m
-[31m-  background: var(--panel-bg);[m
-[31m-  backdrop-filter: blur(12px);[m
-[31m-  border: 1px solid var(--border-color);[m
-[31m-  border-radius: 12px;[m
-[31m-  padding: 1.5rem;[m
-[31m-}[m
-[31m-[m
-[31m-.card-label {[m
-[31m-  font-size: 0.875rem;[m
-[31m-  color: var(--text-muted);[m
-[31m-}[m
-[31m-[m
-[31m-.stat-val {[m
-[31m-  font-size: 1.75rem;[m
-[31m-  font-weight: 700;[m
-[31m-  margin-top: 0.5rem;[m
-[31m-  color: var(--accent-green);[m
-[31m-}[m
-[31m-[m
-[31m-.btn {[m
-[31m-  padding: 0.65rem 1.25rem;[m
-[31m-  border-radius: 8px;[m
-[31m-  font-weight: 600;[m
-[31m-  cursor: pointer;[m
-[31m-  border: none;[m
-[31m-  transition: all 0.2s ease;[m
-[31m-}[m
-[31m-[m
-[31m-.btn-primary {[m
-[31m-  background: linear-gradient(135deg, #6366f1, #a855f7);[m
-[31m-  color: #fff;[m
-[31m-}[m
-[31m-[m
-[31m-.btn-primary:hover {[m
-[31m-  opacity: 0.9;[m
-[31m-  transform: translateY(-1px);[m
-[31m-}[m
-[31m-[m
-[31m-.btn-secondary {[m
-[31m-  background: rgba(255, 255, 255, 0.08);[m
-[31m-  color: var(--text-main);[m
-[31m-  border: 1px solid var(--border-color);[m
-[31m-}[m
-[31m-[m
-[31m-.input-field {[m
-[31m-  width: 100%;[m
-[31m-  padding: 0.75rem;[m
-[31m-  border-radius: 8px;[m
-[31m-  background: rgba(0, 0, 0, 0.4);[m
-[31m-  border: 1px solid var(--border-color);[m
-[31m-  color: #fff;[m
-[31m-  font-size: 1rem;[m
-[31m-  box-sizing: border-box;[m
-[31m-}[m
-[31m-[m
-[31m-.table-container {[m
-[31m-  overflow-x: auto;[m
-[31m-}[m
-[31m-[m
-[31m-table {[m
-[31m-  width: 100%;[m
-[31m-  border-collapse: collapse;[m
-[31m-  margin-top: 1rem;[m
-[31m-}[m
-[31m-[m
-[31m-th, td {[m
-[31m-  padding: 0.85rem 1rem;[m
-[31m-  text-align: left;[m
-[31m-  border-bottom: 1px solid var(--border-color);[m
-[31m-}[m
-[31m-[m
-[31m-th {[m
-[31m-  color: var(--text-muted);[m
-[31m-  font-size: 0.85rem;[m
-[31m-}[m
-[31m-[m
-[31m-.badge {[m
-[31m-  background: rgba(16, 185, 129, 0.2);[m
-[31m-  color: var(--accent-green);[m
-[31m-  padding: 0.25rem 0.6rem;[m
-[31m-  border-radius: 6px;[m
-[31m-  font-size: 0.75rem;[m
-[31m-}[m
-[31m-[m
-[31m-.modal-overlay {[m
-[31m-  position: fixed;[m
-[31m-  top: 0;[m
-[31m-  left: 0;[m
-[31m-  width: 100vw;[m
-[31m-  height: 100vh;[m
-[31m-  background: rgba(0, 0, 0, 0.75);[m
-[31m-  backdrop-filter: blur(6px);[m
-[31m-  display: flex;[m
-[31m-  justify-content: center;[m
-[31m-  align-items: center;[m
-[31m-  z-index: 100;[m
-[31m-}[m
-[31m-[m
-[31m-.modal-content {[m
-[31m-  width: 100%;[m
-[31m-  max-width: 480px;[m
-[31m-}[m
-[31m-[m
-[31m-.toast {[m
-[31m-  position: fixed;[m
-[31m-  bottom: 2rem;[m
-[31m-  right: 2rem;[m
-[31m-  background: #10b981;[m
-[31m-  color: #fff;[m
-[31m-  padding: 0.85rem 1.5rem;[m
-[31m-  border-radius: 8px;[m
-[31m-  font-weight: 600;[m
-[31m-  opacity: 0;[m
-[31m-  transform: translateY(20px);[m
-[31m-  transition: all 0.3s ease;[m
-[31m-  z-index: 999;[m
-[31m-}[m
-[31m-[m
-[31m-.toast.show {[m
-[31m-  opacity: 1;[m
-[31m-  transform: translateY(0);[m
-[31m-}[m
-[32m+[m[32m:root {[m[41m[m
-[32m+[m[32m  --bg-dark: #090d16;[m[41m[m
-[32m+[m[32m  --sidebar-bg: #101726;[m[41m[m
-[32m+[m[32m  --panel-bg: rgba(20, 28, 46, 0.75);[m[41m[m
-[32m+[m[32m  --border-color: rgba(255, 255, 255, 0.1);[m[41m[m
-[32m+[m[32m  --primary-accent: #6366f1;[m[41m[m
-[32m+[m[32m  --secondary-accent: #a855f7;[m[41m[m
-[32m+[m[32m  --text-main: #f3f4f6;[m[41m[m
-[32m+[m[32m  --text-muted: #9ca3af;[m[41m[m
-[32m+[m[32m  --accent-green: #10b981;[m[41m[m
-[32m+[m[32m  --accent-blue: #3b82f6;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.demo-mode-banner {[m[41m[m
-[32m+[m[32m  background: linear-gradient(135deg, #b45309, #92400e);[m[41m[m
-[32m+[m[32m  color: #fff;[m[41m[m
-[32m+[m[32m  padding: 0.65rem 1.5rem;[m[41m[m
-[32m+[m[32m  font-size: 0.85rem;[m[41m[m
-[32m+[m[32m  font-weight: 600;[m[41m[m
-[32m+[m[32m  text-align: center;[m[41m[m
-[32m+[m[32m  letter-spacing: 0.02em;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mbody {[m[41m[m
-[32m+[m[32m  margin: 0;[m[41m[m
-[32m+[m[32m  font-family: 'Inter', system-ui, -apple-system, sans-serif;[m[41m[m
-[32m+[m[32m  background-color: var(--bg-dark);[m[41m[m
-[32m+[m[32m  color: var(--text-main);[m[41m[m
-[32m+[m[32m  background-image:[m[41m [m
-[32m+[m[32m    radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),[m[41m[m
-[32m+[m[32m    radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);[m[41m[m
-[32m+[m[32m  min-height: 100vh;[m[41m[m
-[32m+[m[32m  display: flex;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m/* Sidebar Navigation */[m[41m[m
-[32m+[m[32m.sidebar {[m[41m[m
-[32m+[m[32m  width: 260px;[m[41m[m
-[32m+[m[32m  background: var(--sidebar-bg);[m[41m[m
-[32m+[m[32m  border-right: 1px solid var(--border-color);[m[41m[m
-[32m+[m[32m  padding: 2rem 1.25rem;[m[41m[m
-[32m+[m[32m  display: flex;[m[41m[m
-[32m+[m[32m  flex-direction: column;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.sidebar-brand {[m[41m[m
-[32m+[m[32m  font-size: 1.35rem;[m[41m[m
-[32m+[m[32m  font-weight: 700;[m[41m[m
-[32m+[m[32m  background: linear-gradient(135deg, #818cf8, #c084fc);[m[41m[m
-[32m+[m[32m  -webkit-background-clip: text;[m[41m[m
-[32m+[m[32m  -webkit-text-fill-color: transparent;[m[41m[m
-[32m+[m[32m  margin-bottom: 2.5rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.nav-list {[m[41m[m
-[32m+[m[32m  list-style: none;[m[41m[m
-[32m+[m[32m  padding: 0;[m[41m[m
-[32m+[m[32m  margin: 0;[m[41m[m
-[32m+[m[32m  display: flex;[m[41m[m
-[32m+[m[32m  flex-direction: column;[m[41m[m
-[32m+[m[32m  gap: 0.5rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.nav-item {[m[41m[m
-[32m+[m[32m  padding: 0.75rem 1rem;[m[41m[m
-[32m+[m[32m  border-radius: 8px;[m[41m[m
-[32m+[m[32m  color: var(--text-muted);[m[41m[m
-[32m+[m[32m  font-weight: 500;[m[41m[m
-[32m+[m[32m  cursor: pointer;[m[41m[m
-[32m+[m[32m  transition: all 0.2s ease;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.nav-item:hover, .nav-item.active {[m[41m[m
-[32m+[m[32m  background: rgba(99, 102, 241, 0.15);[m[41m[m
-[32m+[m[32m  color: #fff;[m[41m[m
-[32m+[m[32m  border-left: 3px solid var(--primary-accent);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m/* Main Workspace */[m[41m[m
-[32m+[m[32m.main-content {[m[41m[m
-[32m+[m[32m  flex: 1;[m[41m[m
-[32m+[m[32m  padding: 2.5rem;[m[41m[m
-[32m+[m[32m  overflow-y: auto;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mheader {[m[41m[m
-[32m+[m[32m  display: flex;[m[41m[m
-[32m+[m[32m  justify-content: space-between;[m[41m[m
-[32m+[m[32m  align-items: center;[m[41m[m
-[32m+[m[32m  margin-bottom: 2rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.stats-grid {[m[41m[m
-[32m+[m[32m  display: grid;[m[41m[m
-[32m+[m[32m  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));[m[41m[m
-[32m+[m[32m  gap: 1.5rem;[m[41m[m
-[32m+[m[32m  margin-bottom: 2.5rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.card {[m[41m[m
-[32m+[m[32m  background: var(--panel-bg);[m[41m[m
-[32m+[m[32m  backdrop-filter: blur(12px);[m[41m[m
-[32m+[m[32m  border: 1px solid var(--border-color);[m[41m[m
-[32m+[m[32m  border-radius: 12px;[m[41m[m
-[32m+[m[32m  padding: 1.5rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.card-label {[m[41m[m
-[32m+[m[32m  font-size: 0.875rem;[m[41m[m
-[32m+[m[32m  color: var(--text-muted);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.stat-val {[m[41m[m
-[32m+[m[32m  font-size: 1.75rem;[m[41m[m
-[32m+[m[32m  font-weight: 700;[m[41m[m
-[32m+[m[32m  margin-top: 0.5rem;[m[41m[m
-[32m+[m[32m  color: var(--accent-green);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.btn {[m[41m[m
-[32m+[m[32m  padding: 0.65rem 1.25rem;[m[41m[m
-[32m+[m[32m  border-radius: 8px;[m[41m[m
-[32m+[m[32m  font-weight: 600;[m[41m[m
-[32m+[m[32m  cursor: pointer;[m[41m[m
-[32m+[m[32m  border: none;[m[41m[m
-[32m+[m[32m  transition: all 0.2s ease;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.btn-primary {[m[41m[m
-[32m+[m[32m  background: linear-gradient(135deg, #6366f1, #a855f7);[m[41m[m
-[32m+[m[32m  color: #fff;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.btn-primary:hover {[m[41m[m
-[32m+[m[32m  opacity: 0.9;[m[41m[m
-[32m+[m[32m  transform: translateY(-1px);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.btn-secondary {[m[41m[m
-[32m+[m[32m  background: rgba(255, 255, 255, 0.08);[m[41m[m
-[32m+[m[32m  color: var(--text-main);[m[41m[m
-[32m+[m[32m  border: 1px solid var(--border-color);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.input-field {[m[41m[m
-[32m+[m[32m  width: 100%;[m[41m[m
-[32m+[m[32m  padding: 0.75rem;[m[41m[m
-[32m+[m[32m  border-radius: 8px;[m[41m[m
-[32m+[m[32m  background: rgba(0, 0, 0, 0.4);[m[41m[m
-[32m+[m[32m  border: 1px solid var(--border-color);[m[41m[m
-[32m+[m[32m  color: #fff;[m[41m[m
-[32m+[m[32m  font-size: 1rem;[m[41m[m
-[32m+[m[32m  box-sizing: border-box;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.table-container {[m[41m[m
-[32m+[m[32m  overflow-x: auto;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mtable {[m[41m[m
-[32m+[m[32m  width: 100%;[m[41m[m
-[32m+[m[32m  border-collapse: collapse;[m[41m[m
-[32m+[m[32m  margin-top: 1rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mth, td {[m[41m[m
-[32m+[m[32m  padding: 0.85rem 1rem;[m[41m[m
-[32m+[m[32m  text-align: left;[m[41m[m
-[32m+[m[32m  border-bottom: 1px solid var(--border-color);[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mth {[m[41m[m
-[32m+[m[32m  color: var(--text-muted);[m[41m[m
-[32m+[m[32m  font-size: 0.85rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.badge {[m[41m[m
-[32m+[m[32m  background: rgba(16, 185, 129, 0.2);[m[41m[m
-[32m+[m[32m  color: var(--accent-green);[m[41m[m
-[32m+[m[32m  padding: 0.25rem 0.6rem;[m[41m[m
-[32m+[m[32m  border-radius: 6px;[m[41m[m
-[32m+[m[32m  font-size: 0.75rem;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.modal-overlay {[m[41m[m
-[32m+[m[32m  position: fixed;[m[41m[m
-[32m+[m[32m  top: 0;[m[41m[m
-[32m+[m[32m  left: 0;[m[41m[m
-[32m+[m[32m  width: 100vw;[m[41m[m
-[32m+[m[32m  height: 100vh;[m[41m[m
-[32m+[m[32m  background: rgba(0, 0, 0, 0.75);[m[41m[m
-[32m+[m[32m  backdrop-filter: blur(6px);[m[41m[m
-[32m+[m[32m  display: flex;[m[41m[m
-[32m+[m[32m  justify-content: center;[m[41m[m
-[32m+[m[32m  align-items: center;[m[41m[m
-[32m+[m[32m  z-index: 100;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.modal-content {[m[41m[m
-[32m+[m[32m  width: 100%;[m[41m[m
-[32m+[m[32m  max-width: 480px;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.toast {[m[41m[m
-[32m+[m[32m  position: fixed;[m[41m[m
-[32m+[m[32m  bottom: 2rem;[m[41m[m
-[32m+[m[32m  right: 2rem;[m[41m[m
-[32m+[m[32m  background: #10b981;[m[41m[m
-[32m+[m[32m  color: #fff;[m[41m[m
-[32m+[m[32m  padding: 0.85rem 1.5rem;[m[41m[m
-[32m+[m[32m  border-radius: 8px;[m[41m[m
-[32m+[m[32m  font-weight: 600;[m[41m[m
-[32m+[m[32m  opacity: 0;[m[41m[m
-[32m+[m[32m  transform: translateY(20px);[m[41m[m
-[32m+[m[32m  transition: all 0.3s ease;[m[41m[m
-[32m+[m[32m  z-index: 999;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m.toast.show {[m[41m[m
-[32m+[m[32m  opacity: 1;[m[41m[m
-[32m+[m[32m  transform: translateY(0);[m[41m[m
-[32m+[m[32m}[m[41m[m

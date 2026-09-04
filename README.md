@@ -8,7 +8,13 @@
 
 **A frontend preview of the admin console planned for Stellar Gasless Network — Paymaster gas reserves, API key management, relayer health, and Soroban meta-transaction inspection.**
 
-⚠️ **Current status: UI mockup only. There is no backend behind this yet.** The `stellar-gasless-relayer` service this console is designed to talk to is not deployed anywhere public. Every number, balance, API key, and "transaction" you see in this app is either a hardcoded placeholder or generated locally in your browser tab — nothing is persisted, and nothing reaches a real server. The one exception: the demo walkthrough makes a single **read-only** call to the public Stellar testnet Horizon API to fetch a recent, unrelated transaction hash as an illustration of what a receipt would look like.
+⚠️ **Current status: mostly a UI mockup, with two genuinely real pieces added 2026-09-04.** No `stellar-gasless-relayer` instance is deployed anywhere public — you have to run one yourself locally to see the real parts light up. Paymaster gas-reserve accounting, API key issuance, and the transaction history table are all still hardcoded placeholders or generated locally in your browser tab — nothing there is persisted or real.
+
+**What's real now**, via `real.js` (see its own header comment for two ESM/CDN interop bugs found and fixed while building this):
+- **Live Relayer Status** (Overview tab) — point it at a `stellar-gasless-relayer` instance you're running locally and it shows that service's real `/health` and `/metrics.json` data: real keypair pool size, real relayed/failed counts, real XLM spent sponsoring fees. Shows "not reachable" honestly if there's nothing there.
+- **Real Gasless Transaction** (Relay Engine tab) — connects a real Freighter wallet, builds and signs a real call to the deployed `did_registry` contract (registering or updating your connected wallet's own DID), and submits it through `@stellar-gasless/sdk`'s real `GaslessClient` to your configured relayer. The result box independently checks Horizon afterward to confirm the fee was actually paid by the relayer's sponsor account, not your wallet — the same proof used in `stellar-gasless-sdk`'s own `examples/e2e-gasless-relay.mjs`.
+
+The old fully-fake "Relay Engine" walkthrough below the real card still works exactly as before (fetches one unrelated real Horizon tx as an illustration) for anyone without a wallet or a relayer handy.
 
 This repository houses the **Console UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem. It's the least-finished piece of the project — treat it as a design reference, not a working product.
 

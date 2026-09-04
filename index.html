@@ -64,43 +64,6 @@
         </div>
       </div>
 
-      <!-- Relayer Keypair Pool Status Matrix -->
-      <div class="card" style="margin-bottom: 2rem;">
-        <h3 style="margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-accent);"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
-          Relayer Keypair Pool Health Matrix (Example Layout)
-        </h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Illustrates how the relayer's keypair pool would be surfaced once a backend is deployed. No relayer service is running yet, so nothing below reflects real balances.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #1</span>
-              <span class="badge">Active</span>
-            </div>
-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_1...9f1a</div>
-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>
-          </div>
-
-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #2</span>
-              <span class="badge">Active</span>
-            </div>
-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_2...4b2c</div>
-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 48.50 XLM</div>
-          </div>
-
-          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600;">Relayer Keypair #3</span>
-              <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">Standby</span>
-            </div>
-            <div style="font-family: monospace; font-size: 0.8rem; color: #818cf8; margin: 0.5rem 0;">GCRELAY_POOL_KEY_3...8d11</div>
-            <div style="font-size: 0.85rem; color: var(--accent-green);">Balance: 50.00 XLM</div>
-          </div>
-        </div>
-      </div>
-
       <!-- Protocol Relay Engine Safe Navigation Banner -->
       <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -434,5 +397,7 @@ console.log('Gasless Meta-Tx Hash:', result.hash);</div>
   </div>
 
   <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@stellar/stellar-sdk@17.0.1/dist/stellar-sdk.min.js"></script>
+  <script type="module" src="real.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@
 
 **A frontend preview of the admin console planned for Stellar Gasless Network — Paymaster gas reserves, API key management, relayer health, and Soroban meta-transaction inspection.**
 
+🔗 **[Live demo: stellar-gasless-net.github.io/gasless-relayer-dashboard](https://stellar-gasless-net.github.io/gasless-relayer-dashboard/)** — deployed via GitHub Pages, no setup required.
+
 ⚠️ **Current status: mostly a UI mockup, with two genuinely real pieces added 2026-09-04.** No `stellar-gasless-relayer` instance is deployed anywhere public — you have to run one yourself locally to see the real parts light up. Paymaster gas-reserve accounting, API key issuance, and the transaction history table are all still hardcoded placeholders or generated locally in your browser tab — nothing there is persisted or real.
 
 **What's real now**, via `real.js` (see its own header comment for two ESM/CDN interop bugs found and fixed while building this):
@@ -76,7 +78,7 @@ This repository houses the **Console UI** for the [`stellar-gasless-net`](https:
 
 ## Running the Console Locally
 
-Open [`index.html`](./index.html) directly in any web browser, or launch a local dev server:
+The [live demo](https://stellar-gasless-net.github.io/gasless-relayer-dashboard/) above needs no setup, but to see the two real integrations light up (Overview tab's live relayer status, and the real gasless transaction demo), you need a `stellar-gasless-relayer` instance running locally — see that repo's README. Otherwise, open [`index.html`](./index.html) directly in any web browser, or launch a local dev server:
 
 ```bash
 npx serve .

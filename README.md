@@ -18,6 +18,12 @@ The old fully-fake "Relay Engine" walkthrough below the real card still works ex
 
 This repository houses the **Console UI** for the [`stellar-gasless-net`](https://github.com/stellar-gasless-net) ecosystem. It's the least-finished piece of the project — treat it as a design reference, not a working product.
 
+## What's genuinely real here (and what honestly isn't)
+
+- **Two real, end-to-end integrations, not just UI.** The Overview tab's relayer status polls a real running `stellar-gasless-relayer`'s `/health` and `/metrics.json`. The "Real Gasless Transaction" card connects an actual Freighter wallet, builds and signs a real `did_registry` call, submits it through `@stellar-gasless/sdk`'s real `GaslessClient`, and independently re-checks Horizon afterward to confirm the relayer's sponsor — not the user's wallet — actually paid the fee.
+- **Everything else is honestly labeled as a mockup**, not silently implied to be real: Paymaster gas-reserve accounting, API key issuance, and the transaction history table are disclosed as local-only, hardcoded, or generated in-browser.
+- **The old fully-fake demo still works**, wrapped behind a `<details>` toggle so it doesn't compete with the real card for a visitor's attention, for anyone without a wallet or relayer handy.
+
 ---
 
 ## Console Portal UI Architecture
@@ -42,7 +48,7 @@ This repository houses the **Console UI** for the [`stellar-gasless-net`](https:
 │                                       v                                         │
 │                        ┌──────────────────────────────┐                         │
 │                        │ Soroban Auth Entry Inspector │                         │
-│                        │  (StellarExpert Explorer)   │                         │
+│                        │  (StellarExpert Explorer)    │                         │
 │                        └──────────────────────────────┘                         │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -75,6 +81,17 @@ Open [`index.html`](./index.html) directly in any web browser, or launch a local
 ```bash
 npx serve .
 ```
+
+---
+
+## Ecosystem
+
+Part of **stellar-gasless-net**'s gasless meta-transaction protocol suite, alongside:
+- [`soroban-gasless-contracts`](https://github.com/stellar-gasless-net/soroban-gasless-contracts) — the on-chain WASM contracts (trusted forwarder, paymasters, smart account wallet)
+- [`stellar-gasless-relayer`](https://github.com/stellar-gasless-net/stellar-gasless-relayer) — the backend service this console's Overview tab polls and the Relay Engine tab submits through
+- [`stellar-gasless-sdk`](https://github.com/stellar-gasless-net/stellar-gasless-sdk) — the TypeScript SDK this console's real gasless transaction demo actually uses
+
+The real demo's target contract, `did_registry`, is a cross-org dependency: it's deployed from [`stellar-zkident`](https://github.com/stellar-zklab/stellar-zkident) in the separate `stellar-zklab` org, chosen simply because it was a real, already-deployed contract with a simple call shape — not because these two ecosystems are otherwise related.
 
 ---
 

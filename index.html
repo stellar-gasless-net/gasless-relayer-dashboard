@@ -135,7 +135,13 @@
 
     <!-- TAB 2: RELAY ENGINE -->
     <div id="demoTab" class="tab-content" style="display: none;">
-      <div class="card" style="margin-bottom: 2rem;">
+      <!-- The real card (inserted above this by real.js) is the primary flow on this tab.
+           The walkthrough below is the original fully-fake mockup, kept for anyone without
+           a wallet or a relayer handy — collapsed by default so it doesn't visually compete
+           with the real card and get mistaken for the live flow. -->
+      <details style="margin-bottom: 2rem;">
+      <summary style="cursor: pointer; color: var(--text-muted); font-weight: 600; padding: 0.5rem 0;">Show legacy UI mockup (no live backend — illustrative only)</summary>
+      <div class="card" style="margin-top: 1rem;">
         <h3>Soroban FeeBump Relay Walkthrough (Demo)</h3>
         <p style="color: var(--text-muted);">This walks through what the flow will look like once a relayer backend is deployed. No transaction is actually submitted on your behalf — nothing here touches your wallet or funds.</p>
 
@@ -216,6 +222,7 @@
           </div>
         </div>
       </div>
+      </details>
     </div>
 
     <!-- TAB 3: PAYMASTERS -->

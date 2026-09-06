@@ -5,10 +5,11 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](./CONTRIBUTING.md)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-gasless--relayer--dashboard.vercel.app-black?style=flat&logo=vercel)](https://gasless-relayer-dashboard.vercel.app/)
 
 **A frontend preview of the admin console planned for Stellar Gasless Network — Paymaster gas reserves, API key management, relayer health, and Soroban meta-transaction inspection.**
 
-🔗 **[Live demo: stellar-gasless-net.github.io/gasless-relayer-dashboard](https://stellar-gasless-net.github.io/gasless-relayer-dashboard/)** — deployed via GitHub Pages, no setup required.
+🔗 **[Live demo: gasless-relayer-dashboard.vercel.app](https://gasless-relayer-dashboard.vercel.app/)** (also mirrored on [GitHub Pages](https://stellar-gasless-net.github.io/gasless-relayer-dashboard/)) — no setup required.
 
 ⚠️ **Current status: mostly a UI mockup, with two genuinely real pieces added 2026-09-04.** No `stellar-gasless-relayer` instance is deployed anywhere public — you have to run one yourself locally to see the real parts light up. Paymaster gas-reserve accounting, API key issuance, and the transaction history table are all still hardcoded placeholders or generated locally in your browser tab — nothing there is persisted or real.
 

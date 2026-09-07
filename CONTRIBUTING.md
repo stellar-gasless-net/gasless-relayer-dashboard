@@ -46,3 +46,4 @@ We enforce a sleek **Glassmorphism Dark Mode** UI design system:
 - Ensure interactive elements are keyboard reachable (`Tab` & `Enter` navigation).
 - Include `aria-label` attributes for icon-only buttons.
 - Maintain responsive layouts across desktop and mobile viewports.
+- Before opening a PR, run the same check CI runs: `bash scripts/check-source-artifacts.sh` — scans for accidentally committed secrets or leftover local build artifacts. See `.github/workflows/ci.yml`.

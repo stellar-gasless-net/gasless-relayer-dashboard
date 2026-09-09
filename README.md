@@ -29,6 +29,17 @@ This repository houses the **Console UI** for the [`stellar-gasless-net`](https:
 
 ---
 
+## Contents
+
+- [Console Portal UI Architecture](#console-portal-ui-architecture)
+- [Detailed Component Capabilities](#detailed-component-capabilities)
+- [Running the Console Locally](#running-the-console-locally)
+- [Ecosystem](#ecosystem)
+- [Contributing & CONTRIBUTING.md Guidelines](#contributing--contributingmd-guidelines)
+- [Future Improvements & Console Roadmap](#future-improvements--console-roadmap)
+
+---
+
 ## Console Portal UI Architecture
 
 ```

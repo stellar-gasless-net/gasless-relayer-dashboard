@@ -25,6 +25,7 @@
       <li class="nav-item active" data-tab="overviewTab">Overview</li>
       <li class="nav-item" data-tab="demoTab">Relay Engine</li>
       <li class="nav-item" data-tab="sessionKeysTab">Session Keys</li>
+      <li class="nav-item" data-tab="passkeyWalletTab">Passkey Wallet</li>
       <li class="nav-item" data-tab="paymastersTab">Paymasters</li>
       <li class="nav-item" data-tab="apikeysTab">API Keys</li>
       <li class="nav-item" data-tab="transactionsTab">Relayed Txs</li>
@@ -247,6 +248,59 @@
       </div>
     </div>
 
+    <!-- TAB: PASSKEY WALLET -->
+    <div id="passkeyWalletTab" class="tab-content" style="display: none;">
+      <div class="card" style="margin-bottom: 2rem; border: 1px solid rgba(139, 92, 246, 0.4);">
+        <h3 style="margin-top:0; color: #a78bfa;">Real Passkey Smart Account (Real)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          <code>account-abstraction-wallet</code>'s whole point is a smart account controlled by a real WebAuthn
+          passkey instead of a seed phrase — but no demo anywhere in this ecosystem had ever actually shown that
+          working end to end (the other real demos here use Freighter, a classic keypair wallet). This one does:
+          a real browser passkey, a real freshly-deployed wallet contract, and a real on-chain call authorized
+          by <em>only</em> your fingerprint/security key — no Freighter signature in the authorization step.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">
+          Freighter is still used for one thing: paying the real network fee to deploy your wallet (someone has to
+          fund that transaction). Once deployed, step 4 below proves Freighter is <em>not</em> needed to actually
+          use the wallet.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+          <div>
+            <strong>1. Connect a funding wallet (Freighter)</strong>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem; align-items:center;">
+              <button id="passkeyFunderConnectBtn" class="btn btn-secondary">Connect Freighter</button>
+              <span id="passkeyFunderStatus" style="font-size:0.85rem; color: var(--text-muted);"></span>
+            </div>
+          </div>
+
+          <div>
+            <strong>2. Create a real passkey</strong>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem; align-items:center; flex-wrap: wrap;">
+              <button id="passkeyCreateBtn" class="btn btn-secondary" disabled>Create Passkey</button>
+              <span id="passkeyCreateStatus" style="font-size:0.85rem; color: var(--text-muted); word-break: break-word;"></span>
+            </div>
+          </div>
+
+          <div>
+            <strong>3. Deploy your real wallet, keyed to that passkey</strong>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem; align-items:center; flex-wrap: wrap;">
+              <button id="passkeyDeployBtn" class="btn btn-secondary" disabled>Deploy Wallet</button>
+              <span id="passkeyDeployStatus" style="font-size:0.85rem; color: var(--text-muted); word-break: break-word;"></span>
+            </div>
+          </div>
+
+          <div>
+            <strong>4. Authorize a real on-chain call using ONLY the passkey</strong>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem; align-items:center; flex-wrap: wrap;">
+              <button id="passkeyExecuteBtn" class="btn btn-primary" disabled>Execute via Passkey</button>
+              <span id="passkeyExecuteStatus" style="font-size:0.85rem; color: var(--text-muted); word-break: break-word;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB 3: PAYMASTERS -->
     <div id="paymastersTab" class="tab-content" style="display: none;">
       <div class="card" style="margin-bottom: 2rem;">
@@ -428,5 +482,6 @@ console.log('Gasless Meta-Tx Hash:', result.hash);</div>
   <script src="app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@stellar/stellar-sdk@17.0.1/dist/stellar-sdk.min.js"></script>
   <script type="module" src="real.js"></script>
+  <script type="module" src="passkey.js"></script>
 </body>
 </html>

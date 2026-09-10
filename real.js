@@ -35,7 +35,67 @@ let relayerUrl = localStorage.getItem('gasless_dashboard_relayer_url') || 'http:
 document.addEventListener('DOMContentLoaded', () => {
   wireRelayerConnection();
   wireRealWalletAndDemo();
+  wireSessionKeys();
 });
+
+// --- Session Keys tab: real get_session_key reads from account-abstraction-wallet -------
+
+function formatStroopsAsXlm(stroops) {
+  return (Number(stroops) / 1e7).toLocaleString(undefined, { maximumFractionDigits: 7 });
+}
+
+function wireSessionKeys() {
+  const btn = document.getElementById('sessionKeyLookupBtn');
+  if (!btn) return;
+
+  const runLookup = () => lookupSessionKey();
+  btn.addEventListener('click', runLookup);
+
+  // Real read, no wallet needed — look up the pre-filled real demo session key on load so
+  // the tab shows genuine data immediately instead of an empty box.
+  runLookup();
+}
+
+async function lookupSessionKey() {
+  const box = document.getElementById('sessionKeyResultBox');
+  const walletId = document.getElementById('sessionKeyWalletInput').value.trim();
+  const sessionKeyAddress = document.getElementById('sessionKeyAddressInput').value.trim();
+  if (!walletId || !sessionKeyAddress) {
+    box.innerHTML = '<span style="color:#f87171;">Enter both a wallet contract ID and a session key address.</span>';
+    return;
+  }
+
+  box.textContent = `Reading get_session_key from ${walletId.slice(0, 6)}...${walletId.slice(-4)} on testnet...`;
+  try {
+    const client = await ContractClient.from({
+      contractId: walletId,
+      networkPassphrase: NETWORK_PASSPHRASE,
+      rpcUrl: RPC_URL,
+    });
+    const tx = await client.get_session_key({ session_key: sessionKeyAddress });
+    const data = tx.result;
+
+    if (!data) {
+      box.innerHTML = `<span style="color: #fbbf24;">No session key registered at this address on this wallet — a real, honest "not found," not an error.</span>`;
+      return;
+    }
+
+    const functionsList = data.allowed_functions.map((f) => `<code>${f}</code>`).join(', ');
+    const expiresDate = new Date(Number(data.expires_at) * 1000).toISOString();
+    const capLine = data.spend_cap === null || data.spend_cap === undefined
+      ? 'No spend cap (unlimited transfer amount, still scoped to the allowed contract/functions)'
+      : `${formatStroopsAsXlm(data.spend_cap)} cumulative &middot; spent so far: ${formatStroopsAsXlm(data.spent)}`;
+
+    box.innerHTML = `
+      <div style="color: var(--accent-green); font-weight:600; margin-bottom:0.6rem;">&#9679; Real permissions, read live from the contract</div>
+      <div style="margin-bottom:0.3rem;">This key can call: ${functionsList} <span style="color:var(--text-muted);">on</span> ${data.allowed_contract.slice(0, 6)}...${data.allowed_contract.slice(-4)}</div>
+      <div style="margin-bottom:0.3rem;">Spend cap: ${capLine}</div>
+      <div>Expires: ${expiresDate}</div>
+    `;
+  } catch (err) {
+    box.innerHTML = `<span style="color:#f87171;">Lookup failed: ${err.message}</span>`;
+  }
+}
 
 // --- Overview tab: real relayer health/metrics polling ---------------------------------
 

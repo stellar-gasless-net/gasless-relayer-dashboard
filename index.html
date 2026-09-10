@@ -24,6 +24,7 @@
     <ul class="nav-list">
       <li class="nav-item active" data-tab="overviewTab">Overview</li>
       <li class="nav-item" data-tab="demoTab">Relay Engine</li>
+      <li class="nav-item" data-tab="sessionKeysTab">Session Keys</li>
       <li class="nav-item" data-tab="paymastersTab">Paymasters</li>
       <li class="nav-item" data-tab="apikeysTab">API Keys</li>
       <li class="nav-item" data-tab="transactionsTab">Relayed Txs</li>
@@ -223,6 +224,27 @@
         </div>
       </div>
       </details>
+    </div>
+
+    <!-- TAB: SESSION KEYS -->
+    <div id="sessionKeysTab" class="tab-content" style="display: none;">
+      <div class="card" style="margin-bottom: 2rem; border: 1px solid rgba(16, 185, 129, 0.4);">
+        <h3 style="margin-top:0; color: var(--accent-green);">Session Key Permissions (Real)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Real, live reads from a deployed <code>account-abstraction-wallet</code> contract's
+          <code>get_session_key</code> — the exact permissions its own <code>__check_auth</code> enforces on-chain,
+          not a separate summary that could drift from what's actually checked. No wallet connection needed to view this;
+          it's public on-chain state.
+        </p>
+        <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap: wrap;">
+          <input id="sessionKeyWalletInput" class="input-field" style="flex:2; min-width:280px;" value="CA5OHHJA6LMSMZNVVBWSTZTPZJWJUZGHDSZSJYX4H5XYEFTUSQEUR45P" placeholder="Wallet contract ID (C...)">
+          <input id="sessionKeyAddressInput" class="input-field" style="flex:2; min-width:280px;" value="GBYENETMRAQ67FMIH2YT3MAAMTVO2QEMCSL2UYXHD5V45P35LNOZEKK6" placeholder="Session key address (G...)">
+          <button id="sessionKeyLookupBtn" class="btn btn-primary">Look Up</button>
+        </div>
+        <div id="sessionKeyResultBox" style="font-family: monospace; font-size: 0.85rem; color: var(--text-muted);">
+          Not looked up yet.
+        </div>
+      </div>
     </div>
 
     <!-- TAB 3: PAYMASTERS -->

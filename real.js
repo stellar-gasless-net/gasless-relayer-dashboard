@@ -131,6 +131,32 @@ function wireRelayerConnection() {
   refreshRelayerStatus();
 }
 
+// Plain-language depletion line for the daily sponsorship budget, modeled on Superfluid
+// Explorer's "Pred. liquidation: <date>" pattern — real numbers from the relayer's own
+// /metrics.json (spend_budget.ts's tracked totals), not a client-side guess.
+function formatDailyBudgetLine(dailyBudget) {
+  if (!dailyBudget) return '';
+  const { globalLimitStroops, globalSpentStroops, resetsAt } = dailyBudget;
+  if (!globalLimitStroops || globalLimitStroops <= 0) {
+    return `<div>sponsorship budget: <span style="color: var(--text-muted);">unlimited (no GLOBAL_DAILY_BUDGET_STROOPS configured)</span></div>`;
+  }
+  const pct = Math.min(100, (globalSpentStroops / globalLimitStroops) * 100);
+  const spentXlm = (globalSpentStroops / 1e7).toFixed(4);
+  const limitXlm = (globalLimitStroops / 1e7).toFixed(4);
+  const msLeft = Math.max(0, new Date(resetsAt).getTime() - Date.now());
+  const hoursLeft = Math.floor(msLeft / 3_600_000);
+  const minsLeft = Math.floor((msLeft % 3_600_000) / 60_000);
+  const barColor = pct >= 90 ? '#f87171' : pct >= 70 ? '#fbbf24' : 'var(--accent-green)';
+  return `
+    <div style="margin-top:0.4rem;">
+      <div>today's sponsorship budget: ${pct.toFixed(1)}% used (${spentXlm} / ${limitXlm} XLM) &mdash; resets in ${hoursLeft}h ${minsLeft}m</div>
+      <div style="width:100%; max-width:280px; height:6px; background:#1f2937; border-radius:3px; overflow:hidden; margin-top:0.3rem;">
+        <div style="width:${pct}%; height:100%; background:${barColor};"></div>
+      </div>
+    </div>
+  `;
+}
+
 async function refreshRelayerStatus() {
   const box = document.getElementById('relayerStatusBox');
   box.textContent = `Connecting to ${relayerUrl} ...`;
@@ -148,6 +174,7 @@ async function refreshRelayerStatus() {
       <div>total relayed: ${metrics.totalRelayed} &nbsp; total failed: ${metrics.totalFailed}</div>
       <div>total XLM spent sponsoring fees: ${metrics.totalXlmSpent}</div>
       <div>uptime: ${metrics.uptimeSeconds}s</div>
+      ${formatDailyBudgetLine(metrics.dailyBudget)}
     `;
     const statRelayed = document.getElementById('statRelayedTxs');
     if (statRelayed) statRelayed.innerHTML = `${metrics.totalRelayed} <span style="font-size:0.6em; color: var(--text-muted); font-weight: 400;">(real, from connected relayer)</span>`;

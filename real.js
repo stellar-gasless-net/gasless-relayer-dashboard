@@ -41,9 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Verified Credential Check: real has_credential reads from stellar-zkident's -------
 // credential_verifier. Mirrors @stellar-gasless/sdk's hasVerifiedCredential (src/utils/
-// zkident.ts) — reimplemented here (not imported) because this dashboard is plain static
-// HTML/JS with no bundler, and that package isn't published to a registry a <script> tag
-// can reach. Keep this in sync with the SDK's own version if that algorithm ever changes.
+// zkident.ts) — reimplemented here (not imported) even though that package is genuinely
+// published to npm now (2026-09-12): this dashboard has no bundler, and importing it via an
+// ESM CDN would pull in a second, independent copy of @stellar/stellar-sdk's internals — the
+// exact instanceof/.clone()-breaking collision documented above for the same reason
+// '@stellar/stellar-sdk' itself is loaded as a UMD <script> global instead of an ESM import.
+// Keep this in sync with the SDK's own version if that algorithm ever changes.
 const CREDENTIAL_VERIFIER_ID = 'CDLRSLHALMX6OU5IHWY6CKTROK3SYENEA75K6OWSZCPAW4EOTR2OZGSF';
 
 async function hasVerifiedCredential(userAddress, credentialType) {

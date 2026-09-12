@@ -255,9 +255,12 @@
           <code>sybil_resistant_faucet::claim()</code>, and this ecosystem's own
           <code>stellar-gasless-relayer</code> sponsorship tiering all depend on. This panel reimplements
           <code>@stellar-gasless/sdk</code>'s <code>hasVerifiedCredential</code> using the same
-          <code>window.StellarSdk</code> global already loaded above, rather than importing the package directly —
-          this dashboard has no bundler and that package isn't published to a registry a plain
-          <code>&lt;script&gt;</code> tag can reach. See that SDK's <code>src/utils/zkident.ts</code> for the
+          <code>window.StellarSdk</code> global already loaded above, rather than importing the package directly.
+          <code>@stellar-gasless/sdk</code> is genuinely published to npm now (2026-09-12) — the blocker isn't
+          publication, it's that this dashboard has no bundler, and importing it via an ESM CDN would pull in a
+          second, independent copy of <code>@stellar/stellar-sdk</code>'s internals — the exact
+          instanceof/<code>.clone()</code>-breaking collision <code>real.js</code>'s own header comment already
+          documents hitting once with this same package. See that SDK's <code>src/utils/zkident.ts</code> for the
           canonical version this stays in sync with. No wallet connection needed; it's public on-chain state.
         </p>
         <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap: wrap;">
@@ -392,8 +395,10 @@
       <!-- Live Code Snippet Generator Card -->
       <div class="card">
         <h3>@stellar-gasless/sdk Integration Code Example</h3>
-        <p style="color: var(--text-muted);">Example TypeScript snippet — replace <code>relayerUrl</code> with your own deployed relayer once you have one running, and <code>dappApiKey</code> with a real key once the relayer issues them (it doesn't yet):</p>
-        <div style="background: #090d16; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem; color: #818cf8; overflow-x: auto; white-space: pre;">import { GaslessClient } from '@stellar-gasless/sdk';
+        <p style="color: var(--text-muted);">Real, published package (2026-09-12) — <code>npm install @stellar-gasless/sdk</code>. Replace <code>relayerUrl</code> with your own deployed relayer once you have one running, and <code>dappApiKey</code> with a real key once the relayer issues them (it doesn't yet):</p>
+        <div style="background: #090d16; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem; color: #818cf8; overflow-x: auto; white-space: pre;">npm install @stellar-gasless/sdk
+
+import { GaslessClient } from '@stellar-gasless/sdk';
 
 const gaslessClient = new GaslessClient({
   relayerUrl: 'https://your-relayer-domain.example',

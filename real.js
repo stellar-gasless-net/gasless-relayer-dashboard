@@ -36,7 +36,55 @@ document.addEventListener('DOMContentLoaded', () => {
   wireRelayerConnection();
   wireRealWalletAndDemo();
   wireSessionKeys();
+  wireVerifiedCredential();
 });
+
+// --- Verified Credential Check: real has_credential reads from stellar-zkident's -------
+// credential_verifier. Mirrors @stellar-gasless/sdk's hasVerifiedCredential (src/utils/
+// zkident.ts) — reimplemented here (not imported) because this dashboard is plain static
+// HTML/JS with no bundler, and that package isn't published to a registry a <script> tag
+// can reach. Keep this in sync with the SDK's own version if that algorithm ever changes.
+const CREDENTIAL_VERIFIER_ID = 'CDLRSLHALMX6OU5IHWY6CKTROK3SYENEA75K6OWSZCPAW4EOTR2OZGSF';
+
+async function hasVerifiedCredential(userAddress, credentialType) {
+  const client = await ContractClient.from({
+    contractId: CREDENTIAL_VERIFIER_ID,
+    networkPassphrase: NETWORK_PASSPHRASE,
+    rpcUrl: RPC_URL,
+  });
+  const tx = await client.has_credential({ user: userAddress, credential_type: credentialType });
+  return Boolean(tx.result);
+}
+
+function wireVerifiedCredential() {
+  const btn = document.getElementById('verifiedCredentialCheckBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', runVerifiedCredentialCheck);
+  // Real read, no wallet needed — check the pre-filled real demo subject on load so the
+  // panel shows genuine non-empty data immediately.
+  runVerifiedCredentialCheck();
+}
+
+async function runVerifiedCredentialCheck() {
+  const box = document.getElementById('verifiedCredentialResultBox');
+  const address = document.getElementById('verifiedCredentialAddressInput').value.trim();
+  const credentialType = document.getElementById('verifiedCredentialTypeInput').value.trim();
+  if (!address || !credentialType) {
+    box.innerHTML = '<span style="color:#f87171;">Enter both an address and a credential type.</span>';
+    return;
+  }
+
+  box.textContent = `Calling has_credential on credential_verifier for ${address.slice(0, 6)}...${address.slice(-4)}...`;
+  try {
+    const verified = await hasVerifiedCredential(address, credentialType);
+    box.innerHTML = verified
+      ? `<span style="color: var(--accent-green); font-weight:600;">&#9679; Verified — this address holds a real "${credentialType}" credential.</span>`
+      : `<span style="color:#fbbf24;">Not verified — no matching credential record for this address. A real, honest "no," not an error.</span>`;
+  } catch (err) {
+    box.innerHTML = `<span style="color:#f87171;">Check failed: ${err.message}</span>`;
+  }
+}
 
 // --- Session Keys tab: real get_session_key reads from account-abstraction-wallet -------
 

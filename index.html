@@ -246,6 +246,29 @@
           Not looked up yet.
         </div>
       </div>
+
+      <div class="card" style="border: 1px solid rgba(139, 92, 246, 0.4);">
+        <h3 style="margin-top:0; color: #a78bfa;">Verified Credential Check (Real)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Real, live <code>has_credential</code> read against <code>stellar-zklab/stellar-zkident</code>'s deployed
+          <code>credential_verifier</code> — the exact same gate <code>reputation_nft::mint()</code>,
+          <code>sybil_resistant_faucet::claim()</code>, and this ecosystem's own
+          <code>stellar-gasless-relayer</code> sponsorship tiering all depend on. This panel reimplements
+          <code>@stellar-gasless/sdk</code>'s <code>hasVerifiedCredential</code> using the same
+          <code>window.StellarSdk</code> global already loaded above, rather than importing the package directly —
+          this dashboard has no bundler and that package isn't published to a registry a plain
+          <code>&lt;script&gt;</code> tag can reach. See that SDK's <code>src/utils/zkident.ts</code> for the
+          canonical version this stays in sync with. No wallet connection needed; it's public on-chain state.
+        </p>
+        <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap: wrap;">
+          <input id="verifiedCredentialAddressInput" class="input-field" style="flex:2; min-width:280px;" value="GAUZ4T6UT7XMGOL6WYPWWSYPZQ7ZLILCAS2ROYCH5ILHHOWQYUGVRTAB" placeholder="Address to check (G...)">
+          <input id="verifiedCredentialTypeInput" class="input-field" style="flex:1; min-width:160px;" value="kyc_tier_2" placeholder="Credential type">
+          <button id="verifiedCredentialCheckBtn" class="btn btn-primary">Check</button>
+        </div>
+        <div id="verifiedCredentialResultBox" style="font-family: monospace; font-size: 0.85rem; color: var(--text-muted);">
+          Not checked yet.
+        </div>
+      </div>
     </div>
 
     <!-- TAB: PASSKEY WALLET -->

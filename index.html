@@ -232,9 +232,8 @@
       <div class="card" style="margin-bottom: 2rem; border: 1px solid rgba(16, 185, 129, 0.4);">
         <h3 style="margin-top:0; color: var(--accent-green);">Session Key Permissions (Real)</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Real, live reads from a deployed <code>account-abstraction-wallet</code> contract's
-          <code>get_session_key</code> — the exact permissions its own <code>__check_auth</code> enforces on-chain,
-          not a separate summary that could drift from what's actually checked. No wallet connection needed to view this;
+          Real, live permissions read directly from a deployed smart-wallet contract on testnet — not a separate
+          summary that could drift from what's actually enforced on-chain. No wallet connection needed to view this;
           it's public on-chain state.
         </p>
         <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap: wrap;">
@@ -270,11 +269,10 @@
       <div class="card" style="margin-bottom: 2rem; border: 1px solid rgba(139, 92, 246, 0.4);">
         <h3 style="margin-top:0; color: #a78bfa;">Real Passkey Smart Account (Real)</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem;">
-          <code>account-abstraction-wallet</code>'s whole point is a smart account controlled by a real WebAuthn
-          passkey instead of a seed phrase — but no demo anywhere in this ecosystem had ever actually shown that
-          working end to end (the other real demos here use Freighter, a classic keypair wallet). This one does:
-          a real browser passkey, a real freshly-deployed wallet contract, and a real on-chain call authorized
-          by <em>only</em> your fingerprint/security key — no Freighter signature in the authorization step.
+          A smart wallet controlled entirely by a real WebAuthn passkey — your fingerprint or security key — instead
+          of a seed phrase. This flow creates a real passkey, deploys a real wallet contract keyed to it, and
+          authorizes a real on-chain call using <em>only</em> that passkey, with no Freighter signature involved in
+          the authorization step.
         </p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">
           Freighter is still used for one thing: paying the real network fee to deploy your wallet (someone has to

@@ -250,18 +250,9 @@
       <div class="card" style="border: 1px solid rgba(139, 92, 246, 0.4);">
         <h3 style="margin-top:0; color: #a78bfa;">Verified Credential Check (Real)</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Real, live <code>has_credential</code> read against <code>stellar-zklab/stellar-zkident</code>'s deployed
-          <code>credential_verifier</code> — the exact same gate <code>reputation_nft::mint()</code>,
-          <code>sybil_resistant_faucet::claim()</code>, and this ecosystem's own
-          <code>stellar-gasless-relayer</code> sponsorship tiering all depend on. This panel reimplements
-          <code>@stellar-gasless/sdk</code>'s <code>hasVerifiedCredential</code> using the same
-          <code>window.StellarSdk</code> global already loaded above, rather than importing the package directly.
-          <code>@stellar-gasless/sdk</code> is genuinely published to npm now (2026-09-12) — the blocker isn't
-          publication, it's that this dashboard has no bundler, and importing it via an ESM CDN would pull in a
-          second, independent copy of <code>@stellar/stellar-sdk</code>'s internals — the exact
-          instanceof/<code>.clone()</code>-breaking collision <code>real.js</code>'s own header comment already
-          documents hitting once with this same package. See that SDK's <code>src/utils/zkident.ts</code> for the
-          canonical version this stays in sync with. No wallet connection needed; it's public on-chain state.
+          Real, live <code>has_credential</code> read against <code>stellar-zkident</code>'s deployed
+          <code>credential_verifier</code> — the same gate the faucet, reputation NFT, and this relayer's own
+          sponsorship tiering all depend on. No wallet connection needed; it's public on-chain state.
         </p>
         <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap: wrap;">
           <input id="verifiedCredentialAddressInput" class="input-field" style="flex:2; min-width:280px;" value="GAUZ4T6UT7XMGOL6WYPWWSYPZQ7ZLILCAS2ROYCH5ILHHOWQYUGVRTAB" placeholder="Address to check (G...)">

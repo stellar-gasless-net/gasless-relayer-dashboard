@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   deployBtn.addEventListener('click', async () => {
-    deployStatus.textContent = 'Deploying a real account-abstraction-wallet instance on testnet, then calling init() with your real passkey...';
+    deployStatus.textContent = 'Deploying your wallet contract on testnet, then initializing it with your real passkey...';
     try {
       const walletId = await deployRealPasskeyWallet(funderAddress, freighter.signTransaction, createdSec1PublicKeyHex);
       deployedWalletId = walletId;
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   executeBtn.addEventListener('click', async () => {
-    executeStatus.textContent = 'Building a real execute() call, then asking your passkey to authorize it — watch for a biometric/security-key prompt (NOT Freighter)...';
+    executeStatus.textContent = 'Building a real on-chain call, then asking your passkey to authorize it — watch for a biometric/security-key prompt (NOT Freighter)...';
     try {
       const { txHash, result } = await executeRealViaPasskey({
         walletContractId: deployedWalletId,
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
         feePayerSignTransaction: freighter.signTransaction,
         credentialIdBuffer: createdCredentialId,
       });
-      executeStatus.innerHTML = `<span style="color: var(--accent-green);">Authorized entirely by your passkey — no Freighter signature involved in the authorization.</span> get_owner() returned: <code>${result}</code> — <a href="https://stellar.expert/explorer/testnet/tx/${txHash}" target="_blank" rel="noopener noreferrer" style="color:#818cf8;">view real tx</a>`;
+      executeStatus.innerHTML = `<span style="color: var(--accent-green);">Authorized entirely by your passkey — no Freighter signature involved in the authorization.</span> Wallet owner: <code>${result}</code> — <a href="https://stellar.expert/explorer/testnet/tx/${txHash}" target="_blank" rel="noopener noreferrer" style="color:#818cf8;">view real tx</a>`;
     } catch (err) {
       executeStatus.innerHTML = `<span style="color:#f87171;">${err.message}</span>`;
     }

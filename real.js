@@ -116,7 +116,7 @@ async function lookupSessionKey() {
     return;
   }
 
-  box.textContent = `Reading get_session_key from ${walletId.slice(0, 6)}...${walletId.slice(-4)} on testnet...`;
+  box.textContent = `Reading permissions for ${walletId.slice(0, 6)}...${walletId.slice(-4)} on testnet...`;
   try {
     const client = await ContractClient.from({
       contractId: walletId,
@@ -127,7 +127,7 @@ async function lookupSessionKey() {
     const data = tx.result;
 
     if (!data) {
-      box.innerHTML = `<span style="color: #fbbf24;">No session key registered at this address on this wallet — a real, honest "not found," not an error.</span>`;
+      box.innerHTML = `<span style="color: #fbbf24;">No session key registered at this address on this wallet.</span>`;
       return;
     }
 
@@ -245,12 +245,11 @@ function wireRealWalletAndDemo() {
   realCard.style.marginBottom = '2rem';
   realCard.style.border = '1px solid rgba(16, 185, 129, 0.4)';
   realCard.innerHTML = `
-    <h3 style="margin-top:0; color: var(--accent-green);">Real Gasless Transaction (Not a Mockup)</h3>
+    <h3 style="margin-top:0; color: var(--accent-green);">Gasless Transaction (Real)</h3>
     <p style="color: var(--text-muted); font-size: 0.9rem;">
-      Connects a real Freighter wallet, builds and signs a real call to the deployed
-      <code>did_registry</code> contract, and submits it through <code>@stellar-gasless/sdk</code>'s
-      real <code>GaslessClient</code> to the relayer configured above. Requires that relayer to
-      actually be reachable and funded.
+      Connects your Freighter wallet, builds and signs a real transaction, and submits it through
+      the relayer configured above for gasless execution. Requires that relayer to actually be
+      reachable and funded.
     </p>
     <button id="realConnectWalletBtn" class="btn btn-primary" style="margin-bottom:1rem;">Connect Real Wallet</button>
     <div id="realWalletStatus" style="font-size:0.85rem; color: var(--text-muted); margin-bottom:1rem;"></div>
@@ -305,8 +304,8 @@ async function runRealGaslessFlow() {
 
     const document_ = `ipfs://gasless-dashboard-demo-${Date.now()}`;
     box.textContent = existing
-      ? 'DID already registered for this wallet — calling update_did instead. Freighter will ask you to sign.'
-      : 'No DID registered yet for this wallet — calling register_did. Freighter will ask you to sign.';
+      ? 'DID already registered for this wallet — updating it instead. Freighter will ask you to sign.'
+      : 'No DID registered yet for this wallet — registering one now. Freighter will ask you to sign.';
 
     const tx = existing
       ? await client.update_did({ owner: connectedAddress, document: document_ }, { timeoutInSeconds: 1800 })
@@ -315,7 +314,7 @@ async function runRealGaslessFlow() {
     await tx.sign();
     const signedXdr = tx.signed.toXDR();
 
-    box.textContent = `Signed. Submitting via GaslessClient to ${relayerUrl} ...`;
+    box.textContent = `Signed. Submitting to ${relayerUrl} for gasless execution...`;
     const res = await fetch(`${relayerUrl}/v1/relay`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

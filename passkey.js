@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const { credentialId, sec1PublicKeyHex } = await createRealPasskey('Stellar Gasless demo wallet');
       createdCredentialId = credentialId;
       createdSec1PublicKeyHex = sec1PublicKeyHex;
-      createStatus.innerHTML = `<span style="color: var(--accent-green);">Real passkey created.</span> Public key (SEC-1, 65 bytes): <code style="word-break:break-all;">${sec1PublicKeyHex}</code>`;
+      createStatus.innerHTML = `<span style="color: var(--accent-green);">Real passkey created.</span> Public key: <code style="word-break:break-all;">${sec1PublicKeyHex}</code>`;
     } catch (err) {
       createStatus.innerHTML = `<span style="color:#f87171;">${err.message}</span>`;
     }
